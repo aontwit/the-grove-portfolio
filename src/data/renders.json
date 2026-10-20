@@ -1,0 +1,248 @@
+[
+  {
+    "id": "baibua-iso-h15",
+    "slug": "baibua",
+    "view": "iso",
+    "hour": 15,
+    "floor": 1,
+    "reel": false,
+    "dark": true,
+    "title": "ใบบัว · บ่ายสามโมง",
+    "note": "ภาพแรกของฉากเปิดหน้าแรก · แปลนตัวอย่าง ห้องจัดวางโดยสตูดิโอ",
+    "en": {
+      "title": "Bai Bua · 3 p.m.",
+      "note": "First frame of the home page opening · Sample layout, rooms laid out by the studio"
+    },
+    "zh": {
+      "title": "Bai Bua · 下午 3 点",
+      "note": "首页开场的第一帧 · 示例布局，房间由工作室布置"
+    }
+  },
+  {
+    "id": "baibua-iso-empty",
+    "slug": "baibua",
+    "view": "iso",
+    "hour": 15,
+    "floor": 1,
+    "empty": true,
+    "reel": false,
+    "dark": true,
+    "title": "ใบบัว · แปลงเปล่า",
+    "note": "เฟรมแรกของฉากเปิดหน้าแรกบนจอกว้าง ก่อนห้องลงมาเข้าที่ · แปลนตัวอย่าง ห้องจัดวางโดยสตูดิโอ",
+    "en": {
+      "title": "Bai Bua · empty plot",
+      "note": "First frame of the home page opening on wide screens, before the rooms drop in · Sample layout, rooms laid out by the studio"
+    },
+    "zh": {
+      "title": "Bai Bua · 空地块",
+      "note": "宽屏首页开场的第一帧，房间落位之前 · 示例布局，房间由工作室布置"
+    }
+  },
+  {
+    "id": "baibua-ext",
+    "slug": "baibua",
+    "view": "iso",
+    "hour": 16,
+    "floor": 1,
+    "closed": true,
+    "reel": true,
+    "dark": true,
+    "title": "ใบบัว · ภายนอก",
+    "note": "บ้านเดี่ยวชั้นเดียว จั่วเดียวหันหน้าถนน หลังคาปั้นหยาเตี้ย หลังคาแบนคลุมชานและที่จอดหน้าบ้าน · แปลนตัวอย่าง ห้องจัดวางโดยสตูดิโอ",
+    "en": {
+      "title": "Bai Bua · exterior",
+      "note": "Single-storey detached house, one street-facing gable, low hipped roof, flat roof over the front porch and parking · Sample layout, rooms laid out by the studio"
+    },
+    "zh": {
+      "title": "Bai Bua · 外观",
+      "note": "单层独栋住宅，一个临街山墙，低坡四坡屋顶，平顶覆盖前廊与车位 · 示例布局，房间由工作室布置"
+    }
+  },
+  {
+    "id": "lomyen-ext",
+    "slug": "lomyen",
+    "view": "iso",
+    "hour": 16,
+    "floor": 1,
+    "closed": true,
+    "reel": true,
+    "dark": true,
+    "title": "ลมเย็น · ภายนอก",
+    "note": "บ้านแฝดสองชั้น จั่วฝั่งนอก ระเบียงชั้นบน ผนังบล็อกช่องลมกลางอาคาร แสดงคู่กับหลังข้างเคียง · แปลนตัวอย่าง ห้องจัดวางโดยสตูดิโอ",
+    "en": {
+      "title": "Lom Yen · exterior",
+      "note": "Two-storey semi-detached pair, outer gables, upper balconies, breeze-block screen in the middle, shown with the neighbouring unit · Sample layout, rooms laid out by the studio"
+    },
+    "zh": {
+      "title": "Lom Yen · 外观",
+      "note": "两层双拼住宅，外侧山墙，二楼阳台，中间为镂空砖隔屏，与相邻单元一同展示 · 示例布局，房间由工作室布置"
+    }
+  },
+  {
+    "id": "lomyen-iso-f2",
+    "slug": "lomyen",
+    "view": "iso",
+    "hour": 15,
+    "floor": 2,
+    "reel": true,
+    "dark": true,
+    "title": "ลมเย็น · ชั้นบน",
+    "note": "แปลนตัวอย่าง ห้องจัดวางโดยสตูดิโอ",
+    "en": {
+      "title": "Lom Yen · upper floor",
+      "note": "Sample layout, rooms laid out by the studio"
+    },
+    "zh": {
+      "title": "Lom Yen · 二楼",
+      "note": "示例布局，房间由工作室布置"
+    }
+  },
+  {
+    "id": "noen-phai-2-bed-ext",
+    "slug": "noen-phai-2-bed",
+    "view": "iso",
+    "hour": 16,
+    "floor": 1,
+    "closed": true,
+    "reel": true,
+    "dark": true,
+    "title": "ชั้นเดียว 2 นอน · ภายนอก",
+    "note": "บ้านเดี่ยวชั้นเดียว จั่วเดียว รั้วบล็อกช่องลม ลานกรวดหน้าบ้าน · แปลนตัวอย่าง ห้องจัดวางโดยสตูดิโอ",
+    "en": {
+      "title": "Single-storey, 2 bedrooms · exterior",
+      "note": "Single-storey detached house, one gable, breeze-block front fence, gravel front yard · Sample layout, rooms laid out by the studio"
+    },
+    "zh": {
+      "title": "单层，两间卧室 · 外观",
+      "note": "单层独栋住宅，一个山墙，镂空砖前围墙，碎石前院 · 示例布局，房间由工作室布置"
+    }
+  },
+  {
+    "id": "village-rim-suan",
+    "slug": "baibua",
+    "view": "village",
+    "hour": 16,
+    "floor": 1,
+    "reel": true,
+    "dark": true,
+    "title": "เดอะ โกรฟ @ริมสวน · 18 ยูนิต",
+    "note": "ผังแปลงตัวอย่าง รอผังจริง · สองแถวคั่นด้วยถนนกลาง บนที่ดิน 3 ไร่",
+    "en": {
+      "title": "The Grove @Rim Suan · 18 units",
+      "note": "Sample site plan, awaiting the real one · two rows either side of a central road on 3 rai"
+    },
+    "zh": {
+      "title": "The Grove @Rim Suan · 18 套",
+      "note": "示例总平面图，待提供实际图纸 · 3 莱用地，中央道路两侧各一排"
+    }
+  },
+  {
+    "id": "village-noen-phai",
+    "slug": "noen-phai-2-bed",
+    "view": "village",
+    "hour": 16,
+    "floor": 1,
+    "reel": true,
+    "dark": true,
+    "title": "เดอะ โกรฟ @เนินไผ่ · 9 ยูนิต",
+    "note": "ผังแปลงตัวอย่าง รอผังจริง · สองแถวคั่นด้วยถนนกลาง บนที่ดิน 2 ไร่",
+    "en": {
+      "title": "The Grove @Noen Phai · 9 units",
+      "note": "Sample site plan, awaiting the real one · two rows either side of a central road on 2 rai"
+    },
+    "zh": {
+      "title": "The Grove @Noen Phai · 9 套",
+      "note": "示例总平面图，待提供实际图纸 · 2 莱用地，中央道路两侧各一排"
+    }
+  },
+  {
+    "id": "baibua-iso",
+    "slug": "baibua",
+    "view": "iso",
+    "hour": 15,
+    "floor": 1,
+    "reel": false,
+    "title": "ใบบัว",
+    "note": "ภาพประกอบการ์ดแบบบ้าน · แปลนตัวอย่าง ห้องจัดวางโดยสตูดิโอ",
+    "en": {
+      "title": "Bai Bua",
+      "note": "House-type card illustration · Sample layout, rooms laid out by the studio"
+    },
+    "zh": {
+      "title": "Bai Bua",
+      "note": "户型卡片插图 · 示例布局，房间由工作室布置"
+    }
+  },
+  {
+    "id": "lomyen-iso",
+    "slug": "lomyen",
+    "view": "iso",
+    "hour": 15,
+    "floor": 1,
+    "reel": false,
+    "title": "ลมเย็น",
+    "note": "ภาพประกอบการ์ดแบบบ้าน · แปลนตัวอย่าง ห้องจัดวางโดยสตูดิโอ",
+    "en": {
+      "title": "Lom Yen",
+      "note": "House-type card illustration · Sample layout, rooms laid out by the studio"
+    },
+    "zh": {
+      "title": "Lom Yen",
+      "note": "户型卡片插图 · 示例布局，房间由工作室布置"
+    }
+  },
+  {
+    "id": "rommai-iso",
+    "slug": "rommai",
+    "view": "iso",
+    "hour": 15,
+    "floor": 1,
+    "reel": false,
+    "title": "ร่มไม้",
+    "note": "ภาพประกอบการ์ดแบบบ้าน · แปลนตัวอย่าง ห้องจัดวางโดยสตูดิโอ",
+    "en": {
+      "title": "Rom Mai",
+      "note": "House-type card illustration · Sample layout, rooms laid out by the studio"
+    },
+    "zh": {
+      "title": "Rom Mai",
+      "note": "户型卡片插图 · 示例布局，房间由工作室布置"
+    }
+  },
+  {
+    "id": "noen-phai-2-bed-iso",
+    "slug": "noen-phai-2-bed",
+    "view": "iso",
+    "hour": 15,
+    "floor": 1,
+    "reel": false,
+    "title": "ชั้นเดียว 2 นอน",
+    "note": "ภาพประกอบการ์ดแบบบ้าน · แปลนตัวอย่าง ห้องจัดวางโดยสตูดิโอ",
+    "en": {
+      "title": "Single-storey, 2 bedrooms",
+      "note": "House-type card illustration · Sample layout, rooms laid out by the studio"
+    },
+    "zh": {
+      "title": "单层，两间卧室",
+      "note": "户型卡片插图 · 示例布局，房间由工作室布置"
+    }
+  },
+  {
+    "id": "noen-phai-3-bed-iso",
+    "slug": "noen-phai-3-bed",
+    "view": "iso",
+    "hour": 15,
+    "floor": 1,
+    "reel": false,
+    "title": "ชั้นเดียว 3 นอน",
+    "note": "ภาพประกอบการ์ดแบบบ้าน · แปลนตัวอย่าง ห้องจัดวางโดยสตูดิโอ",
+    "en": {
+      "title": "Single-storey, 3 bedrooms",
+      "note": "House-type card illustration · Sample layout, rooms laid out by the studio"
+    },
+    "zh": {
+      "title": "单层，三间卧室",
+      "note": "户型卡片插图 · 示例布局，房间由工作室布置"
+    }
+  }
+]

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- สัญลักษณ์ The Grove (ต้นไม้สามต้น) เส้นชุดเดียวกับ components/site/BrandMark.tsx
+       สีจาก token §1: พื้น ink #0F0C0A · เส้น pine #E2774A (6.47:1) · เส้นหนากว่าในหัวเว็บเพราะต้องอ่านได้ที่ 16px -->
+  <rect width="32" height="32" rx="6" fill="#0F0C0A"/>
+  <g transform="translate(6.9 5.4) scale(0.65)" fill="none" stroke="#E2774A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 29h24"/>
+    <path d="M14 29V15M6.5 29v-6.5M21.5 29v-5"/>
+    <path d="M14 15a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"/>
+    <path d="M6.5 22.5a3.6 3.6 0 1 0 0-7.2 3.6 3.6 0 0 0 0 7.2Z"/>
+    <path d="M21.5 24a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z"/>
+  </g>
+</svg>

@@ -1,0 +1,206 @@
+{
+  "brandName": "เดอะ โกรฟ",
+  "en": {
+    "brandName": "The Grove",
+    "salesHours": null,
+    "replyTime": null,
+    "developer": {
+      "name": null,
+      "address": null
+    },
+    "legal": {
+      "allocationLicence": null,
+      "titleDeeds": null
+    },
+    "privacy": {
+      "retention": null,
+      "processors": null,
+      "crossBorder": null
+    },
+    "terms": {
+      "priceIncludes": null
+    }
+  },
+  "zh": {
+    "brandName": "The Grove",
+    "salesHours": null,
+    "replyTime": null,
+    "developer": {
+      "name": null,
+      "address": null
+    },
+    "legal": {
+      "allocationLicence": null,
+      "titleDeeds": null
+    },
+    "privacy": {
+      "retention": null,
+      "processors": null,
+      "crossBorder": null
+    },
+    "terms": {
+      "priceIncludes": null
+    }
+  },
+  "contactPhone": "02-000-0000",
+  "contactEmail": null,
+  "lineId": null,
+  "facebook": null,
+  "salesHours": null,
+  "replyTime": null,
+  "developer": {
+    "name": null,
+    "address": null
+  },
+  "legal": {
+    "allocationLicence": null,
+    "titleDeeds": null,
+    "commonFeePerSqwMonth": null
+  },
+  "privacy": {
+    "version": "0.1",
+    "draft": true,
+    "effectiveDate": null,
+    "dpoEmail": null,
+    "dpoPhone": null,
+    "retention": null,
+    "processors": null,
+    "crossBorder": null
+  },
+  "terms": {
+    "version": "0.1",
+    "draft": true,
+    "effectiveDate": null,
+    "priceIncludes": null
+  },
+  "demo": true,
+  "developerSpecs": [
+    {
+      "text": "ผนังอิฐมวลเบา ฉาบเรียบ",
+      "en": {
+        "text": "Lightweight block walls, smooth plaster"
+      },
+      "zh": {
+        "text": "轻质砌块墙，平整抹灰"
+      }
+    },
+    {
+      "text": "ตอกเสาเข็มทุกหลัง",
+      "en": {
+        "text": "Driven piles under every house"
+      },
+      "zh": {
+        "text": "每栋房屋均采用打入桩基础"
+      }
+    },
+    {
+      "text": "ห้องนอนพื้นไม้ลามิเนต",
+      "en": {
+        "text": "Laminate wood floors in the bedrooms"
+      },
+      "zh": {
+        "text": "卧室铺设强化木地板"
+      }
+    },
+    {
+      "text": "กระจกตัดแสงทุกบาน",
+      "en": {
+        "text": "Low-glare glass in every window"
+      },
+      "zh": {
+        "text": "所有窗户均为减眩光玻璃"
+      }
+    },
+    {
+      "text": "เพดานสูง 2.8 ม.",
+      "en": {
+        "text": "2.8 m ceilings"
+      },
+      "zh": {
+        "text": "2.8 米层高"
+      }
+    },
+    {
+      "text": "รับประกันโครงสร้าง 5 ปี",
+      "en": {
+        "text": "Five-year structural warranty"
+      },
+      "zh": {
+        "text": "结构保修五年"
+      }
+    }
+  ],
+  "developerSource": null,
+  "plannedShots": [
+    {
+      "id": "shot-front",
+      "title": "หน้าบ้านตอนบ่ายแก่",
+      "note": "ถ่ายตอนบ่ายแก่ ให้เห็นเงาชายคาทอดลงระเบียง",
+      "en": {
+        "title": "Front of the house in late afternoon",
+        "note": "Taken late in the afternoon, with the shadow of the eaves falling across the terrace."
+      },
+      "zh": {
+        "title": "傍晚前的房屋正面",
+        "note": "于傍晚前拍摄，屋檐的阴影落在露台上。"
+      },
+      "ratio": "4:3"
+    },
+    {
+      "id": "shot-living",
+      "title": "มุมนั่งเล่นริมหน้าต่าง",
+      "note": "ยืนที่ประตูห้องนั่งเล่น เห็นหน้าต่างทั้งบาน",
+      "en": {
+        "title": "Sitting by the living-room window",
+        "note": "From the living-room doorway, showing the whole window."
+      },
+      "zh": {
+        "title": "坐在客厅窗边",
+        "note": "从客厅门口拍摄，拍到整扇窗。"
+      },
+      "ratio": "4:3"
+    },
+    {
+      "id": "shot-kitchen",
+      "title": "ครัว",
+      "note": "ให้เห็นเคาน์เตอร์ครัวกับหน้าต่าง",
+      "en": {
+        "title": "The kitchen",
+        "note": "Showing the kitchen counter and the window."
+      },
+      "zh": {
+        "title": "厨房",
+        "note": "拍到厨房台面和窗户。"
+      },
+      "ratio": "3:4"
+    },
+    {
+      "id": "shot-street",
+      "title": "ถนนในหมู่บ้าน",
+      "note": "ยืนกลางถนนในโครงการ มองไปทางทางเข้า",
+      "en": {
+        "title": "The village road",
+        "note": "Standing in the middle of the project road, looking towards the entrance."
+      },
+      "zh": {
+        "title": "社区道路",
+        "note": "站在项目道路中央，朝入口方向拍摄。"
+      },
+      "ratio": "16:9"
+    },
+    {
+      "id": "shot-aerial",
+      "title": "หมู่บ้านจากมุมสูง",
+      "note": "เห็นแปลงทั้งสองแถวกับถนนกลางครบ",
+      "en": {
+        "title": "The village from above",
+        "note": "Showing both rows of plots and the road between them."
+      },
+      "zh": {
+        "title": "社区俯瞰",
+        "note": "拍到两排地块及其间的道路。"
+      },
+      "ratio": "16:9"
+    }
+  ]
+}

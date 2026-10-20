@@ -1,0 +1,337 @@
+@import "tailwindcss";
+
+/* compact = จอสัมผัส หรือจอแคบกว่า 1024px — DESIGN-SPEC §4: มือถือ/จอสัมผัสห้ามดักการเลื่อน (ไม่ pin ไม่ scrub ไม่ smooth-scroll)
+   ฉากเปิดหน้าแรกจึงเป็นหน้าจอปกติหนึ่งท่อน: ข้อความ → โมเดลใต้ข้อความ → ปุ่มขยับกล้องในที่เดิม (HeroDiorama)
+   ขยายจาก 768 เป็น 1024 (เจ้าของแจ้ง 2026-10-02): จอ 720-1000px ที่วางข้อความทับฉากเต็มจอ มุมบ้านบังท้ายบรรทัด
+   ใต้ 1024 ไม่มีที่พอให้คอลัมน์ข้อความกับบ้านอยู่ข้างกัน — วางซ้อนลงมาแทน จึงไม่มีทางทับกันที่ความกว้างไหนเลย
+   query เดียวกับ COMPACT_QUERY ใน lib/media.ts — แก้ที่หนึ่งต้องแก้อีกที่ */
+/* รูปแบบ block: รูปแบบย่อ "(@media a, b)" ของ Tailwind เก็บไว้แค่ query แรก (วัด 2026-10-02 — เงื่อนไขความกว้างหายไปเงียบๆ) */
+@custom-variant compact {
+  @media (pointer: coarse) {
+    @slot;
+  }
+  @media (max-width: 63.98rem) {
+    @slot;
+  }
+}
+/* wide = ตรงข้ามของ compact — ฉากเปิดหน้าแรกมีทางวิ่ง scrub ได้เฉพาะที่นี่ (ร่วมกับ motion-safe) */
+@custom-variant wide (@media (min-width: 64rem) and (not (pointer: coarse)));
+
+/* ── Tokens — DESIGN-SPEC.md §1-§3 เท่านั้น (ชุด The Grove) ─────────────────────
+   ไฟล์นี้เป็นที่เดียวในโปรเจกต์ที่มีค่า hex ได้ (ยกเว้น _meta/site.ts BROWSER_COLOR และ icon.svg
+   ที่ต้องเขียนเป็นตัวอักษร — ค่าเท่ากับ token ที่นี่)
+   โทนสี: ครีมงาช้าง · เขียวมะกอก · ไม้อุ่น · เทาขอบหลังคา · ตัวอักษรมะกอกเข้ม
+   ชื่อ token คงชื่อเดิมของชุดก่อน (ลดการแก้ทั้งเว็บ) — ความหมายของแต่ละชื่ออยู่ใน §1
+   dark mode ไม่ใช่การ invert — เป็นชุดค่าที่ spec กำหนดแยก (§1)
+   ─────────────────────────────────────────────────────────────────────────── */
+
+:root,
+.light,
+.dark {
+  /* ชุด "Dusk Clay" (v4 · 2026-10-20 เจ้าของสั่ง): เว็บมืดชุดเดียว พื้น espresso ตัวอักษรครีมกระดูก
+     ไฮไลต์ดินเผา (pine) กับทองเหลือง (citron) — คอนทราสต์ตัวอักษรทุกคู่ ≥ 5.7:1 (DESIGN-SPEC §1)
+     ชื่อ token คงชื่อเดิม (ลดการแก้ทั้งเว็บ) ความหมายตาม §1 */
+  --paper: #201a15;
+  --canvas: #17130f;
+  --concrete: #3a3029;
+  --ironwood: #f2eae0;
+  --moss: #b5a694;
+  --pine: #e2774a;
+  /* teak = ข้อความเตือน/error และขอบช่องกรอกที่ผิด — อำพัน แยกจากดินเผาของปุ่มหลัก */
+  --teak: #f2a65a;
+  /* ตัวอักษรบนปุ่มดินเผา: espresso (6.18:1) */
+  --on-pine: #1a110b;
+
+  /* แถบเข้มกว่าพื้นหน้า (เวทีโมเดล 3D, แผง studio) — ข้อความบนพื้นนี้ใช้ chalk / ash / citron */
+  --ink: #0f0c0a;
+  --slate: #2a221c;
+  --chalk: #f4ece2;
+  --ash: #bbae9f;
+  --citron: #e7c27d;
+  --on-citron: #1a130c;
+
+  /* marigold = ไฮไลต์ที่ฉาก 3D อ่านไปใช้ด้วย (ห้องที่เลือก) */
+  --marigold: #d98a4e;
+  --on-marigold: #140d07;
+  /* ตัวอักษรบนพื้นสถานะสว่าง (chip/ผังแปลง "จอง") */
+  --marigold-deep: #7a4d1f;
+
+  /* พื้นสถานะเป็นชิปสว่างบนหน้ามืด — ตัวอักษรบนชิปคงที่ */
+  --st-available: #3f5a23;
+  --st-available-bg: #e8edda;
+  --st-reserved: var(--marigold-deep);
+  --st-reserved-bg: #f6ebdc;
+  --st-sold: #55575a;
+  --st-sold-bg: #ecebe6;
+  --st-unconfirmed: var(--st-label-muted);
+  --st-unconfirmed-bg: var(--chalk);
+  --st-label: #2c2118;
+  --st-label-muted: #5e5246;
+
+  color-scheme: dark;
+}
+
+@theme inline {
+  /* ล้าง palette/scale ของ Tailwind ทิ้งทั้งชุด — ให้เหลือเฉพาะ token ของโครงการ
+     ผลคือ bg-red-500, text-sm, rounded-lg, shadow-* ใช้ไม่ได้เลยตั้งแต่ระดับ build */
+  --color-*: initial;
+  --font-*: initial;
+  --text-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --drop-shadow-*: initial;
+  --inset-shadow-*: initial;
+  --text-shadow-*: initial;
+  --tracking-*: initial;
+
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --color-canvas: var(--canvas);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-slate: var(--slate);
+  --color-chalk: var(--chalk);
+  --color-ash: var(--ash);
+  --color-citron: var(--citron);
+  --color-on-citron: var(--on-citron);
+  --color-concrete: var(--concrete);
+  --color-ironwood: var(--ironwood);
+  --color-moss: var(--moss);
+  --color-pine: var(--pine);
+  --color-marigold: var(--marigold);
+  --color-on-pine: var(--on-pine);
+  --color-on-marigold: var(--on-marigold);
+  --color-st-available: var(--st-available);
+  --color-st-available-bg: var(--st-available-bg);
+  --color-marigold-deep: var(--marigold-deep);
+  --color-st-reserved: var(--st-reserved);
+  --color-teak: var(--teak);
+  --color-st-reserved-bg: var(--st-reserved-bg);
+  --color-st-sold: var(--st-sold);
+  --color-st-sold-bg: var(--st-sold-bg);
+  --color-st-unconfirmed: var(--st-unconfirmed);
+  --color-st-unconfirmed-bg: var(--st-unconfirmed-bg);
+  --color-st-label: var(--st-label);
+  --color-st-label-muted: var(--st-label-muted);
+
+  /* §2 — display: Noto Serif Display (ละติน ตัวเลข วรรคตอน) ต่อด้วย Noto Serif Thai (ตัวไทย) ใน stack เดียว
+     body/UI: Anuphan สำหรับที่เหลือทั้งหมด
+     ท้าย stack: ฟอนต์จีน (Noto Serif SC / Noto Sans SC) มีค่าเฉพาะหน้า /zh — ภาษาอื่น var() ตกไปที่ fallback ทั่วไป */
+  --font-display:
+    var(--font-serif-display), var(--font-serif-thai), var(--font-serif-sc, serif), serif;
+  --font-sans: var(--font-anuphan), var(--font-sans-sc, sans-serif), sans-serif;
+
+  /* กัน fallback ของ Tailwind (Roboto/Arial/Consolas) ไม่ให้แอบทำงานที่ระดับ html/code — §2 ห้ามฟอนต์โหล */
+  --default-font-family: var(--font-anuphan), var(--font-sans-sc, sans-serif), sans-serif;
+  --default-mono-font-family: var(--font-anuphan), sans-serif;
+
+  /* §2 — scale 13/15/17/21/26/34/46/60 ไม่มีขนาดอื่น */
+  --text-13: 13px;
+  --text-15: 15px;
+  --text-17: 17px;
+  --text-21: 21px;
+  --text-26: 26px;
+  --text-34: 34px;
+  --text-46: 46px;
+  --text-60: 60px;
+
+  /* §2 — ระยะตัวอักษรของตัวพิมพ์ใหญ่ละตินสั้นๆ เท่านั้น ห้ามถ่างตัวไทยหรือเนื้อหา
+     caps = ป้ายเล็ก (THE ในโลโก้, tagline, เลขท่อน) · mark = "GROVE" ในโลโก้ที่เดียว */
+  --tracking-caps: 0.24em;
+  --tracking-mark: 0.06em;
+  --tracking-normal: 0;
+
+  /* §4 — การเคลื่อนไหวตอบการกระทำ: ชะลอเข้าที่ (ease-out แบบ exponential) ไม่เด้ง ไม่ยืดหยุ่น
+     ใช้คู่กับ duration 150–250ms (ปุ่ม/สถานะ/panel) — ออกเร็วกว่าเข้า */
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* §3 — radius มี 2 ค่า + pill เฉพาะ chip สถานะ */
+  --radius-card: 12px;
+  --radius-control: 6px;
+  --radius-pill: 9999px;
+}
+
+@layer base {
+  body {
+    background-color: var(--canvas);
+    color: var(--ironwood);
+    font-family: var(--font-anuphan), var(--font-sans-sc, sans-serif), sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* §2 — หัวเรื่อง serif น้ำหนักเบา: h1/h2 400, h3 ลงไป 500 (เลขในแบบ/ผังใช้ 600 ได้)
+     ไทยมีสระบน-ล่างและวรรณยุกต์ซ้อน line-height ต่ำกว่า 1.3 จะชนกันเมื่อหัวข้อขึ้นสองบรรทัด
+     อังกฤษไม่มีชั้นสระ จึงกระชับได้ถึง 1.15 และบีบระยะตัวอักษรเล็กน้อยแบบ serif ขนาดใหญ่ (ไม่บีบไทย) */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family:
+      var(--font-serif-display), var(--font-serif-thai), var(--font-serif-sc, serif), serif;
+    font-weight: 500;
+    font-variant-numeric: lining-nums;
+    line-height: 1.3;
+  }
+
+  h1,
+  h2 {
+    font-weight: 400;
+  }
+
+  :lang(en) :is(h1, h2, h3) {
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--pine);
+    outline-offset: 2px;
+  }
+
+  /* ── ผิวของเบราว์เซอร์ — ใช้ token §1 เท่านั้น ─────────────────────────────
+     พื้นสว่าง: pine (สี interactive ของพื้นสว่าง) · แถบมะกอกเข้ม ink/slate: citron (สี interactive ของพื้นเข้ม)
+     scrollbar-color / caret-color / accent-color สืบทอดลงลูก ตั้งที่ราก + แถบเข้มก็ครบทั้งหน้า */
+  html {
+    scrollbar-color: var(--moss) var(--canvas);
+    caret-color: var(--pine);
+    accent-color: var(--pine);
+  }
+
+  ::selection {
+    background-color: var(--pine);
+    color: var(--on-pine);
+  }
+
+  .bg-ink,
+  .bg-slate {
+    scrollbar-color: var(--ash) var(--ink);
+    caret-color: var(--citron);
+    accent-color: var(--citron);
+  }
+
+  :where(.bg-ink, .bg-slate) ::selection {
+    background-color: var(--citron);
+    color: var(--on-citron);
+  }
+
+  /* ปุ่มเดียวกับปุ่มหลัก (§3: พื้น pine ตัวหนังสือ on-pine สูง 48px radius 6px)
+     อยู่นอกจอจนได้ focus — ไม่ใช้ display:none เพราะต้องยังอยู่ในลำดับ Tab */
+  .skip-link {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding-inline: 1.25rem;
+    border-radius: 6px;
+    background-color: var(--pine);
+    color: var(--on-pine);
+    font-size: 15px;
+    font-weight: 500;
+    transform: translateY(calc(-100% - 1.5rem));
+  }
+
+  /* ฉากเปิดหน้าแรกบนจอกว้าง: เฟรมแรกบ้านย่อหลบให้ชื่อแบรนด์ แล้วคลายเต็มกรอบตามระยะเลื่อน (--hero-k 0 → 1)
+     กรอบของฉาก (ภาพนิ่ง/canvas) ถูกย่อและเลื่อนให้ทับพื้นที่ขวาของจอพอดี: --intro-col คือสัดส่วนที่จองให้คอลัมน์ข้อความ
+     ย่อ (1 − col) รอบกึ่งกลาง แล้วเลื่อนขวาครึ่งหนึ่งของ col → ขอบซ้ายของกรอบอยู่ที่ col×100vw เป๊ะ
+     บ้านถูก fit อยู่ในกรอบเสมอ (object-contain / isoFitZoom) จึงไม่มีวันล้ำเข้าคอลัมน์ข้อความ (.hero-text จำกัดความกว้างไว้)
+     ค่าต่อขนาดจอ (--intro-*) อยู่ใน class ของ section · จอ compact ไม่มี transform เลย (บ้านอยู่ใต้ข้อความในลำดับปกติ) */
+  .hero-text {
+    max-width: 36rem;
+  }
+
+  /* ข้อความหนึ่งจังหวะของฉากเปิด (HeroDiorama: StepText) — จางเข้าที่ --a จางออกถึง --b ในระยะ --f
+     ทุกค่าเป็นสัดส่วนทางวิ่ง 0-1 · --hero-p เขียนจาก scroll ที่ section ไม่ผ่าน React */
+  .hero-step {
+    --v: clamp(
+      0,
+      min((var(--hero-p) - var(--a)) / var(--f), (var(--b) - var(--hero-p)) / var(--f)),
+      1
+    );
+    opacity: var(--v);
+    translate: 0 calc((1 - var(--v)) * 1.5rem);
+  }
+
+  @media (min-width: 64rem) and (not (pointer: coarse)) {
+    .hero-text {
+      /* คอลัมน์ข้อความ = col×100vw − ช่องไฟ 2rem − ขอบซ้ายของ Shell (max-w 88rem กลางจอ + px-6) */
+      max-width: calc(var(--intro-col) * 100vw - 2rem - max(1.5rem, (100vw - 88rem) / 2 + 1.5rem));
+    }
+
+    .hero-intro {
+      transform: translate(
+          calc(var(--intro-x) * (1 - var(--hero-k))),
+          calc(var(--intro-y) * (1 - var(--hero-k)))
+        )
+        scale(calc(1 - (1 - var(--intro-s)) * (1 - var(--hero-k))));
+    }
+  }
+
+  /* intro loader หน้าแรก (IntroLoader) — ซ่อนเป็นค่าตั้งต้นใน HTML จาก server · สคริปต์ inline เติม data-on ก่อนวาดเฟรมแรก
+     กันขังผู้ชมถ้า JS พังกลางทาง: ม่านเลื่อนพ้นจอเองหลัง 7 วินาที (ปกติ IntroLoader เปิดไปก่อนแล้ว ≤ 5 s) */
+  [data-intro-loader]:not([data-on]) {
+    display: none;
+  }
+
+  [data-intro-loader][data-on] {
+    display: flex;
+    animation: intro-failsafe 0s linear 7s forwards;
+  }
+
+  /* transform (ไม่ใช่ visibility) — เดินบน compositor ได้แม้ main thread ค้าง */
+  @keyframes intro-failsafe {
+    to {
+      transform: translateY(-100%);
+      pointer-events: none;
+    }
+  }
+
+  .skip-link:focus-visible,
+  .skip-link:focus {
+    transform: none;
+    outline-color: var(--ironwood);
+  }
+}
+
+/* แถบเลื่อนเวลาของ mood studio — ราววาดสีแสงจริงของแต่ละชั่วโมง (--track ตั้งจาก DAYLIGHT_KEYS ฝั่ง component) */
+.studio-range {
+  appearance: none;
+  background: transparent;
+}
+.studio-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--track);
+}
+.studio-range::-moz-range-track {
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--track);
+}
+.studio-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -7px;
+  border-radius: 9999px;
+  background: var(--chalk);
+  border: 3px solid var(--ink);
+}
+.studio-range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: var(--chalk);
+  border: 3px solid var(--ink);
+}
+.studio-range:focus-visible {
+  outline: 2px solid var(--citron);
+  outline-offset: 4px;
+}

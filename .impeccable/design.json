@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-01T00:00:00Z",
+  "title": "Design System: เดอะ โกรฟ",
+  "source": "DESIGN-SPEC.md (IMMUTABLE) — one-way sync; ห้ามเขียนกลับ",
+  "extensions": {
+    "colorMeta": {
+      "plaster": { "role": "neutral", "displayName": "Plaster (ขาวปูนอมเขียว)", "canonical": "#F7F8F5" },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#FFFFFF" },
+      "concrete": { "role": "neutral", "displayName": "Concrete", "canonical": "#E3E6E0" },
+      "ironwood": { "role": "neutral", "displayName": "Ironwood (ดำอมเขียว)", "canonical": "#1C2420" },
+      "moss": { "role": "neutral", "displayName": "Moss", "canonical": "#56605A" },
+      "pine": { "role": "primary", "displayName": "Pine", "canonical": "#22573F" },
+      "marigold": { "role": "secondary", "displayName": "Marigold", "canonical": "#C28214" },
+      "st-available": { "role": "tertiary", "displayName": "Available Green", "canonical": "#2E6B4E" },
+      "st-sold": { "role": "tertiary", "displayName": "Sold Grey", "canonical": "#6E6A63" }
+    },
+    "tonalRampPolicy": "ไม่สร้าง tonal ramp — DESIGN-SPEC §1 ห้ามใช้สีนอกตาราง การ generate ramp จะผลิตสีนอก token",
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "h1 หน้าหลัก/หน้าแบบบ้าน — Bai Jamjuree 700" },
+      "headline": { "displayName": "Headline", "purpose": "h2/h3 — Bai Jamjuree 600" },
+      "numeric": { "displayName": "Numeric", "purpose": "ราคา เลขแปลง พื้นที่ — tabular-nums เสมอ" },
+      "body": { "displayName": "Body", "purpose": "เนื้อหา Anuphan 400/1.65 ≤70 ตัวอักษรต่อบรรทัด" },
+      "label": { "displayName": "UI/Label", "purpose": "ปุ่ม ฟอร์ม หัวคอลัมน์ — Anuphan 500" }
+    },
+    "typeScale": ["13px", "15px", "17px", "21px", "26px", "34px", "46px", "60px"],
+    "shadows": [],
+    "motion": [
+      { "name": "hero-diorama-spin", "value": "8deg/min, หยุดเมื่อ interact", "purpose": "โมเมนต์เดียวในเว็บที่เคลื่อนไหวเอง" },
+      { "name": "plan-mode-crossfade", "value": "0.25s", "purpose": "สลับ 2D ↔ 3D" },
+      { "name": "panel-slide", "value": "0.2s", "purpose": "เปิด/ปิด panel" },
+      { "name": "reduced-motion", "value": "prefers-reduced-motion: ปิดทุกอย่างรวมถึงการหมุน diorama", "purpose": "บังคับทุกจุด" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "ปุ่มหลัก — ข้อความคือการกระทำตรงตัว",
+      "html": "<button class=\"ds-btn-primary\">เลือกแปลงจากผัง</button>",
+      "css": ".ds-btn-primary { background: var(--color-pine, #22573F); color: #FFFFFF; height: 48px; padding: 0 24px; border: none; border-radius: 6px; font-family: Anuphan, sans-serif; font-weight: 500; font-size: 15px; cursor: pointer; transition: background .15s; } .ds-btn-primary:hover { background: #1B4632; } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-pine, #22573F); outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "ปุ่มรอง ขอบ 1.5px พื้นใส",
+      "html": "<button class=\"ds-btn-secondary\">ดูแปลนบ้าน</button>",
+      "css": ".ds-btn-secondary { background: transparent; color: var(--color-ironwood, #1C2420); height: 48px; padding: 0 24px; border: 1.5px solid var(--color-ironwood, #1C2420); border-radius: 6px; font-family: Anuphan, sans-serif; font-weight: 500; font-size: 15px; cursor: pointer; } .ds-btn-secondary:focus-visible { outline: 2px solid var(--color-pine, #22573F); outline-offset: 2px; }"
+    },
+    {
+      "name": "Plot Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "การ์ดใช้เมื่อเป็น object จริงเท่านั้น — ขอบเส้น ไม่มีเงา",
+      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">แปลง A-07</h3><p class=\"ds-card-meta\">62.5 ตร.ว. · ใบบัว</p></article>",
+      "css": ".ds-card { background: var(--color-paper, #FFFFFF); border: 1px solid var(--color-concrete, #E3E6E0); border-radius: 12px; padding: 20px; } .ds-card-title { font-family: 'Bai Jamjuree', sans-serif; font-weight: 600; font-size: 21px; line-height: 1.2; color: var(--color-ironwood, #1C2420); margin: 0 0 4px; } .ds-card-meta { font-family: Anuphan, sans-serif; font-size: 15px; line-height: 1.65; color: var(--color-moss, #56605A); font-variant-numeric: tabular-nums; margin: 0; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "พื้น concrete มุม 6px focus เป็น pine",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"ชื่อ-นามสกุล\" />",
+      "css": ".ds-input { background: var(--color-concrete, #E3E6E0); color: var(--color-ironwood, #1C2420); border: 1px solid var(--color-concrete, #E3E6E0); border-radius: 6px; height: 48px; padding: 0 14px; font-family: Anuphan, sans-serif; font-size: 15px; width: 100%; } .ds-input:focus { outline: 2px solid var(--color-pine, #22573F); outline-offset: 1px; border-color: var(--color-pine, #22573F); }"
+    },
+    {
+      "name": "Status Chips",
+      "kind": "chip",
+      "refersTo": "chip-available",
+      "description": "สถานะแปลง 3 แบบ — มี label ข้อความเสมอ ห้ามสื่อด้วยสีอย่างเดียว",
+      "html": "<span class=\"ds-chip ds-chip-available\">ว่าง</span><span class=\"ds-chip ds-chip-reserved\">จอง</span><span class=\"ds-chip ds-chip-sold\">ขายแล้ว</span>",
+      "css": ".ds-chip { display: inline-block; font-family: Anuphan, sans-serif; font-weight: 500; font-size: 13px; line-height: 1; padding: 7px 12px; border-radius: 9999px; margin-right: 8px; } .ds-chip-available { background: #E5EFE9; color: #2E6B4E; } .ds-chip-reserved { background: #FFFFFF; color: #C28214; border: 1px solid #C28214; } .ds-chip-sold { background: #ECEAE6; color: #6E6A63; }"
+    },
+    {
+      "name": "Dimension Line",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Signature component — เส้นบอกระยะจริงจาก geometry ใช้เฉพาะหน้าแปลน/ผัง/สเปก",
+      "html": "<div class=\"ds-dim\"><svg width=\"180\" height=\"24\" viewBox=\"0 0 180 24\" aria-hidden=\"true\"><path d=\"M2 12h176M2 6v12M178 6v12M2 12l8-4M2 12l8 4M178 12l-8-4M178 12l-8 4\" stroke=\"#22573F\" stroke-width=\"1\" fill=\"none\"/></svg><span class=\"ds-dim-label\">5.00 ม.</span></div>",
+      "css": ".ds-dim { display: inline-flex; align-items: center; gap: 8px; } .ds-dim-label { font-family: 'Bai Jamjuree', sans-serif; font-weight: 600; font-size: 13px; color: var(--color-pine, #22573F); font-variant-numeric: tabular-nums; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "โมเดลไม้อุ่น บนแท่นแกลเลอรีขาว",
+    "overview": "3D diorama คือพระเอกหนึ่งเดียวของเว็บนี้ — ไม้อุ่น แสงบ่าย มีเงาจริง มีของใช้ในบ้าน UI ทุกอย่างรอบตัวมันคือแกลเลอรีสถาปนิก: ขาวปูน สะอาด แม่นยำ เงียบ และตั้งใจไม่แย่งซีน ถ้า UI ชิ้นไหนเริ่มน่าสนใจกว่าโมเดล แปลว่าชิ้นนั้นผิด ภาษาภาพของ UI ยืมมาจากแบบเขียนสถาปนิก — เส้นบอกระยะ สเกลบาร์ ทิศเหนือ — แต่ยืมมาในฐานะข้อมูลจริง ใช้เฉพาะหน้าแปลน/ผัง/สเปกเท่านั้น ความลึกมาจากขอบเส้นและระดับพื้นเท่านั้น ไม่มีเงา ไม่มี gradient",
+    "keyCharacteristics": [
+      "ขาวปูนอมเขียว (plaster #F7F8F5) ไม่ใช่ครีมไม่ใช่เบจ",
+      "สี interactive สีเดียวทั้งเว็บ: pine #22573F",
+      "Radius มีสองค่า 12px / 6px จบ",
+      "ไม่มี box-shadow ใน UI เลย — เงามีได้เฉพาะใน 3D canvas",
+      "ทั้งเว็บมีของที่เคลื่อนไหวเองแค่หนึ่งชิ้น: diorama บน hero",
+      "จัดชิดซ้ายทั้งเว็บ ตัวเลขเรียงคอลัมน์เป็น tabular-nums"
+    ],
+    "rules": [
+      { "name": "The One Interactive Color Rule", "body": "ทั้งเว็บมีสีที่กดได้สีเดียวคือ pine ถ้าเห็นสีอื่นบนของที่คลิกได้ = บั๊ก", "section": "colors" },
+      { "name": "The Meaning-Only Gold Rule", "body": "marigold ไม่ใช่สีเน้นความสวย มันแปลว่า 'สิ่งนี้ถูกเลือกอยู่' หรือ 'จองแล้ว' เท่านั้น", "section": "colors" },
+      { "name": "The No Stray Hex Rule", "body": "สีที่ไม่อยู่ในตาราง DESIGN-SPEC §1 คือบั๊ก รวมถึงใน placeholder, SVG, chart และ admin", "section": "colors" },
+      { "name": "The Never Color-Only Rule", "body": "สถานะทุกอย่างต้องมี label ข้อความเสมอ contrast ≥ 4.5:1", "section": "colors" },
+      { "name": "The Left-Aligned Rule", "body": "จัดชิดซ้ายทั้งเว็บ ห้าม justified ห้าม center ยกเว้น element เดี่ยวสั้นๆ", "section": "typography" },
+      { "name": "The Tabular Number Rule", "body": "ตัวเลขที่เรียงกันเป็นคอลัมน์ต้อง font-variant-numeric: tabular-nums เสมอ", "section": "typography" },
+      { "name": "The No Eyebrow Rule", "body": "ห้ามมี label/eyebrow ตัวพิมพ์ใหญ่ลอยเหนือ heading ห้าม badge เหนือ headline", "section": "typography" },
+      { "name": "The Zero Shadow Rule", "body": "box-shadow ใน CSS ของ UI = บั๊ก ตรวจด้วย grep ทุก stage รวมถึง default ของ shadcn/ui", "section": "elevation" },
+      { "name": "The Border-or-Level Rule", "body": "แยกของสองชิ้นได้สองวิธีเท่านั้น: ขอบ concrete หรือเปลี่ยนระดับพื้น", "section": "elevation" },
+      { "name": "The Two Radius Rule", "body": "มี 12 กับ 6 เท่านั้น radius ค่าอื่นคือบั๊ก", "section": "shapes" },
+      { "name": "The Uneven Rhythm Rule", "body": "ระยะระหว่าง section ต้องมากกว่าระยะภายใน section ชัดเจน", "section": "layout" }
+    ],
+    "dos": [
+      "Do ใช้สีจากตาราง DESIGN-SPEC §1 เท่านั้น",
+      "Do แยกชั้นด้วยขอบ concrete หรือพื้นต่างระดับ",
+      "Do ใส่ tabular-nums กับตัวเลขทุกชุดที่เรียงเป็นคอลัมน์",
+      "Do ให้สถานะมี label ข้อความคู่กับสีเสมอ",
+      "Do เขียน copy ด้วยเสียงเจ้าของโครงการ ตัวเลขจริงแทนคำคุณศัพท์",
+      "Do ปิดทุก stage ด้วยการไล่ Slop Ban List §7 ทีละหมวด"
+    ],
+    "donts": [
+      "Don't ใช้ box-shadow กับ UI ทุกจุด",
+      "Don't ใช้ gradient ทุกชนิด, glow, radial halo, spotlight หลัง content, gradient text",
+      "Don't ใช้สีครีม/เบจ",
+      "Don't ใส่ scroll-reveal ทุก section, hover ยกการ์ด, รูปขยายตอน hover, pulsing dot, marquee, bounce easing",
+      "Don't ใส่ grid-line ตกแต่งพื้นหลัง, glassmorphism, border accent บนมุมโค้ง, เลข section ตัวจิ๋ว",
+      "Don't ใช้ radius นอก 12/6, ขนาดฟอนต์นอก scale, หรือฟอนต์นอก Bai Jamjuree/Anuphan",
+      "Don't ใช้ dimension line / สเกลบาร์ / ทิศเหนือ เป็นของตกแต่งนอกหน้าแปลนและผัง",
+      "Don't เขียนคำโฆษณาลอยหรือ em-dash พร่ำเพรื่อ"
+    ]
+  }
+}

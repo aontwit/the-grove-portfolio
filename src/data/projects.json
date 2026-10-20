@@ -1,0 +1,291 @@
+[
+  {
+    "id": "project-1",
+    "slug": "rim-suan",
+    "slot": 1,
+    "status": "live",
+    "name": "เดอะ โกรฟ @ริมสวน",
+    "summary": "บ้านเดี่ยวชั้นเดียวกับบ้านแฝดสองชั้น 18 ยูนิต บนที่ดิน 3 ไร่ ริมคลองในตำบลริมสวน เริ่มสร้างปี 2568",
+    "en": {
+      "name": "The Grove @Rim Suan",
+      "summary": "Single-storey detached houses and two-storey semi-detached houses, 18 units on 3 rai of land by the canal in Rim Suan. Construction started in 2025."
+    },
+    "zh": {
+      "name": "The Grove @Rim Suan",
+      "summary": "单层独栋住宅与两层双拼住宅，共 18 套，占地 3 莱，位于 Rim Suan 运河边。2025 年开工建设。"
+    },
+    "salesStatus": "selling",
+    "mapUrl": null,
+    "heroStill": "/renders/village-rim-suan.png",
+    "plan": {
+      "widthM": 133.33,
+      "depthM": 36,
+      "plotDepthM": 14,
+      "roadY0": 14,
+      "roadY1": 22,
+      "entryY": 18,
+      "amenities": []
+    },
+    "location": {
+      "district": "ริมสวน",
+      "province": "นครนายก",
+      "en": {
+        "district": "Rim Suan",
+        "province": "Nakhon Nayok"
+      },
+      "zh": {
+        "district": "Rim Suan",
+        "province": "Nakhon Nayok"
+      },
+      "lat": 14.2,
+      "lng": 101.2,
+      "approximate": true,
+      "nearby": [],
+      "landmarks": [
+        {
+          "name": "ตลาดเช้าริมสวน",
+          "en": {
+            "name": "Rim Suan morning market"
+          },
+          "zh": {
+            "name": "Rim Suan 早市"
+          }
+        },
+        {
+          "name": "โรงเรียนบ้านริมสวน",
+          "en": {
+            "name": "Ban Rim Suan School"
+          },
+          "zh": {
+            "name": "Ban Rim Suan 学校"
+          }
+        },
+        {
+          "name": "สวนสาธารณะริมคลอง",
+          "en": {
+            "name": "Canal-side park"
+          },
+          "zh": {
+            "name": "运河边公园"
+          }
+        },
+        {
+          "name": "ทางไปถนนสาย 33",
+          "en": {
+            "name": "The way to Route 33"
+          },
+          "zh": {
+            "name": "通往 33 号公路的方向"
+          }
+        }
+      ],
+      "directions": []
+    },
+    "facts": {
+      "units": 18,
+      "landRai": 3,
+      "startedYear": 2025,
+      "priceLow": 3190000,
+      "priceHigh": 3590000
+    },
+    "claims": [],
+    "source": null,
+    "pending": {
+      "name": false,
+      "summary": false,
+      "salesStatus": false,
+      "location": false,
+      "mapUrl": false,
+      "heroStill": false,
+      "plots": true,
+      "prices": false
+    }
+  },
+  {
+    "id": "project-2",
+    "slug": "noen-phai",
+    "slot": 2,
+    "status": "live",
+    "name": "เดอะ โกรฟ @เนินไผ่",
+    "summary": "บ้านเดี่ยวชั้นเดียว 9 ยูนิต บนที่ดิน 2 ไร่ ที่เนินไผ่ เริ่มสร้างปี 2569 แบบ 3 ห้องนอนขายหมดแล้ว",
+    "en": {
+      "name": "The Grove @Noen Phai",
+      "summary": "Nine single-storey detached houses on 2 rai of land in Noen Phai. Construction started in 2026. The 3-bedroom type has sold out."
+    },
+    "zh": {
+      "name": "The Grove @Noen Phai",
+      "summary": "单层独栋住宅 9 套，占地 2 莱，位于 Noen Phai。2026 年开工建设。三卧室户型已售罄。"
+    },
+    "salesStatus": "selling",
+    "mapUrl": null,
+    "heroStill": "/renders/village-noen-phai.png",
+    "plan": {
+      "widthM": 98.16,
+      "depthM": 32.6,
+      "plotDepthM": 12.3,
+      "roadY0": 12.3,
+      "roadY1": 20.3,
+      "entryY": 16.3,
+      "amenities": []
+    },
+    "location": {
+      "district": "เนินไผ่",
+      "province": "นครนายก",
+      "en": {
+        "district": "Noen Phai",
+        "province": "Nakhon Nayok"
+      },
+      "zh": {
+        "district": "Noen Phai",
+        "province": "Nakhon Nayok"
+      },
+      "lat": 14.25,
+      "lng": 101.15,
+      "approximate": true,
+      "nearby": [],
+      "landmarks": [],
+      "directions": [
+        {
+          "text": "จากถนนสาย 33 เข้าซอยเนินไผ่ 5 ประมาณ 400 เมตร",
+          "en": {
+            "text": "From Route 33, turn into Soi Noen Phai 5 and go about 400 metres."
+          },
+          "zh": {
+            "text": "从 33 号公路转入 Soi Noen Phai 5，前行约 400 米。"
+          }
+        }
+      ]
+    },
+    "facts": {
+      "units": 9,
+      "landRai": 2,
+      "startedYear": 2026,
+      "priceLow": 2790000,
+      "priceHigh": 3390000
+    },
+    "claims": [
+      {
+        "text": "สมาร์ทโฮมทุกหลัง: กล้องวงจรปิด เซนเซอร์ประตูหน้าต่าง เปิดปิดไฟผ่านมือถือ",
+        "en": {
+          "text": "Smart home in every house: CCTV, door and window sensors, and lights you can switch from your phone."
+        },
+        "zh": {
+          "text": "每栋均配智能家居：监控摄像头、门窗传感器，灯光可用手机开关。"
+        }
+      }
+    ],
+    "source": null,
+    "pending": {
+      "name": false,
+      "summary": false,
+      "salesStatus": false,
+      "location": false,
+      "mapUrl": false,
+      "heroStill": false,
+      "plots": true,
+      "prices": false
+    }
+  },
+  {
+    "id": "project-3",
+    "slug": "project-3",
+    "slot": 3,
+    "status": "pending",
+    "name": null,
+    "summary": null,
+    "en": {
+      "name": null,
+      "summary": null
+    },
+    "zh": {
+      "name": null,
+      "summary": null
+    },
+    "salesStatus": null,
+    "mapUrl": null,
+    "heroStill": null,
+    "plan": null,
+    "location": null,
+    "pending": {
+      "name": true,
+      "summary": true,
+      "salesStatus": true,
+      "location": true,
+      "mapUrl": true,
+      "heroStill": true,
+      "plots": true,
+      "prices": true
+    },
+    "facts": null,
+    "claims": [],
+    "source": null
+  },
+  {
+    "id": "project-4",
+    "slug": "project-4",
+    "slot": 4,
+    "status": "pending",
+    "name": null,
+    "summary": null,
+    "en": {
+      "name": null,
+      "summary": null
+    },
+    "zh": {
+      "name": null,
+      "summary": null
+    },
+    "salesStatus": null,
+    "mapUrl": null,
+    "heroStill": null,
+    "plan": null,
+    "location": null,
+    "pending": {
+      "name": true,
+      "summary": true,
+      "salesStatus": true,
+      "location": true,
+      "mapUrl": true,
+      "heroStill": true,
+      "plots": true,
+      "prices": true
+    },
+    "facts": null,
+    "claims": [],
+    "source": null
+  },
+  {
+    "id": "project-5",
+    "slug": "project-5",
+    "slot": 5,
+    "status": "pending",
+    "name": null,
+    "summary": null,
+    "en": {
+      "name": null,
+      "summary": null
+    },
+    "zh": {
+      "name": null,
+      "summary": null
+    },
+    "salesStatus": null,
+    "mapUrl": null,
+    "heroStill": null,
+    "plan": null,
+    "location": null,
+    "pending": {
+      "name": true,
+      "summary": true,
+      "salesStatus": true,
+      "location": true,
+      "mapUrl": true,
+      "heroStill": true,
+      "plots": true,
+      "prices": true
+    },
+    "facts": null,
+    "claims": [],
+    "source": null
+  }
+]

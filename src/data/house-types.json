@@ -1,0 +1,3870 @@
+[
+  {
+    "id": "ht-baibua",
+    "projectId": "project-1",
+    "slug": "baibua",
+    "name": "ใบบัว",
+    "kind": "detached",
+    "storeys": 1,
+    "areaSqm": 146,
+    "beds": 2,
+    "baths": 2,
+    "parking": 2,
+    "landSqw": 58,
+    "priceFrom": 3390000,
+    "soldOut": false,
+    "samplePlan": true,
+    "images": [],
+    "highlight": "บ้านเดี่ยวชั้นเดียว 146 ตร.ม. 2 ห้องนอน 2 ห้องน้ำ จอดรถ 2 คัน บนที่ดิน 58 ตร.ว.",
+    "en": {
+      "name": "Bai Bua",
+      "highlight": "Single-storey detached house, 146 sq. m. Two bedrooms, two bathrooms, parking for two cars, on 58 sq. wa of land."
+    },
+    "zh": {
+      "name": "Bai Bua",
+      "highlight": "单层独栋住宅，146 平方米。两间卧室，两间卫生间，两个车位，土地面积 58 平方哇。"
+    },
+    "rooms": [
+      {
+        "id": "living",
+        "name": "นั่งเล่น",
+        "x0": -6,
+        "z0": -4.25,
+        "x1": -1,
+        "z1": 1.25,
+        "desc": "รับแขกและนั่งเล่น ต่อกับระเบียงหน้าบ้านและครัว",
+        "en": {
+          "name": "Living",
+          "desc": "Living room and guest seating, opening onto the front terrace and the kitchen."
+        },
+        "zh": {
+          "name": "客厅",
+          "desc": "客厅兼会客区，通向前露台和厨房。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "kitchen",
+        "name": "ครัว",
+        "x0": -6,
+        "z0": 1.25,
+        "x1": -1,
+        "z1": 4.25,
+        "desc": "ครัวไทยหลังบ้าน หน้าต่างสองด้าน",
+        "en": {
+          "name": "Kitchen",
+          "desc": "Thai kitchen at the back of the house, with windows on two sides."
+        },
+        "zh": {
+          "name": "厨房",
+          "desc": "位于房屋后部的泰式厨房，两面开窗。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "hall",
+        "name": "โถง",
+        "x0": -1,
+        "z0": -4.25,
+        "x1": 2,
+        "z1": 0.45,
+        "desc": "โถงกลางบ้าน แยกส่วนนอนออกจากส่วนนั่งเล่น",
+        "en": {
+          "name": "Hall",
+          "desc": "Central hall that keeps the bedrooms apart from the living area."
+        },
+        "zh": {
+          "name": "过厅",
+          "desc": "中央过厅，将卧室与起居区隔开。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bath-common",
+        "name": "น้ำรวม",
+        "x0": -1,
+        "z0": 0.45,
+        "x1": 2,
+        "z1": 2.35,
+        "desc": "ห้องน้ำส่วนกลาง เข้าจากโถง",
+        "en": {
+          "name": "Bath",
+          "desc": "Shared bathroom, entered from the hall."
+        },
+        "zh": {
+          "name": "卫生间",
+          "desc": "公用卫生间，从过厅进入。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bath-ensuite",
+        "name": "น้ำในตัว",
+        "x0": -1,
+        "z0": 2.35,
+        "x1": 2,
+        "z1": 4.25,
+        "desc": "ห้องน้ำในห้องนอนใหญ่",
+        "en": {
+          "name": "En-suite",
+          "desc": "Bathroom inside the main bedroom."
+        },
+        "zh": {
+          "name": "主卧卫生间",
+          "desc": "位于主卧内的卫生间。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bed2",
+        "name": "นอน 2",
+        "x0": 2,
+        "z0": -4.25,
+        "x1": 6,
+        "z1": -0.65,
+        "desc": "ห้องนอนที่สอง หน้าต่างมุมสองด้าน",
+        "en": {
+          "name": "Bed 2",
+          "desc": "Second bedroom, with corner windows on two sides."
+        },
+        "zh": {
+          "name": "卧室 2",
+          "desc": "第二间卧室，两面设转角窗。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bed1",
+        "name": "นอนใหญ่",
+        "x0": 2,
+        "z0": -0.65,
+        "x1": 6,
+        "z1": 4.25,
+        "desc": "ห้องนอนใหญ่ มีห้องน้ำในตัว",
+        "en": {
+          "name": "Main bed",
+          "desc": "Main bedroom with its own bathroom."
+        },
+        "zh": {
+          "name": "主卧",
+          "desc": "主卧，带独立卫生间。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "terrace",
+        "name": "ระเบียง",
+        "x0": -5.75,
+        "z0": -5.9,
+        "x1": -1.25,
+        "z1": -4.25,
+        "desc": "ระเบียงหน้าบ้าน อยู่นอกกรอบบ้าน",
+        "en": {
+          "name": "Terrace",
+          "desc": "Front terrace, outside the house footprint."
+        },
+        "zh": {
+          "name": "露台",
+          "desc": "前露台，位于房屋主体之外。"
+        },
+        "outdoor": true,
+        "floor": 1
+      }
+    ],
+    "openings": [
+      {
+        "id": "op-entry",
+        "kind": "entry",
+        "wallAxis": "x",
+        "at": -4.25,
+        "from": -4,
+        "to": -2.9,
+        "floor": 1
+      },
+      {
+        "id": "op-living-hall",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": -1,
+        "from": -2,
+        "to": -1,
+        "floor": 1
+      },
+      {
+        "id": "op-living-kitchen",
+        "kind": "door",
+        "wallAxis": "x",
+        "at": 1.25,
+        "from": -4.5,
+        "to": -3.5,
+        "floor": 1
+      },
+      {
+        "id": "op-hall-bed2",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 2,
+        "from": -3,
+        "to": -2,
+        "floor": 1
+      },
+      {
+        "id": "op-hall-bed1",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 2,
+        "from": -0.55,
+        "to": 0.35,
+        "floor": 1
+      },
+      {
+        "id": "op-hall-bathcommon",
+        "kind": "door",
+        "wallAxis": "x",
+        "at": 0.45,
+        "from": 0.4,
+        "to": 1.2,
+        "floor": 1
+      },
+      {
+        "id": "op-bed1-bathensuite",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 2,
+        "from": 2.8,
+        "to": 3.6,
+        "floor": 1
+      },
+      {
+        "id": "w-living-west",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": -6,
+        "from": -3,
+        "to": -1.8,
+        "floor": 1
+      },
+      {
+        "id": "w-living-south",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -4.25,
+        "from": -2.4,
+        "to": -1.4,
+        "floor": 1
+      },
+      {
+        "id": "w-kitchen-west",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": -6,
+        "from": 2,
+        "to": 3,
+        "floor": 1
+      },
+      {
+        "id": "w-kitchen-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 4.25,
+        "from": -4.5,
+        "to": -3.5,
+        "floor": 1
+      },
+      {
+        "id": "w-hall-south",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -4.25,
+        "from": 0,
+        "to": 1,
+        "floor": 1
+      },
+      {
+        "id": "w-bed2-south",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -4.25,
+        "from": 3,
+        "to": 4.2,
+        "floor": 1,
+        "head": 2.4,
+        "note": "แปลนห้องยังเป็นตัวอย่าง · หน้าต่างสูงใต้จั่วขวา (แปลนตัวอย่างมีเตียงชิดผนังนี้)"
+      },
+      {
+        "id": "w-bed2-east",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": 6,
+        "from": -3.5,
+        "to": -2.3,
+        "floor": 1
+      },
+      {
+        "id": "w-bed1-east",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": 6,
+        "from": 0.5,
+        "to": 1.7,
+        "floor": 1
+      },
+      {
+        "id": "w-bed1-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 4.25,
+        "from": 3,
+        "to": 4,
+        "floor": 1
+      },
+      {
+        "id": "w-bathensuite-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 4.25,
+        "from": 0.5,
+        "to": 1.3,
+        "floor": 1
+      }
+    ],
+    "northDeg": 0,
+    "facade": {
+      "style": "single-gable",
+      "gable": "x+",
+      "fence": null,
+      "yard": "lawn",
+      "gableWidthMax": 4.2,
+      "gablePitch": 42,
+      "gableDepth": 4.5,
+      "gableWallLift": 0.9,
+      "mainRoofPitch": 17,
+      "carportMode": "front",
+      "note": "สัดส่วนที่สตูดิโอตั้ง: จั่วเท่าห้องนอนหน้า ลาด ≈ 41° ผนังใต้จั่วสูงกว่าชายคา ≈ 0.4-0.9 ม. ปั้นหยาเตี้ย หลังคาแบนคลุมชานและที่จอดฝั่งตรงข้ามจั่ว"
+    },
+    "furniture": [
+      {
+        "id": "lv-sofa",
+        "roomId": "living",
+        "kind": "sofa",
+        "x": -4.3,
+        "z": 0,
+        "w": 2.2,
+        "d": 0.9,
+        "facing": "z-",
+        "tone": "fabricSage"
+      },
+      {
+        "id": "lv-rug",
+        "roomId": "living",
+        "kind": "rug",
+        "x": -4,
+        "z": -1.4,
+        "w": 2.6,
+        "d": 1.8,
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "lv-plant",
+        "roomId": "living",
+        "kind": "plant",
+        "x": -5.5,
+        "z": -3.6,
+        "w": 0.5,
+        "d": 0.5
+      },
+      {
+        "id": "lv-lamp",
+        "roomId": "living",
+        "kind": "floorLamp",
+        "x": -1.45,
+        "z": 0.8,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "lv-frame",
+        "roomId": "living",
+        "kind": "frame",
+        "x": -5.88,
+        "z": 0,
+        "w": 0.08,
+        "d": 0.9,
+        "facing": "x+"
+      },
+      {
+        "id": "kt-counter",
+        "roomId": "kitchen",
+        "kind": "counter",
+        "x": -4,
+        "z": 3.85,
+        "w": 3.4,
+        "d": 0.65,
+        "facing": "z-"
+      },
+      {
+        "id": "kt-dining",
+        "roomId": "kitchen",
+        "kind": "diningSet",
+        "x": -2.4,
+        "z": 2.4,
+        "w": 1.6,
+        "d": 1
+      },
+      {
+        "id": "kt-plant",
+        "roomId": "kitchen",
+        "kind": "plant",
+        "x": -1.45,
+        "z": 3.9,
+        "w": 0.45,
+        "d": 0.45
+      },
+      {
+        "id": "kt-frame",
+        "roomId": "kitchen",
+        "kind": "frame",
+        "x": -2,
+        "z": 1.35,
+        "w": 0.8,
+        "d": 0.08,
+        "facing": "z+"
+      },
+      {
+        "id": "hl-rug",
+        "roomId": "hall",
+        "kind": "rug",
+        "x": 0.5,
+        "z": -2.2,
+        "w": 1,
+        "d": 2.4,
+        "tone": "fabricSage"
+      },
+      {
+        "id": "hl-plant",
+        "roomId": "hall",
+        "kind": "plant",
+        "x": 1.6,
+        "z": -3.9,
+        "w": 0.5,
+        "d": 0.5
+      },
+      {
+        "id": "hl-frame",
+        "roomId": "hall",
+        "kind": "frame",
+        "x": -0.9,
+        "z": -3.5,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "hl-lamp",
+        "roomId": "hall",
+        "kind": "floorLamp",
+        "x": -0.6,
+        "z": 0.1,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "bc-toilet",
+        "roomId": "bath-common",
+        "kind": "toilet",
+        "x": -0.6,
+        "z": 1.98,
+        "w": 0.45,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "bc-sink",
+        "roomId": "bath-common",
+        "kind": "sink",
+        "x": 0.4,
+        "z": 2.04,
+        "w": 0.6,
+        "d": 0.45,
+        "facing": "z-"
+      },
+      {
+        "id": "bc-shower",
+        "roomId": "bath-common",
+        "kind": "showerTray",
+        "x": 1.45,
+        "z": 1.83,
+        "w": 0.9,
+        "d": 0.9
+      },
+      {
+        "id": "bc-plant",
+        "roomId": "bath-common",
+        "kind": "plant",
+        "x": -0.7,
+        "z": 0.78,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "bc-frame",
+        "roomId": "bath-common",
+        "kind": "frame",
+        "x": -0.9,
+        "z": 1.4,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "be-shower",
+        "roomId": "bath-ensuite",
+        "kind": "showerTray",
+        "x": -0.45,
+        "z": 3.7,
+        "w": 0.9,
+        "d": 0.9
+      },
+      {
+        "id": "be-toilet",
+        "roomId": "bath-ensuite",
+        "kind": "toilet",
+        "x": 0.6,
+        "z": 3.86,
+        "w": 0.45,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "be-sink",
+        "roomId": "bath-ensuite",
+        "kind": "sink",
+        "x": 1.5,
+        "z": 3.94,
+        "w": 0.6,
+        "d": 0.45,
+        "facing": "z-"
+      },
+      {
+        "id": "be-plant",
+        "roomId": "bath-ensuite",
+        "kind": "plant",
+        "x": 1.7,
+        "z": 2.6,
+        "w": 0.3,
+        "d": 0.3
+      },
+      {
+        "id": "be-frame",
+        "roomId": "bath-ensuite",
+        "kind": "frame",
+        "x": -0.9,
+        "z": 3,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "b2-bed",
+        "roomId": "bed2",
+        "kind": "bed",
+        "x": 3.5,
+        "z": -2.9,
+        "w": 1.5,
+        "d": 2,
+        "facing": "z+",
+        "tone": "fabricSage"
+      },
+      {
+        "id": "b2-wardrobe",
+        "roomId": "bed2",
+        "kind": "wardrobe",
+        "x": 5,
+        "z": -3.88,
+        "w": 1.4,
+        "d": 0.6,
+        "facing": "z+"
+      },
+      {
+        "id": "b2-rug",
+        "roomId": "bed2",
+        "kind": "rug",
+        "x": 4.2,
+        "z": -1.4,
+        "w": 1.6,
+        "d": 1.2,
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "b2-plant",
+        "roomId": "bed2",
+        "kind": "plant",
+        "x": 5.6,
+        "z": -1.1,
+        "w": 0.4,
+        "d": 0.4
+      },
+      {
+        "id": "b1-bed",
+        "roomId": "bed1",
+        "kind": "bed",
+        "x": 3.6,
+        "z": 1.2,
+        "w": 1.8,
+        "d": 2.1,
+        "facing": "z+",
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "b1-wardrobe",
+        "roomId": "bed1",
+        "kind": "wardrobe",
+        "x": 5,
+        "z": 3.88,
+        "w": 1.6,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "b1-desk",
+        "roomId": "bed1",
+        "kind": "desk",
+        "x": 5.2,
+        "z": 0.3,
+        "w": 1.2,
+        "d": 0.6,
+        "facing": "x-"
+      },
+      {
+        "id": "b1-rug",
+        "roomId": "bed1",
+        "kind": "rug",
+        "x": 3.8,
+        "z": 3.2,
+        "w": 2,
+        "d": 1.4,
+        "tone": "fabricSage"
+      },
+      {
+        "id": "b1-lamp",
+        "roomId": "bed1",
+        "kind": "floorLamp",
+        "x": 5.7,
+        "z": 2.3,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "b1-frame",
+        "roomId": "bed1",
+        "kind": "frame",
+        "x": 5.9,
+        "z": 3,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x-"
+      },
+      {
+        "id": "tr-tree1",
+        "roomId": "terrace",
+        "kind": "plant",
+        "x": -5.35,
+        "z": -5.5,
+        "w": 0.6,
+        "d": 0.6
+      },
+      {
+        "id": "tr-tree2",
+        "roomId": "terrace",
+        "kind": "plant",
+        "x": -1.65,
+        "z": -5.5,
+        "w": 0.6,
+        "d": 0.6
+      },
+      {
+        "id": "tr-plant",
+        "roomId": "terrace",
+        "kind": "plant",
+        "x": -1.6,
+        "z": -4.65,
+        "w": 0.5,
+        "d": 0.5
+      }
+    ]
+  },
+  {
+    "id": "ht-lomyen",
+    "projectId": "project-1",
+    "slug": "lomyen",
+    "name": "ลมเย็น",
+    "kind": "twin",
+    "storeys": 2,
+    "areaSqm": 138,
+    "beds": 2,
+    "baths": 2,
+    "parking": 2,
+    "landSqw": 35.8,
+    "priceFrom": 3190000,
+    "soldOut": false,
+    "samplePlan": true,
+    "images": [],
+    "highlight": "บ้านแฝดสองชั้น 138 ตร.ม. 2 ห้องนอน 2 ห้องน้ำ จอดรถ 2 คัน บนที่ดิน 35.8 ตร.ว.",
+    "en": {
+      "name": "Lom Yen",
+      "highlight": "Two-storey semi-detached house, 138 sq. m. Two bedrooms, two bathrooms, parking for two cars, on 35.8 sq. wa of land."
+    },
+    "zh": {
+      "name": "Lom Yen",
+      "highlight": "两层双拼住宅，138 平方米。两间卧室，两间卫生间，两个车位，土地面积 35.8 平方哇。"
+    },
+    "rooms": [
+      {
+        "id": "living",
+        "name": "นั่งเล่น",
+        "x0": -4.5,
+        "z0": -3.75,
+        "x1": 0,
+        "z1": 0.75,
+        "desc": "ส่วนนั่งเล่นหน้าบ้าน",
+        "en": {
+          "name": "Living",
+          "desc": "Living area at the front of the house."
+        },
+        "zh": {
+          "name": "客厅",
+          "desc": "位于房屋前部的起居区。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "kitchen",
+        "name": "ครัว",
+        "x0": -4.5,
+        "z0": 0.75,
+        "x1": 0,
+        "z1": 3.75,
+        "desc": "ครัวเปิดต่อจากนั่งเล่น",
+        "en": {
+          "name": "Kitchen",
+          "desc": "Kitchen open to the living area."
+        },
+        "zh": {
+          "name": "厨房",
+          "desc": "与起居区相通的开放式厨房。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bath-ground",
+        "name": "น้ำชั้นล่าง",
+        "x0": 0,
+        "z0": -3.75,
+        "x1": 1.5,
+        "z1": -0.75,
+        "desc": "ห้องน้ำชั้นล่าง เข้าจากโถง",
+        "en": {
+          "name": "Bath",
+          "desc": "Ground-floor bathroom, entered from the hall."
+        },
+        "zh": {
+          "name": "卫生间",
+          "desc": "一楼卫生间，从过厅进入。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "hall",
+        "name": "โถง",
+        "x0": 0,
+        "z0": -0.75,
+        "x1": 1.5,
+        "z1": 3.75,
+        "desc": "โถงบันได เชื่อมทุกห้องชั้นล่าง",
+        "en": {
+          "name": "Hall",
+          "desc": "Stair hall linking every ground-floor room."
+        },
+        "zh": {
+          "name": "过厅",
+          "desc": "楼梯厅，连接一楼各个房间。"
+        },
+        "floor": 1,
+        "stair": true
+      },
+      {
+        "id": "bed1",
+        "name": "นอนใหญ่",
+        "x0": 1.5,
+        "z0": -3.75,
+        "x1": 4.5,
+        "z1": 0.75,
+        "desc": "ห้องนอนใหญ่ชั้นล่าง",
+        "en": {
+          "name": "Main bed",
+          "desc": "Main bedroom on the ground floor."
+        },
+        "zh": {
+          "name": "主卧",
+          "desc": "位于一楼的主卧。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "prayer",
+        "name": "ห้องพระ",
+        "x0": 1.5,
+        "z0": 0.75,
+        "x1": 4.5,
+        "z1": 3.75,
+        "desc": "ห้องพระและเก็บของ",
+        "en": {
+          "name": "Shrine",
+          "desc": "Shrine room and storage."
+        },
+        "zh": {
+          "name": "佛堂",
+          "desc": "佛堂兼储物间。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "f2-bed1",
+        "name": "นอนใหญ่",
+        "x0": -4.5,
+        "z0": -3.75,
+        "x1": 0,
+        "z1": 0.75,
+        "desc": "ห้องนอนใหญ่ชั้นบน",
+        "en": {
+          "name": "Main bed",
+          "desc": "Upstairs main bedroom."
+        },
+        "zh": {
+          "name": "主卧",
+          "desc": "二楼主卧。"
+        },
+        "floor": 2
+      },
+      {
+        "id": "f2-bath-ensuite",
+        "name": "น้ำในตัว",
+        "x0": -4.5,
+        "z0": 0.75,
+        "x1": -1.5,
+        "z1": 3.75,
+        "desc": "ห้องน้ำในห้องนอนใหญ่",
+        "en": {
+          "name": "En-suite",
+          "desc": "Bathroom inside the main bedroom."
+        },
+        "zh": {
+          "name": "主卧卫生间",
+          "desc": "位于主卧内的卫生间。"
+        },
+        "floor": 2
+      },
+      {
+        "id": "f2-work",
+        "name": "ห้องทำงาน",
+        "x0": -1.5,
+        "z0": 0.75,
+        "x1": 0,
+        "z1": 3.75,
+        "desc": "มุมทำงานปลายโถง",
+        "en": {
+          "name": "Study",
+          "desc": "Work corner at the end of the hall."
+        },
+        "zh": {
+          "name": "书房",
+          "desc": "过厅尽头的工作角。"
+        },
+        "floor": 2
+      },
+      {
+        "id": "f2-store",
+        "name": "ห้องเก็บของ",
+        "x0": 0,
+        "z0": -3.75,
+        "x1": 1.5,
+        "z1": -0.75,
+        "desc": "ห้องเก็บของหัวบันได",
+        "en": {
+          "name": "Store",
+          "desc": "Storeroom at the top of the stairs."
+        },
+        "zh": {
+          "name": "储藏室",
+          "desc": "楼梯口的储藏室。"
+        },
+        "floor": 2
+      },
+      {
+        "id": "f2-stair",
+        "name": "โถงบันได",
+        "x0": 0,
+        "z0": -0.75,
+        "x1": 1.5,
+        "z1": 3.75,
+        "desc": "หัวบันไดชั้นสอง",
+        "en": {
+          "name": "Stairs",
+          "desc": "Top of the stairs on the second floor."
+        },
+        "zh": {
+          "name": "楼梯",
+          "desc": "二楼楼梯口。"
+        },
+        "floor": 2,
+        "stair": true
+      },
+      {
+        "id": "f2-bed3",
+        "name": "นอน 3",
+        "x0": 1.5,
+        "z0": -3.75,
+        "x1": 4.5,
+        "z1": 0.75,
+        "desc": "ห้องนอนที่สามชั้นบน",
+        "en": {
+          "name": "Bed 3",
+          "desc": "Third bedroom, upstairs."
+        },
+        "zh": {
+          "name": "卧室 3",
+          "desc": "第三间卧室，位于二楼。"
+        },
+        "floor": 2
+      },
+      {
+        "id": "f2-bath-common",
+        "name": "น้ำรวม",
+        "x0": 1.5,
+        "z0": 0.75,
+        "x1": 4.5,
+        "z1": 3.75,
+        "desc": "ห้องน้ำส่วนกลางชั้นบน",
+        "en": {
+          "name": "Bath",
+          "desc": "Shared bathroom upstairs."
+        },
+        "zh": {
+          "name": "卫生间",
+          "desc": "二楼公用卫生间。"
+        },
+        "floor": 2
+      }
+    ],
+    "openings": [
+      {
+        "id": "op-entry",
+        "kind": "entry",
+        "wallAxis": "x",
+        "at": -3.75,
+        "from": -3,
+        "to": -1.9,
+        "floor": 1
+      },
+      {
+        "id": "w-living-front",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -3.75,
+        "from": -1.6,
+        "to": -0.4,
+        "floor": 1,
+        "sill": 0,
+        "head": 2.4,
+        "note": "แปลนห้องยังเป็นตัวอย่าง · ประตูกระจกข้างประตูไม้ใต้จั่ว"
+      },
+      {
+        "id": "op-living-hall",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 0,
+        "from": -0.5,
+        "to": 0.5,
+        "floor": 1
+      },
+      {
+        "id": "op-living-kitchen",
+        "kind": "door",
+        "wallAxis": "x",
+        "at": 0.75,
+        "from": -3.5,
+        "to": -2.5,
+        "floor": 1
+      },
+      {
+        "id": "op-hall-bath",
+        "kind": "door",
+        "wallAxis": "x",
+        "at": -0.75,
+        "from": 0.35,
+        "to": 1.15,
+        "floor": 1
+      },
+      {
+        "id": "op-hall-bed1",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 1.5,
+        "from": -0.4,
+        "to": 0.6,
+        "floor": 1
+      },
+      {
+        "id": "op-hall-prayer",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 1.5,
+        "from": 1.5,
+        "to": 2.5,
+        "floor": 1
+      },
+      {
+        "id": "w-living-west",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": -4.5,
+        "from": -2.5,
+        "to": -1.3,
+        "floor": 1
+      },
+      {
+        "id": "w-kitchen-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 3.75,
+        "from": -3.5,
+        "to": -2.5,
+        "floor": 1
+      },
+      {
+        "id": "w-bed1-south",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -3.75,
+        "from": 2.4,
+        "to": 3.6,
+        "floor": 1,
+        "note": "แปลนห้องยังเป็นตัวอย่าง · บ้านแฝด: ผนังร่วม (x 4.5) ไม่มีช่องเปิด ย้ายมาด้านนี้"
+      },
+      {
+        "id": "w-prayer-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 3.75,
+        "from": 2.5,
+        "to": 3.5,
+        "floor": 1
+      },
+      {
+        "id": "f2-d-stair-bed1",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 0,
+        "from": -0.5,
+        "to": 0.5,
+        "floor": 2
+      },
+      {
+        "id": "f2-d-stair-work",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 0,
+        "from": 1.5,
+        "to": 2.5,
+        "floor": 2
+      },
+      {
+        "id": "f2-d-stair-bed3",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 1.5,
+        "from": -0.4,
+        "to": 0.6,
+        "floor": 2
+      },
+      {
+        "id": "f2-d-stair-bathcommon",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 1.5,
+        "from": 2,
+        "to": 3,
+        "floor": 2
+      },
+      {
+        "id": "f2-d-stair-store",
+        "kind": "door",
+        "wallAxis": "x",
+        "at": -0.75,
+        "from": 0.3,
+        "to": 1.1,
+        "floor": 2
+      },
+      {
+        "id": "f2-d-bed1-ensuite",
+        "kind": "door",
+        "wallAxis": "x",
+        "at": 0.75,
+        "from": -3.5,
+        "to": -2.5,
+        "floor": 2
+      },
+      {
+        "id": "f2-w-bed1-west",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": -4.5,
+        "from": -2.5,
+        "to": -1.3,
+        "floor": 2
+      },
+      {
+        "id": "f2-w-bed1-south",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -3.75,
+        "from": -2.1,
+        "to": -0.9,
+        "floor": 2,
+        "head": 2.4,
+        "note": "แปลนห้องยังเป็นตัวอย่าง · หน้าต่างสูงครึ่งในของจั่ว ครึ่งนอกเป็นผนังไม้"
+      },
+      {
+        "id": "f2-w-ensuite-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 3.75,
+        "from": -4,
+        "to": -3.2,
+        "floor": 2
+      },
+      {
+        "id": "f2-w-work-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 3.75,
+        "from": -1.3,
+        "to": -0.4,
+        "floor": 2
+      },
+      {
+        "id": "f2-w-bed3-south",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -3.75,
+        "from": 1.9,
+        "to": 2.9,
+        "floor": 2,
+        "note": "แปลนห้องยังเป็นตัวอย่าง · บ้านแฝด: ผนังร่วม (x 4.5) ไม่มีช่องเปิด ย้ายมาด้านนี้"
+      },
+      {
+        "id": "f2-w-bathcommon-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 3.75,
+        "from": 3,
+        "to": 3.8,
+        "floor": 2,
+        "note": "แปลนห้องยังเป็นตัวอย่าง · บ้านแฝด: ผนังร่วม (x 4.5) ไม่มีช่องเปิด ย้ายมาด้านนี้"
+      },
+      {
+        "id": "f2-w-store-south",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -3.75,
+        "from": 0.3,
+        "to": 1.1,
+        "floor": 2
+      }
+    ],
+    "northDeg": 0,
+    "facade": {
+      "style": "twin",
+      "gable": "x-",
+      "fence": null,
+      "yard": "lawn",
+      "gableWidthMax": 4.2,
+      "gablePitch": 42,
+      "gableDepth": 4.5,
+      "gableWallLift": 1.2,
+      "mainRoofPitch": 15,
+      "carportMode": "front",
+      "note": "สัดส่วนที่สตูดิโอตั้ง: กรอบจั่วนอก ≈ 27% ของหน้ากว้างอาคารคู่ ลาด ≈ 41° ชายคาส่วนกลางต่ำกว่าเชิงจั่ว ≈ 1.3 ม. โรงจอดแผ่นเดียวเต็มหน้าเสากลางต้นเดียว"
+    },
+    "furniture": [
+      {
+        "id": "ly-lv-sofa",
+        "roomId": "living",
+        "kind": "sofa",
+        "x": -0.51,
+        "z": -2,
+        "w": 0.9,
+        "d": 2.2,
+        "facing": "x-",
+        "tone": "fabricSage"
+      },
+      {
+        "id": "ly-lv-rug",
+        "roomId": "living",
+        "kind": "rug",
+        "x": -2,
+        "z": -1.6,
+        "w": 1.8,
+        "d": 2.2,
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "ly-lv-plant",
+        "roomId": "living",
+        "kind": "plant",
+        "x": -4.1,
+        "z": -3.35,
+        "w": 0.5,
+        "d": 0.5
+      },
+      {
+        "id": "ly-lv-lamp",
+        "roomId": "living",
+        "kind": "floorLamp",
+        "x": -4.2,
+        "z": 0.45,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "ly-lv-frame",
+        "roomId": "living",
+        "kind": "frame",
+        "x": -4.38,
+        "z": -0.3,
+        "w": 0.08,
+        "d": 0.9,
+        "facing": "x+"
+      },
+      {
+        "id": "ly-kt-counter",
+        "roomId": "kitchen",
+        "kind": "counter",
+        "x": -2.6,
+        "z": 3.35,
+        "w": 3.4,
+        "d": 0.65,
+        "facing": "z-"
+      },
+      {
+        "id": "ly-kt-dining",
+        "roomId": "kitchen",
+        "kind": "diningSet",
+        "x": -1.2,
+        "z": 1.9,
+        "w": 1.6,
+        "d": 1
+      },
+      {
+        "id": "ly-kt-plant",
+        "roomId": "kitchen",
+        "kind": "plant",
+        "x": -4.15,
+        "z": 1.1,
+        "w": 0.45,
+        "d": 0.45
+      },
+      {
+        "id": "ly-kt-frame",
+        "roomId": "kitchen",
+        "kind": "frame",
+        "x": -1.2,
+        "z": 0.87,
+        "w": 0.8,
+        "d": 0.08,
+        "facing": "z+"
+      },
+      {
+        "id": "ly-bg-shower",
+        "roomId": "bath-ground",
+        "kind": "showerTray",
+        "x": 0.75,
+        "z": -3.23,
+        "w": 0.9,
+        "d": 0.9
+      },
+      {
+        "id": "ly-bg-toilet",
+        "roomId": "bath-ground",
+        "kind": "toilet",
+        "x": 1.13,
+        "z": -2.3,
+        "w": 0.6,
+        "d": 0.45,
+        "facing": "x-"
+      },
+      {
+        "id": "ly-bg-sink",
+        "roomId": "bath-ground",
+        "kind": "sink",
+        "x": 0.29,
+        "z": -1.75,
+        "w": 0.45,
+        "d": 0.6,
+        "facing": "x+"
+      },
+      {
+        "id": "ly-bg-plant",
+        "roomId": "bath-ground",
+        "kind": "plant",
+        "x": 1.2,
+        "z": -1.65,
+        "w": 0.3,
+        "d": 0.3
+      },
+      {
+        "id": "ly-bg-frame",
+        "roomId": "bath-ground",
+        "kind": "frame",
+        "x": 0.12,
+        "z": -2.6,
+        "w": 0.08,
+        "d": 0.6,
+        "facing": "x+"
+      },
+      {
+        "id": "ly-hl-plant",
+        "roomId": "hall",
+        "kind": "plant",
+        "x": 0.35,
+        "z": 3.4,
+        "w": 0.5,
+        "d": 0.5
+      },
+      {
+        "id": "ly-hl-frame",
+        "roomId": "hall",
+        "kind": "frame",
+        "x": 0.12,
+        "z": 2.2,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "ly-hl-lamp",
+        "roomId": "hall",
+        "kind": "floorLamp",
+        "x": 1.2,
+        "z": 3.4,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "ly-b1-bed",
+        "roomId": "bed1",
+        "kind": "bed",
+        "x": 3,
+        "z": -2.63,
+        "w": 1.8,
+        "d": 2.1,
+        "facing": "z+",
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "ly-b1-wardrobe",
+        "roomId": "bed1",
+        "kind": "wardrobe",
+        "x": 3.5,
+        "z": 0.38,
+        "w": 1.6,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "ly-b1-rug",
+        "roomId": "bed1",
+        "kind": "rug",
+        "x": 3.1,
+        "z": -0.8,
+        "w": 1.8,
+        "d": 1,
+        "tone": "fabricSage"
+      },
+      {
+        "id": "ly-b1-plant",
+        "roomId": "bed1",
+        "kind": "plant",
+        "x": 1.85,
+        "z": -3.4,
+        "w": 0.4,
+        "d": 0.4
+      },
+      {
+        "id": "ly-b1-lamp",
+        "roomId": "bed1",
+        "kind": "floorLamp",
+        "x": 4.2,
+        "z": -1.2,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "ly-b1-frame",
+        "roomId": "bed1",
+        "kind": "frame",
+        "x": 4.38,
+        "z": -0.5,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x-"
+      },
+      {
+        "id": "ly-pr-altar",
+        "roomId": "prayer",
+        "kind": "desk",
+        "x": 4.14,
+        "z": 2.25,
+        "w": 0.6,
+        "d": 1.2,
+        "facing": "x-"
+      },
+      {
+        "id": "ly-pr-rug",
+        "roomId": "prayer",
+        "kind": "rug",
+        "x": 3.2,
+        "z": 2.25,
+        "w": 1.2,
+        "d": 1.4,
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "ly-pr-cabinet",
+        "roomId": "prayer",
+        "kind": "wardrobe",
+        "x": 3,
+        "z": 1.12,
+        "w": 1.4,
+        "d": 0.6,
+        "facing": "z+"
+      },
+      {
+        "id": "ly-pr-plant1",
+        "roomId": "prayer",
+        "kind": "plant",
+        "x": 4.15,
+        "z": 3.4,
+        "w": 0.4,
+        "d": 0.4
+      },
+      {
+        "id": "ly-pr-plant2",
+        "roomId": "prayer",
+        "kind": "plant",
+        "x": 4.15,
+        "z": 1.1,
+        "w": 0.4,
+        "d": 0.4
+      },
+      {
+        "id": "ly-pr-frame",
+        "roomId": "prayer",
+        "kind": "frame",
+        "x": 1.62,
+        "z": 3.2,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "ly-f2b1-bed",
+        "roomId": "f2-bed1",
+        "kind": "bed",
+        "x": -1.5,
+        "z": -2.63,
+        "w": 1.8,
+        "d": 2.1,
+        "facing": "z+",
+        "tone": "fabricSage"
+      },
+      {
+        "id": "ly-f2b1-wardrobe",
+        "roomId": "f2-bed1",
+        "kind": "wardrobe",
+        "x": -1.5,
+        "z": 0.38,
+        "w": 1.6,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "ly-f2b1-rug",
+        "roomId": "f2-bed1",
+        "kind": "rug",
+        "x": -3,
+        "z": -1,
+        "w": 1.8,
+        "d": 1.4,
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "ly-f2b1-plant",
+        "roomId": "f2-bed1",
+        "kind": "plant",
+        "x": -4.1,
+        "z": -3.35,
+        "w": 0.5,
+        "d": 0.5
+      },
+      {
+        "id": "ly-f2b1-lamp",
+        "roomId": "f2-bed1",
+        "kind": "floorLamp",
+        "x": -0.3,
+        "z": -3.4,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "ly-f2b1-frame",
+        "roomId": "f2-bed1",
+        "kind": "frame",
+        "x": -4.38,
+        "z": -0.1,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "ly-f2be-shower",
+        "roomId": "f2-bath-ensuite",
+        "kind": "showerTray",
+        "x": -3.98,
+        "z": 3.23,
+        "w": 0.9,
+        "d": 0.9
+      },
+      {
+        "id": "ly-f2be-toilet",
+        "roomId": "f2-bath-ensuite",
+        "kind": "toilet",
+        "x": -3,
+        "z": 3.38,
+        "w": 0.45,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "ly-f2be-sink",
+        "roomId": "f2-bath-ensuite",
+        "kind": "sink",
+        "x": -2.1,
+        "z": 3.46,
+        "w": 0.6,
+        "d": 0.45,
+        "facing": "z-"
+      },
+      {
+        "id": "ly-f2be-plant",
+        "roomId": "f2-bath-ensuite",
+        "kind": "plant",
+        "x": -1.85,
+        "z": 1.1,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "ly-f2be-frame",
+        "roomId": "f2-bath-ensuite",
+        "kind": "frame",
+        "x": -4.38,
+        "z": 1.8,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "ly-f2wk-desk",
+        "roomId": "f2-work",
+        "kind": "desk",
+        "x": -1.14,
+        "z": 2.6,
+        "w": 0.6,
+        "d": 1.2,
+        "facing": "x+"
+      },
+      {
+        "id": "ly-f2wk-plant",
+        "roomId": "f2-work",
+        "kind": "plant",
+        "x": -0.3,
+        "z": 3.4,
+        "w": 0.4,
+        "d": 0.4
+      },
+      {
+        "id": "ly-f2wk-lamp",
+        "roomId": "f2-work",
+        "kind": "floorLamp",
+        "x": -0.3,
+        "z": 1.05,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "ly-f2wk-frame",
+        "roomId": "f2-work",
+        "kind": "frame",
+        "x": -0.9,
+        "z": 0.87,
+        "w": 0.8,
+        "d": 0.08,
+        "facing": "z+"
+      },
+      {
+        "id": "ly-f2sr-shelf",
+        "roomId": "f2-store",
+        "kind": "wardrobe",
+        "x": 0.36,
+        "z": -2.4,
+        "w": 0.6,
+        "d": 1.4,
+        "facing": "x+"
+      },
+      {
+        "id": "ly-f2sr-plant",
+        "roomId": "f2-store",
+        "kind": "plant",
+        "x": 1.15,
+        "z": -1.8,
+        "w": 0.4,
+        "d": 0.4
+      },
+      {
+        "id": "ly-f2sr-frame",
+        "roomId": "f2-store",
+        "kind": "frame",
+        "x": 1.38,
+        "z": -2.8,
+        "w": 0.08,
+        "d": 0.6,
+        "facing": "x-"
+      },
+      {
+        "id": "ly-f2st-plant",
+        "roomId": "f2-stair",
+        "kind": "plant",
+        "x": 0.35,
+        "z": 3.4,
+        "w": 0.5,
+        "d": 0.5
+      },
+      {
+        "id": "ly-f2st-lamp",
+        "roomId": "f2-stair",
+        "kind": "floorLamp",
+        "x": 1.2,
+        "z": 3.45,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "ly-f2st-frame",
+        "roomId": "f2-stair",
+        "kind": "frame",
+        "x": 0.12,
+        "z": 1,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "ly-f2b3-bed",
+        "roomId": "f2-bed3",
+        "kind": "bed",
+        "x": 3,
+        "z": -2.63,
+        "w": 1.8,
+        "d": 2.1,
+        "facing": "z+",
+        "tone": "fabricSage"
+      },
+      {
+        "id": "ly-f2b3-wardrobe",
+        "roomId": "f2-bed3",
+        "kind": "wardrobe",
+        "x": 3.5,
+        "z": 0.38,
+        "w": 1.6,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "ly-f2b3-rug",
+        "roomId": "f2-bed3",
+        "kind": "rug",
+        "x": 3.1,
+        "z": -0.8,
+        "w": 1.8,
+        "d": 1,
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "ly-f2b3-plant",
+        "roomId": "f2-bed3",
+        "kind": "plant",
+        "x": 1.85,
+        "z": -3.4,
+        "w": 0.4,
+        "d": 0.4
+      },
+      {
+        "id": "ly-f2b3-frame",
+        "roomId": "f2-bed3",
+        "kind": "frame",
+        "x": 4.38,
+        "z": -0.5,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x-"
+      },
+      {
+        "id": "ly-f2bc-toilet",
+        "roomId": "f2-bath-common",
+        "kind": "toilet",
+        "x": 2.6,
+        "z": 3.38,
+        "w": 0.45,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "ly-f2bc-sink",
+        "roomId": "f2-bath-common",
+        "kind": "sink",
+        "x": 3.4,
+        "z": 3.46,
+        "w": 0.6,
+        "d": 0.45,
+        "facing": "z-"
+      },
+      {
+        "id": "ly-f2bc-shower",
+        "roomId": "f2-bath-common",
+        "kind": "showerTray",
+        "x": 3.98,
+        "z": 1.27,
+        "w": 0.9,
+        "d": 0.9
+      },
+      {
+        "id": "ly-f2bc-plant",
+        "roomId": "f2-bath-common",
+        "kind": "plant",
+        "x": 1.85,
+        "z": 1.1,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "ly-f2bc-frame",
+        "roomId": "f2-bath-common",
+        "kind": "frame",
+        "x": 2.8,
+        "z": 0.87,
+        "w": 0.8,
+        "d": 0.08,
+        "facing": "z+"
+      }
+    ]
+  },
+  {
+    "id": "ht-rommai",
+    "projectId": "project-1",
+    "slug": "rommai",
+    "name": "ร่มไม้",
+    "kind": "detached",
+    "storeys": 1,
+    "areaSqm": 155,
+    "beds": 3,
+    "baths": 2,
+    "parking": 2,
+    "landSqw": 59.5,
+    "priceFrom": 3590000,
+    "soldOut": false,
+    "samplePlan": true,
+    "images": [],
+    "highlight": "บ้านเดี่ยวชั้นเดียว 155 ตร.ม. 3 ห้องนอน 2 ห้องน้ำ จอดรถ 2 คัน บนที่ดิน 59.5 ตร.ว.",
+    "en": {
+      "name": "Rom Mai",
+      "highlight": "Single-storey detached house, 155 sq. m. Three bedrooms, two bathrooms, parking for two cars, on 59.5 sq. wa of land."
+    },
+    "zh": {
+      "name": "Rom Mai",
+      "highlight": "单层独栋住宅，155 平方米。三间卧室，两间卫生间，两个车位，土地面积 59.5 平方哇。"
+    },
+    "rooms": [
+      {
+        "id": "living",
+        "name": "นั่งเล่น",
+        "x0": -6,
+        "z0": -4.25,
+        "x1": -1,
+        "z1": 1.25,
+        "desc": "รับแขกและนั่งเล่น ต่อกับระเบียงหน้าบ้านและครัว",
+        "en": {
+          "name": "Living",
+          "desc": "Living room and guest seating, opening onto the front terrace and the kitchen."
+        },
+        "zh": {
+          "name": "客厅",
+          "desc": "客厅兼会客区，通向前露台和厨房。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "kitchen",
+        "name": "ครัว",
+        "x0": -6,
+        "z0": 1.25,
+        "x1": -1,
+        "z1": 4.25,
+        "desc": "ครัวไทยหลังบ้าน หน้าต่างสองด้าน",
+        "en": {
+          "name": "Kitchen",
+          "desc": "Thai kitchen at the back of the house, with windows on two sides."
+        },
+        "zh": {
+          "name": "厨房",
+          "desc": "位于房屋后部的泰式厨房，两面开窗。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "hall",
+        "name": "โถง",
+        "x0": -1,
+        "z0": -4.25,
+        "x1": 2,
+        "z1": 0.45,
+        "desc": "โถงกลางบ้าน แยกส่วนนอนออกจากส่วนนั่งเล่น",
+        "en": {
+          "name": "Hall",
+          "desc": "Central hall that keeps the bedrooms apart from the living area."
+        },
+        "zh": {
+          "name": "过厅",
+          "desc": "中央过厅，将卧室与起居区隔开。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bath-common",
+        "name": "น้ำรวม",
+        "x0": -1,
+        "z0": 0.45,
+        "x1": 2,
+        "z1": 2.35,
+        "desc": "ห้องน้ำส่วนกลาง เข้าจากโถง",
+        "en": {
+          "name": "Bath",
+          "desc": "Shared bathroom, entered from the hall."
+        },
+        "zh": {
+          "name": "卫生间",
+          "desc": "公用卫生间，从过厅进入。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bath-ensuite",
+        "name": "น้ำในตัว",
+        "x0": -1,
+        "z0": 2.35,
+        "x1": 2,
+        "z1": 4.25,
+        "desc": "ห้องน้ำในห้องนอนใหญ่",
+        "en": {
+          "name": "En-suite",
+          "desc": "Bathroom inside the main bedroom."
+        },
+        "zh": {
+          "name": "主卧卫生间",
+          "desc": "位于主卧内的卫生间。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bed2",
+        "name": "นอน 2",
+        "x0": 2,
+        "z0": -4.25,
+        "x1": 6,
+        "z1": -0.65,
+        "desc": "ห้องนอนที่สอง หน้าต่างมุมสองด้าน",
+        "en": {
+          "name": "Bed 2",
+          "desc": "Second bedroom, with corner windows on two sides."
+        },
+        "zh": {
+          "name": "卧室 2",
+          "desc": "第二间卧室，两面设转角窗。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bed1",
+        "name": "นอนใหญ่",
+        "x0": 2,
+        "z0": -0.65,
+        "x1": 6,
+        "z1": 4.25,
+        "desc": "ห้องนอนใหญ่ มีห้องน้ำในตัว",
+        "en": {
+          "name": "Main bed",
+          "desc": "Main bedroom with its own bathroom."
+        },
+        "zh": {
+          "name": "主卧",
+          "desc": "主卧，带独立卫生间。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "terrace",
+        "name": "ระเบียง",
+        "x0": -5.75,
+        "z0": -5.9,
+        "x1": -1.25,
+        "z1": -4.25,
+        "desc": "ระเบียงหน้าบ้าน อยู่นอกกรอบบ้าน",
+        "en": {
+          "name": "Terrace",
+          "desc": "Front terrace, outside the house footprint."
+        },
+        "zh": {
+          "name": "露台",
+          "desc": "前露台，位于房屋主体之外。"
+        },
+        "outdoor": true,
+        "floor": 1
+      }
+    ],
+    "openings": [
+      {
+        "id": "op-entry",
+        "kind": "entry",
+        "wallAxis": "x",
+        "at": -4.25,
+        "from": -4,
+        "to": -2.9,
+        "floor": 1
+      },
+      {
+        "id": "op-living-hall",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": -1,
+        "from": -2,
+        "to": -1,
+        "floor": 1
+      },
+      {
+        "id": "op-living-kitchen",
+        "kind": "door",
+        "wallAxis": "x",
+        "at": 1.25,
+        "from": -4.5,
+        "to": -3.5,
+        "floor": 1
+      },
+      {
+        "id": "op-hall-bed2",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 2,
+        "from": -3,
+        "to": -2,
+        "floor": 1
+      },
+      {
+        "id": "op-hall-bed1",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 2,
+        "from": -0.55,
+        "to": 0.35,
+        "floor": 1
+      },
+      {
+        "id": "op-hall-bathcommon",
+        "kind": "door",
+        "wallAxis": "x",
+        "at": 0.45,
+        "from": 0.4,
+        "to": 1.2,
+        "floor": 1
+      },
+      {
+        "id": "op-bed1-bathensuite",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 2,
+        "from": 2.8,
+        "to": 3.6,
+        "floor": 1
+      },
+      {
+        "id": "w-living-west",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": -6,
+        "from": -3,
+        "to": -1.8,
+        "floor": 1
+      },
+      {
+        "id": "w-living-south",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -4.25,
+        "from": -2.4,
+        "to": -1.4,
+        "floor": 1
+      },
+      {
+        "id": "w-kitchen-west",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": -6,
+        "from": 2,
+        "to": 3,
+        "floor": 1
+      },
+      {
+        "id": "w-kitchen-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 4.25,
+        "from": -4.5,
+        "to": -3.5,
+        "floor": 1
+      },
+      {
+        "id": "w-hall-south",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -4.25,
+        "from": 0,
+        "to": 1,
+        "floor": 1
+      },
+      {
+        "id": "w-bed2-south",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -4.25,
+        "from": 3,
+        "to": 4.2,
+        "floor": 1,
+        "head": 2.4,
+        "note": "แปลนห้องยังเป็นตัวอย่าง · หน้าต่างสูงใต้จั่วขวา (แปลนตัวอย่างมีเตียงชิดผนังนี้)"
+      },
+      {
+        "id": "w-bed2-east",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": 6,
+        "from": -3.5,
+        "to": -2.3,
+        "floor": 1
+      },
+      {
+        "id": "w-bed1-east",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": 6,
+        "from": 0.5,
+        "to": 1.7,
+        "floor": 1
+      },
+      {
+        "id": "w-bed1-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 4.25,
+        "from": 3,
+        "to": 4,
+        "floor": 1
+      },
+      {
+        "id": "w-bathensuite-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 4.25,
+        "from": 0.5,
+        "to": 1.3,
+        "floor": 1
+      }
+    ],
+    "northDeg": 0,
+    "facade": {
+      "style": "single-gable",
+      "gable": "x+",
+      "fence": null,
+      "yard": "lawn",
+      "gableWidthMax": 4.2,
+      "gablePitch": 42,
+      "gableDepth": 4.5,
+      "gableWallLift": 0.9,
+      "mainRoofPitch": 17,
+      "carportMode": "front",
+      "note": "สัดส่วนที่สตูดิโอตั้ง: จั่วเท่าห้องนอนหน้า ลาด ≈ 41° ผนังใต้จั่วสูงกว่าชายคา ≈ 0.4-0.9 ม. ปั้นหยาเตี้ย หลังคาแบนคลุมชานและที่จอดฝั่งตรงข้ามจั่ว"
+    },
+    "furniture": [
+      {
+        "id": "lv-sofa",
+        "roomId": "living",
+        "kind": "sofa",
+        "x": -4.3,
+        "z": 0,
+        "w": 2.2,
+        "d": 0.9,
+        "facing": "z-",
+        "tone": "fabricSage"
+      },
+      {
+        "id": "lv-rug",
+        "roomId": "living",
+        "kind": "rug",
+        "x": -4,
+        "z": -1.4,
+        "w": 2.6,
+        "d": 1.8,
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "lv-plant",
+        "roomId": "living",
+        "kind": "plant",
+        "x": -5.5,
+        "z": -3.6,
+        "w": 0.5,
+        "d": 0.5
+      },
+      {
+        "id": "lv-lamp",
+        "roomId": "living",
+        "kind": "floorLamp",
+        "x": -1.45,
+        "z": 0.8,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "lv-frame",
+        "roomId": "living",
+        "kind": "frame",
+        "x": -5.88,
+        "z": 0,
+        "w": 0.08,
+        "d": 0.9,
+        "facing": "x+"
+      },
+      {
+        "id": "kt-counter",
+        "roomId": "kitchen",
+        "kind": "counter",
+        "x": -4,
+        "z": 3.85,
+        "w": 3.4,
+        "d": 0.65,
+        "facing": "z-"
+      },
+      {
+        "id": "kt-dining",
+        "roomId": "kitchen",
+        "kind": "diningSet",
+        "x": -2.4,
+        "z": 2.4,
+        "w": 1.6,
+        "d": 1
+      },
+      {
+        "id": "kt-plant",
+        "roomId": "kitchen",
+        "kind": "plant",
+        "x": -1.45,
+        "z": 3.9,
+        "w": 0.45,
+        "d": 0.45
+      },
+      {
+        "id": "kt-frame",
+        "roomId": "kitchen",
+        "kind": "frame",
+        "x": -2,
+        "z": 1.35,
+        "w": 0.8,
+        "d": 0.08,
+        "facing": "z+"
+      },
+      {
+        "id": "hl-rug",
+        "roomId": "hall",
+        "kind": "rug",
+        "x": 0.5,
+        "z": -2.2,
+        "w": 1,
+        "d": 2.4,
+        "tone": "fabricSage"
+      },
+      {
+        "id": "hl-plant",
+        "roomId": "hall",
+        "kind": "plant",
+        "x": 1.6,
+        "z": -3.9,
+        "w": 0.5,
+        "d": 0.5
+      },
+      {
+        "id": "hl-frame",
+        "roomId": "hall",
+        "kind": "frame",
+        "x": -0.9,
+        "z": -3.5,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "hl-lamp",
+        "roomId": "hall",
+        "kind": "floorLamp",
+        "x": -0.6,
+        "z": 0.1,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "bc-toilet",
+        "roomId": "bath-common",
+        "kind": "toilet",
+        "x": -0.6,
+        "z": 1.98,
+        "w": 0.45,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "bc-sink",
+        "roomId": "bath-common",
+        "kind": "sink",
+        "x": 0.4,
+        "z": 2.04,
+        "w": 0.6,
+        "d": 0.45,
+        "facing": "z-"
+      },
+      {
+        "id": "bc-shower",
+        "roomId": "bath-common",
+        "kind": "showerTray",
+        "x": 1.45,
+        "z": 1.83,
+        "w": 0.9,
+        "d": 0.9
+      },
+      {
+        "id": "bc-plant",
+        "roomId": "bath-common",
+        "kind": "plant",
+        "x": -0.7,
+        "z": 0.78,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "bc-frame",
+        "roomId": "bath-common",
+        "kind": "frame",
+        "x": -0.9,
+        "z": 1.4,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "be-shower",
+        "roomId": "bath-ensuite",
+        "kind": "showerTray",
+        "x": -0.45,
+        "z": 3.7,
+        "w": 0.9,
+        "d": 0.9
+      },
+      {
+        "id": "be-toilet",
+        "roomId": "bath-ensuite",
+        "kind": "toilet",
+        "x": 0.6,
+        "z": 3.86,
+        "w": 0.45,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "be-sink",
+        "roomId": "bath-ensuite",
+        "kind": "sink",
+        "x": 1.5,
+        "z": 3.94,
+        "w": 0.6,
+        "d": 0.45,
+        "facing": "z-"
+      },
+      {
+        "id": "be-plant",
+        "roomId": "bath-ensuite",
+        "kind": "plant",
+        "x": 1.7,
+        "z": 2.6,
+        "w": 0.3,
+        "d": 0.3
+      },
+      {
+        "id": "be-frame",
+        "roomId": "bath-ensuite",
+        "kind": "frame",
+        "x": -0.9,
+        "z": 3,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "b2-bed",
+        "roomId": "bed2",
+        "kind": "bed",
+        "x": 3.5,
+        "z": -2.9,
+        "w": 1.5,
+        "d": 2,
+        "facing": "z+",
+        "tone": "fabricSage"
+      },
+      {
+        "id": "b2-wardrobe",
+        "roomId": "bed2",
+        "kind": "wardrobe",
+        "x": 5,
+        "z": -3.88,
+        "w": 1.4,
+        "d": 0.6,
+        "facing": "z+"
+      },
+      {
+        "id": "b2-rug",
+        "roomId": "bed2",
+        "kind": "rug",
+        "x": 4.2,
+        "z": -1.4,
+        "w": 1.6,
+        "d": 1.2,
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "b2-plant",
+        "roomId": "bed2",
+        "kind": "plant",
+        "x": 5.6,
+        "z": -1.1,
+        "w": 0.4,
+        "d": 0.4
+      },
+      {
+        "id": "b1-bed",
+        "roomId": "bed1",
+        "kind": "bed",
+        "x": 3.6,
+        "z": 1.2,
+        "w": 1.8,
+        "d": 2.1,
+        "facing": "z+",
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "b1-wardrobe",
+        "roomId": "bed1",
+        "kind": "wardrobe",
+        "x": 5,
+        "z": 3.88,
+        "w": 1.6,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "b1-desk",
+        "roomId": "bed1",
+        "kind": "desk",
+        "x": 5.2,
+        "z": 0.3,
+        "w": 1.2,
+        "d": 0.6,
+        "facing": "x-"
+      },
+      {
+        "id": "b1-rug",
+        "roomId": "bed1",
+        "kind": "rug",
+        "x": 3.8,
+        "z": 3.2,
+        "w": 2,
+        "d": 1.4,
+        "tone": "fabricSage"
+      },
+      {
+        "id": "b1-lamp",
+        "roomId": "bed1",
+        "kind": "floorLamp",
+        "x": 5.7,
+        "z": 2.3,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "b1-frame",
+        "roomId": "bed1",
+        "kind": "frame",
+        "x": 5.9,
+        "z": 3,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x-"
+      },
+      {
+        "id": "tr-tree1",
+        "roomId": "terrace",
+        "kind": "plant",
+        "x": -5.35,
+        "z": -5.5,
+        "w": 0.6,
+        "d": 0.6
+      },
+      {
+        "id": "tr-tree2",
+        "roomId": "terrace",
+        "kind": "plant",
+        "x": -1.65,
+        "z": -5.5,
+        "w": 0.6,
+        "d": 0.6
+      },
+      {
+        "id": "tr-plant",
+        "roomId": "terrace",
+        "kind": "plant",
+        "x": -1.6,
+        "z": -4.65,
+        "w": 0.5,
+        "d": 0.5
+      }
+    ]
+  },
+  {
+    "id": "ht-np-2-bed",
+    "projectId": "project-2",
+    "slug": "noen-phai-2-bed",
+    "name": "ชั้นเดียว 2 นอน",
+    "kind": "detached",
+    "storeys": 1,
+    "areaSqm": 104,
+    "beds": 2,
+    "baths": 2,
+    "parking": 2,
+    "landSqw": 40,
+    "priceFrom": 2790000,
+    "soldOut": false,
+    "samplePlan": true,
+    "images": [],
+    "highlight": "บ้านเดี่ยวชั้นเดียว 104 ตร.ม. 2 ห้องนอน 2 ห้องน้ำ จอดรถ 2 คัน บนที่ดิน 40 ตร.ว.",
+    "en": {
+      "name": "Single-storey, 2 bedrooms",
+      "highlight": "Single-storey detached house, 104 sq. m. Two bedrooms, two bathrooms, parking for two cars, on 40 sq. wa of land."
+    },
+    "zh": {
+      "name": "单层，两间卧室",
+      "highlight": "单层独栋住宅，104 平方米。两间卧室，两间卫生间，两个车位，土地面积 40 平方哇。"
+    },
+    "rooms": [
+      {
+        "id": "living",
+        "name": "นั่งเล่น",
+        "x0": -6,
+        "z0": -4.25,
+        "x1": -1,
+        "z1": 1.25,
+        "desc": "รับแขกและนั่งเล่น ต่อกับระเบียงหน้าบ้านและครัว",
+        "en": {
+          "name": "Living",
+          "desc": "Living room and guest seating, opening onto the front terrace and the kitchen."
+        },
+        "zh": {
+          "name": "客厅",
+          "desc": "客厅兼会客区，通向前露台和厨房。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "kitchen",
+        "name": "ครัว",
+        "x0": -6,
+        "z0": 1.25,
+        "x1": -1,
+        "z1": 4.25,
+        "desc": "ครัวไทยหลังบ้าน หน้าต่างสองด้าน",
+        "en": {
+          "name": "Kitchen",
+          "desc": "Thai kitchen at the back of the house, with windows on two sides."
+        },
+        "zh": {
+          "name": "厨房",
+          "desc": "位于房屋后部的泰式厨房，两面开窗。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "hall",
+        "name": "โถง",
+        "x0": -1,
+        "z0": -4.25,
+        "x1": 2,
+        "z1": 0.45,
+        "desc": "โถงกลางบ้าน แยกส่วนนอนออกจากส่วนนั่งเล่น",
+        "en": {
+          "name": "Hall",
+          "desc": "Central hall that keeps the bedrooms apart from the living area."
+        },
+        "zh": {
+          "name": "过厅",
+          "desc": "中央过厅，将卧室与起居区隔开。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bath-common",
+        "name": "น้ำรวม",
+        "x0": -1,
+        "z0": 0.45,
+        "x1": 2,
+        "z1": 2.35,
+        "desc": "ห้องน้ำส่วนกลาง เข้าจากโถง",
+        "en": {
+          "name": "Bath",
+          "desc": "Shared bathroom, entered from the hall."
+        },
+        "zh": {
+          "name": "卫生间",
+          "desc": "公用卫生间，从过厅进入。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bath-ensuite",
+        "name": "น้ำในตัว",
+        "x0": -1,
+        "z0": 2.35,
+        "x1": 2,
+        "z1": 4.25,
+        "desc": "ห้องน้ำในห้องนอนใหญ่",
+        "en": {
+          "name": "En-suite",
+          "desc": "Bathroom inside the main bedroom."
+        },
+        "zh": {
+          "name": "主卧卫生间",
+          "desc": "位于主卧内的卫生间。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bed2",
+        "name": "นอน 2",
+        "x0": 2,
+        "z0": -4.25,
+        "x1": 6,
+        "z1": -0.65,
+        "desc": "ห้องนอนที่สอง หน้าต่างมุมสองด้าน",
+        "en": {
+          "name": "Bed 2",
+          "desc": "Second bedroom, with corner windows on two sides."
+        },
+        "zh": {
+          "name": "卧室 2",
+          "desc": "第二间卧室，两面设转角窗。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bed1",
+        "name": "นอนใหญ่",
+        "x0": 2,
+        "z0": -0.65,
+        "x1": 6,
+        "z1": 4.25,
+        "desc": "ห้องนอนใหญ่ มีห้องน้ำในตัว",
+        "en": {
+          "name": "Main bed",
+          "desc": "Main bedroom with its own bathroom."
+        },
+        "zh": {
+          "name": "主卧",
+          "desc": "主卧，带独立卫生间。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "terrace",
+        "name": "ระเบียง",
+        "x0": -5.75,
+        "z0": -5.9,
+        "x1": -1.25,
+        "z1": -4.25,
+        "desc": "ระเบียงหน้าบ้าน อยู่นอกกรอบบ้าน",
+        "en": {
+          "name": "Terrace",
+          "desc": "Front terrace, outside the house footprint."
+        },
+        "zh": {
+          "name": "露台",
+          "desc": "前露台，位于房屋主体之外。"
+        },
+        "outdoor": true,
+        "floor": 1
+      }
+    ],
+    "openings": [
+      {
+        "id": "op-entry",
+        "kind": "entry",
+        "wallAxis": "x",
+        "at": -4.25,
+        "from": -4,
+        "to": -2.9,
+        "floor": 1,
+        "head": 2.4,
+        "note": "แปลนห้องยังเป็นตัวอย่าง · ประตูกระจกบานสูงใต้จั่ว"
+      },
+      {
+        "id": "op-living-hall",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": -1,
+        "from": -2,
+        "to": -1,
+        "floor": 1
+      },
+      {
+        "id": "op-living-kitchen",
+        "kind": "door",
+        "wallAxis": "x",
+        "at": 1.25,
+        "from": -4.5,
+        "to": -3.5,
+        "floor": 1
+      },
+      {
+        "id": "op-hall-bed2",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 2,
+        "from": -3,
+        "to": -2,
+        "floor": 1
+      },
+      {
+        "id": "op-hall-bed1",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 2,
+        "from": -0.55,
+        "to": 0.35,
+        "floor": 1
+      },
+      {
+        "id": "op-hall-bathcommon",
+        "kind": "door",
+        "wallAxis": "x",
+        "at": 0.45,
+        "from": 0.4,
+        "to": 1.2,
+        "floor": 1
+      },
+      {
+        "id": "op-bed1-bathensuite",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 2,
+        "from": 2.8,
+        "to": 3.6,
+        "floor": 1
+      },
+      {
+        "id": "w-living-west",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": -6,
+        "from": -3,
+        "to": -1.8,
+        "floor": 1
+      },
+      {
+        "id": "w-living-south",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -4.25,
+        "from": -2.4,
+        "to": -1.4,
+        "floor": 1,
+        "sill": 0,
+        "head": 2.4,
+        "note": "แปลนห้องยังเป็นตัวอย่าง · กระจกบานสูงใต้จั่ว"
+      },
+      {
+        "id": "w-kitchen-west",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": -6,
+        "from": 2,
+        "to": 3,
+        "floor": 1
+      },
+      {
+        "id": "w-kitchen-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 4.25,
+        "from": -4.5,
+        "to": -3.5,
+        "floor": 1
+      },
+      {
+        "id": "w-hall-south",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -4.25,
+        "from": 0,
+        "to": 1,
+        "floor": 1
+      },
+      {
+        "id": "w-bed2-south",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -4.25,
+        "from": 3,
+        "to": 4.2,
+        "floor": 1
+      },
+      {
+        "id": "w-bed2-east",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": 6,
+        "from": -3.5,
+        "to": -2.3,
+        "floor": 1
+      },
+      {
+        "id": "w-bed1-east",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": 6,
+        "from": 0.5,
+        "to": 1.7,
+        "floor": 1
+      },
+      {
+        "id": "w-bed1-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 4.25,
+        "from": 3,
+        "to": 4,
+        "floor": 1
+      },
+      {
+        "id": "w-bathensuite-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 4.25,
+        "from": 0.5,
+        "to": 1.3,
+        "floor": 1
+      }
+    ],
+    "northDeg": 0,
+    "facade": {
+      "style": "single-gable",
+      "gable": "x-",
+      "fence": "breeze-block",
+      "yard": "gravel",
+      "gableWidthMax": 3.6,
+      "gablePitch": 42,
+      "gableDepth": 4.5,
+      "gableWallLift": 1.1,
+      "mainRoofPitch": 17,
+      "carportMode": "front",
+      "note": "สัดส่วนที่สตูดิโอตั้ง: กรอบจั่วนอก ≈ 4.2 ม. ลาด ≈ 40° เชิงจั่วสูงจากพื้น ≈ 3.7 ม. หลังคาแบนคลุมหน้าผนังไม้และทางรถ"
+    },
+    "furniture": [
+      {
+        "id": "lv-sofa",
+        "roomId": "living",
+        "kind": "sofa",
+        "x": -4.3,
+        "z": 0,
+        "w": 2.2,
+        "d": 0.9,
+        "facing": "z-",
+        "tone": "fabricSage"
+      },
+      {
+        "id": "lv-rug",
+        "roomId": "living",
+        "kind": "rug",
+        "x": -4,
+        "z": -1.4,
+        "w": 2.6,
+        "d": 1.8,
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "lv-plant",
+        "roomId": "living",
+        "kind": "plant",
+        "x": -5.5,
+        "z": -3.6,
+        "w": 0.5,
+        "d": 0.5
+      },
+      {
+        "id": "lv-lamp",
+        "roomId": "living",
+        "kind": "floorLamp",
+        "x": -1.45,
+        "z": 0.8,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "lv-frame",
+        "roomId": "living",
+        "kind": "frame",
+        "x": -5.88,
+        "z": 0,
+        "w": 0.08,
+        "d": 0.9,
+        "facing": "x+"
+      },
+      {
+        "id": "kt-counter",
+        "roomId": "kitchen",
+        "kind": "counter",
+        "x": -4,
+        "z": 3.85,
+        "w": 3.4,
+        "d": 0.65,
+        "facing": "z-"
+      },
+      {
+        "id": "kt-dining",
+        "roomId": "kitchen",
+        "kind": "diningSet",
+        "x": -2.4,
+        "z": 2.4,
+        "w": 1.6,
+        "d": 1
+      },
+      {
+        "id": "kt-plant",
+        "roomId": "kitchen",
+        "kind": "plant",
+        "x": -1.45,
+        "z": 3.9,
+        "w": 0.45,
+        "d": 0.45
+      },
+      {
+        "id": "kt-frame",
+        "roomId": "kitchen",
+        "kind": "frame",
+        "x": -2,
+        "z": 1.35,
+        "w": 0.8,
+        "d": 0.08,
+        "facing": "z+"
+      },
+      {
+        "id": "hl-rug",
+        "roomId": "hall",
+        "kind": "rug",
+        "x": 0.5,
+        "z": -2.2,
+        "w": 1,
+        "d": 2.4,
+        "tone": "fabricSage"
+      },
+      {
+        "id": "hl-plant",
+        "roomId": "hall",
+        "kind": "plant",
+        "x": 1.6,
+        "z": -3.9,
+        "w": 0.5,
+        "d": 0.5
+      },
+      {
+        "id": "hl-frame",
+        "roomId": "hall",
+        "kind": "frame",
+        "x": -0.9,
+        "z": -3.5,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "hl-lamp",
+        "roomId": "hall",
+        "kind": "floorLamp",
+        "x": -0.6,
+        "z": 0.1,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "bc-toilet",
+        "roomId": "bath-common",
+        "kind": "toilet",
+        "x": -0.6,
+        "z": 1.98,
+        "w": 0.45,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "bc-sink",
+        "roomId": "bath-common",
+        "kind": "sink",
+        "x": 0.4,
+        "z": 2.04,
+        "w": 0.6,
+        "d": 0.45,
+        "facing": "z-"
+      },
+      {
+        "id": "bc-shower",
+        "roomId": "bath-common",
+        "kind": "showerTray",
+        "x": 1.45,
+        "z": 1.83,
+        "w": 0.9,
+        "d": 0.9
+      },
+      {
+        "id": "bc-plant",
+        "roomId": "bath-common",
+        "kind": "plant",
+        "x": -0.7,
+        "z": 0.78,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "bc-frame",
+        "roomId": "bath-common",
+        "kind": "frame",
+        "x": -0.9,
+        "z": 1.4,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "be-shower",
+        "roomId": "bath-ensuite",
+        "kind": "showerTray",
+        "x": -0.45,
+        "z": 3.7,
+        "w": 0.9,
+        "d": 0.9
+      },
+      {
+        "id": "be-toilet",
+        "roomId": "bath-ensuite",
+        "kind": "toilet",
+        "x": 0.6,
+        "z": 3.86,
+        "w": 0.45,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "be-sink",
+        "roomId": "bath-ensuite",
+        "kind": "sink",
+        "x": 1.5,
+        "z": 3.94,
+        "w": 0.6,
+        "d": 0.45,
+        "facing": "z-"
+      },
+      {
+        "id": "be-plant",
+        "roomId": "bath-ensuite",
+        "kind": "plant",
+        "x": 1.7,
+        "z": 2.6,
+        "w": 0.3,
+        "d": 0.3
+      },
+      {
+        "id": "be-frame",
+        "roomId": "bath-ensuite",
+        "kind": "frame",
+        "x": -0.9,
+        "z": 3,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "b2-bed",
+        "roomId": "bed2",
+        "kind": "bed",
+        "x": 3.5,
+        "z": -2.9,
+        "w": 1.5,
+        "d": 2,
+        "facing": "z+",
+        "tone": "fabricSage"
+      },
+      {
+        "id": "b2-wardrobe",
+        "roomId": "bed2",
+        "kind": "wardrobe",
+        "x": 5,
+        "z": -3.88,
+        "w": 1.4,
+        "d": 0.6,
+        "facing": "z+"
+      },
+      {
+        "id": "b2-rug",
+        "roomId": "bed2",
+        "kind": "rug",
+        "x": 4.2,
+        "z": -1.4,
+        "w": 1.6,
+        "d": 1.2,
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "b2-plant",
+        "roomId": "bed2",
+        "kind": "plant",
+        "x": 5.6,
+        "z": -1.1,
+        "w": 0.4,
+        "d": 0.4
+      },
+      {
+        "id": "b1-bed",
+        "roomId": "bed1",
+        "kind": "bed",
+        "x": 3.6,
+        "z": 1.2,
+        "w": 1.8,
+        "d": 2.1,
+        "facing": "z+",
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "b1-wardrobe",
+        "roomId": "bed1",
+        "kind": "wardrobe",
+        "x": 5,
+        "z": 3.88,
+        "w": 1.6,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "b1-desk",
+        "roomId": "bed1",
+        "kind": "desk",
+        "x": 5.2,
+        "z": 0.3,
+        "w": 1.2,
+        "d": 0.6,
+        "facing": "x-"
+      },
+      {
+        "id": "b1-rug",
+        "roomId": "bed1",
+        "kind": "rug",
+        "x": 3.8,
+        "z": 3.2,
+        "w": 2,
+        "d": 1.4,
+        "tone": "fabricSage"
+      },
+      {
+        "id": "b1-lamp",
+        "roomId": "bed1",
+        "kind": "floorLamp",
+        "x": 5.7,
+        "z": 2.3,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "b1-frame",
+        "roomId": "bed1",
+        "kind": "frame",
+        "x": 5.9,
+        "z": 3,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x-"
+      },
+      {
+        "id": "tr-tree1",
+        "roomId": "terrace",
+        "kind": "plant",
+        "x": -5.35,
+        "z": -5.5,
+        "w": 0.6,
+        "d": 0.6
+      },
+      {
+        "id": "tr-tree2",
+        "roomId": "terrace",
+        "kind": "plant",
+        "x": -1.65,
+        "z": -5.5,
+        "w": 0.6,
+        "d": 0.6
+      },
+      {
+        "id": "tr-plant",
+        "roomId": "terrace",
+        "kind": "plant",
+        "x": -1.6,
+        "z": -4.65,
+        "w": 0.5,
+        "d": 0.5
+      }
+    ]
+  },
+  {
+    "id": "ht-np-3-bed",
+    "projectId": "project-2",
+    "slug": "noen-phai-3-bed",
+    "name": "ชั้นเดียว 3 นอน",
+    "kind": "detached",
+    "storeys": 1,
+    "areaSqm": 124,
+    "beds": 3,
+    "baths": 2,
+    "parking": 2,
+    "landSqw": 56,
+    "priceFrom": 3390000,
+    "soldOut": true,
+    "samplePlan": true,
+    "images": [],
+    "highlight": "บ้านเดี่ยวชั้นเดียว 124 ตร.ม. 3 ห้องนอน 2 ห้องน้ำ จอดรถ 2 คัน บนที่ดิน 56 ตร.ว. ขายหมดแล้ว",
+    "en": {
+      "name": "Single-storey, 3 bedrooms",
+      "highlight": "Single-storey detached house, 124 sq. m. Three bedrooms, two bathrooms, parking for two cars, on 56 sq. wa of land. The developer lists it as sold out."
+    },
+    "zh": {
+      "name": "单层，三间卧室",
+      "highlight": "单层独栋住宅，124 平方米。三间卧室，两间卫生间，两个车位，土地面积 56 平方哇。开发商标明此户型已售罄。"
+    },
+    "rooms": [
+      {
+        "id": "living",
+        "name": "นั่งเล่น",
+        "x0": -6,
+        "z0": -4.25,
+        "x1": -1,
+        "z1": 1.25,
+        "desc": "รับแขกและนั่งเล่น ต่อกับระเบียงหน้าบ้านและครัว",
+        "en": {
+          "name": "Living",
+          "desc": "Living room and guest seating, opening onto the front terrace and the kitchen."
+        },
+        "zh": {
+          "name": "客厅",
+          "desc": "客厅兼会客区，通向前露台和厨房。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "kitchen",
+        "name": "ครัว",
+        "x0": -6,
+        "z0": 1.25,
+        "x1": -1,
+        "z1": 4.25,
+        "desc": "ครัวไทยหลังบ้าน หน้าต่างสองด้าน",
+        "en": {
+          "name": "Kitchen",
+          "desc": "Thai kitchen at the back of the house, with windows on two sides."
+        },
+        "zh": {
+          "name": "厨房",
+          "desc": "位于房屋后部的泰式厨房，两面开窗。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "hall",
+        "name": "โถง",
+        "x0": -1,
+        "z0": -4.25,
+        "x1": 2,
+        "z1": 0.45,
+        "desc": "โถงกลางบ้าน แยกส่วนนอนออกจากส่วนนั่งเล่น",
+        "en": {
+          "name": "Hall",
+          "desc": "Central hall that keeps the bedrooms apart from the living area."
+        },
+        "zh": {
+          "name": "过厅",
+          "desc": "中央过厅，将卧室与起居区隔开。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bath-common",
+        "name": "น้ำรวม",
+        "x0": -1,
+        "z0": 0.45,
+        "x1": 2,
+        "z1": 2.35,
+        "desc": "ห้องน้ำส่วนกลาง เข้าจากโถง",
+        "en": {
+          "name": "Bath",
+          "desc": "Shared bathroom, entered from the hall."
+        },
+        "zh": {
+          "name": "卫生间",
+          "desc": "公用卫生间，从过厅进入。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bath-ensuite",
+        "name": "น้ำในตัว",
+        "x0": -1,
+        "z0": 2.35,
+        "x1": 2,
+        "z1": 4.25,
+        "desc": "ห้องน้ำในห้องนอนใหญ่",
+        "en": {
+          "name": "En-suite",
+          "desc": "Bathroom inside the main bedroom."
+        },
+        "zh": {
+          "name": "主卧卫生间",
+          "desc": "位于主卧内的卫生间。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bed2",
+        "name": "นอน 2",
+        "x0": 2,
+        "z0": -4.25,
+        "x1": 6,
+        "z1": -0.65,
+        "desc": "ห้องนอนที่สอง หน้าต่างมุมสองด้าน",
+        "en": {
+          "name": "Bed 2",
+          "desc": "Second bedroom, with corner windows on two sides."
+        },
+        "zh": {
+          "name": "卧室 2",
+          "desc": "第二间卧室，两面设转角窗。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "bed1",
+        "name": "นอนใหญ่",
+        "x0": 2,
+        "z0": -0.65,
+        "x1": 6,
+        "z1": 4.25,
+        "desc": "ห้องนอนใหญ่ มีห้องน้ำในตัว",
+        "en": {
+          "name": "Main bed",
+          "desc": "Main bedroom with its own bathroom."
+        },
+        "zh": {
+          "name": "主卧",
+          "desc": "主卧，带独立卫生间。"
+        },
+        "floor": 1
+      },
+      {
+        "id": "terrace",
+        "name": "ระเบียง",
+        "x0": -5.75,
+        "z0": -5.9,
+        "x1": -1.25,
+        "z1": -4.25,
+        "desc": "ระเบียงหน้าบ้าน อยู่นอกกรอบบ้าน",
+        "en": {
+          "name": "Terrace",
+          "desc": "Front terrace, outside the house footprint."
+        },
+        "zh": {
+          "name": "露台",
+          "desc": "前露台，位于房屋主体之外。"
+        },
+        "outdoor": true,
+        "floor": 1
+      }
+    ],
+    "openings": [
+      {
+        "id": "op-entry",
+        "kind": "entry",
+        "wallAxis": "x",
+        "at": -4.25,
+        "from": -4,
+        "to": -2.9,
+        "floor": 1,
+        "head": 2.4,
+        "note": "แปลนห้องยังเป็นตัวอย่าง · ประตูกระจกบานสูงใต้จั่ว"
+      },
+      {
+        "id": "op-living-hall",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": -1,
+        "from": -2,
+        "to": -1,
+        "floor": 1
+      },
+      {
+        "id": "op-living-kitchen",
+        "kind": "door",
+        "wallAxis": "x",
+        "at": 1.25,
+        "from": -4.5,
+        "to": -3.5,
+        "floor": 1
+      },
+      {
+        "id": "op-hall-bed2",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 2,
+        "from": -3,
+        "to": -2,
+        "floor": 1
+      },
+      {
+        "id": "op-hall-bed1",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 2,
+        "from": -0.55,
+        "to": 0.35,
+        "floor": 1
+      },
+      {
+        "id": "op-hall-bathcommon",
+        "kind": "door",
+        "wallAxis": "x",
+        "at": 0.45,
+        "from": 0.4,
+        "to": 1.2,
+        "floor": 1
+      },
+      {
+        "id": "op-bed1-bathensuite",
+        "kind": "door",
+        "wallAxis": "z",
+        "at": 2,
+        "from": 2.8,
+        "to": 3.6,
+        "floor": 1
+      },
+      {
+        "id": "w-living-west",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": -6,
+        "from": -3,
+        "to": -1.8,
+        "floor": 1
+      },
+      {
+        "id": "w-living-south",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -4.25,
+        "from": -2.4,
+        "to": -1.4,
+        "floor": 1,
+        "sill": 0,
+        "head": 2.4,
+        "note": "แปลนห้องยังเป็นตัวอย่าง · กระจกบานสูงใต้จั่ว"
+      },
+      {
+        "id": "w-kitchen-west",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": -6,
+        "from": 2,
+        "to": 3,
+        "floor": 1
+      },
+      {
+        "id": "w-kitchen-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 4.25,
+        "from": -4.5,
+        "to": -3.5,
+        "floor": 1
+      },
+      {
+        "id": "w-hall-south",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -4.25,
+        "from": 0,
+        "to": 1,
+        "floor": 1
+      },
+      {
+        "id": "w-bed2-south",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": -4.25,
+        "from": 3,
+        "to": 4.2,
+        "floor": 1
+      },
+      {
+        "id": "w-bed2-east",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": 6,
+        "from": -3.5,
+        "to": -2.3,
+        "floor": 1
+      },
+      {
+        "id": "w-bed1-east",
+        "kind": "window",
+        "wallAxis": "z",
+        "at": 6,
+        "from": 0.5,
+        "to": 1.7,
+        "floor": 1
+      },
+      {
+        "id": "w-bed1-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 4.25,
+        "from": 3,
+        "to": 4,
+        "floor": 1
+      },
+      {
+        "id": "w-bathensuite-north",
+        "kind": "window",
+        "wallAxis": "x",
+        "at": 4.25,
+        "from": 0.5,
+        "to": 1.3,
+        "floor": 1
+      }
+    ],
+    "northDeg": 0,
+    "facade": {
+      "style": "single-gable",
+      "gable": "x-",
+      "fence": "breeze-block",
+      "yard": "gravel",
+      "gableWidthMax": 3.6,
+      "gablePitch": 42,
+      "gableDepth": 4.5,
+      "gableWallLift": 1.1,
+      "mainRoofPitch": 17,
+      "carportMode": "front",
+      "note": "สัดส่วนที่สตูดิโอตั้ง: กรอบจั่วนอก ≈ 4.2 ม. ลาด ≈ 40° เชิงจั่วสูงจากพื้น ≈ 3.7 ม. หลังคาแบนคลุมหน้าผนังไม้และทางรถ"
+    },
+    "furniture": [
+      {
+        "id": "lv-sofa",
+        "roomId": "living",
+        "kind": "sofa",
+        "x": -4.3,
+        "z": 0,
+        "w": 2.2,
+        "d": 0.9,
+        "facing": "z-",
+        "tone": "fabricSage"
+      },
+      {
+        "id": "lv-rug",
+        "roomId": "living",
+        "kind": "rug",
+        "x": -4,
+        "z": -1.4,
+        "w": 2.6,
+        "d": 1.8,
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "lv-plant",
+        "roomId": "living",
+        "kind": "plant",
+        "x": -5.5,
+        "z": -3.6,
+        "w": 0.5,
+        "d": 0.5
+      },
+      {
+        "id": "lv-lamp",
+        "roomId": "living",
+        "kind": "floorLamp",
+        "x": -1.45,
+        "z": 0.8,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "lv-frame",
+        "roomId": "living",
+        "kind": "frame",
+        "x": -5.88,
+        "z": 0,
+        "w": 0.08,
+        "d": 0.9,
+        "facing": "x+"
+      },
+      {
+        "id": "kt-counter",
+        "roomId": "kitchen",
+        "kind": "counter",
+        "x": -4,
+        "z": 3.85,
+        "w": 3.4,
+        "d": 0.65,
+        "facing": "z-"
+      },
+      {
+        "id": "kt-dining",
+        "roomId": "kitchen",
+        "kind": "diningSet",
+        "x": -2.4,
+        "z": 2.4,
+        "w": 1.6,
+        "d": 1
+      },
+      {
+        "id": "kt-plant",
+        "roomId": "kitchen",
+        "kind": "plant",
+        "x": -1.45,
+        "z": 3.9,
+        "w": 0.45,
+        "d": 0.45
+      },
+      {
+        "id": "kt-frame",
+        "roomId": "kitchen",
+        "kind": "frame",
+        "x": -2,
+        "z": 1.35,
+        "w": 0.8,
+        "d": 0.08,
+        "facing": "z+"
+      },
+      {
+        "id": "hl-rug",
+        "roomId": "hall",
+        "kind": "rug",
+        "x": 0.5,
+        "z": -2.2,
+        "w": 1,
+        "d": 2.4,
+        "tone": "fabricSage"
+      },
+      {
+        "id": "hl-plant",
+        "roomId": "hall",
+        "kind": "plant",
+        "x": 1.6,
+        "z": -3.9,
+        "w": 0.5,
+        "d": 0.5
+      },
+      {
+        "id": "hl-frame",
+        "roomId": "hall",
+        "kind": "frame",
+        "x": -0.9,
+        "z": -3.5,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "hl-lamp",
+        "roomId": "hall",
+        "kind": "floorLamp",
+        "x": -0.6,
+        "z": 0.1,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "bc-toilet",
+        "roomId": "bath-common",
+        "kind": "toilet",
+        "x": -0.6,
+        "z": 1.98,
+        "w": 0.45,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "bc-sink",
+        "roomId": "bath-common",
+        "kind": "sink",
+        "x": 0.4,
+        "z": 2.04,
+        "w": 0.6,
+        "d": 0.45,
+        "facing": "z-"
+      },
+      {
+        "id": "bc-shower",
+        "roomId": "bath-common",
+        "kind": "showerTray",
+        "x": 1.45,
+        "z": 1.83,
+        "w": 0.9,
+        "d": 0.9
+      },
+      {
+        "id": "bc-plant",
+        "roomId": "bath-common",
+        "kind": "plant",
+        "x": -0.7,
+        "z": 0.78,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "bc-frame",
+        "roomId": "bath-common",
+        "kind": "frame",
+        "x": -0.9,
+        "z": 1.4,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "be-shower",
+        "roomId": "bath-ensuite",
+        "kind": "showerTray",
+        "x": -0.45,
+        "z": 3.7,
+        "w": 0.9,
+        "d": 0.9
+      },
+      {
+        "id": "be-toilet",
+        "roomId": "bath-ensuite",
+        "kind": "toilet",
+        "x": 0.6,
+        "z": 3.86,
+        "w": 0.45,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "be-sink",
+        "roomId": "bath-ensuite",
+        "kind": "sink",
+        "x": 1.5,
+        "z": 3.94,
+        "w": 0.6,
+        "d": 0.45,
+        "facing": "z-"
+      },
+      {
+        "id": "be-plant",
+        "roomId": "bath-ensuite",
+        "kind": "plant",
+        "x": 1.7,
+        "z": 2.6,
+        "w": 0.3,
+        "d": 0.3
+      },
+      {
+        "id": "be-frame",
+        "roomId": "bath-ensuite",
+        "kind": "frame",
+        "x": -0.9,
+        "z": 3,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x+"
+      },
+      {
+        "id": "b2-bed",
+        "roomId": "bed2",
+        "kind": "bed",
+        "x": 3.5,
+        "z": -2.9,
+        "w": 1.5,
+        "d": 2,
+        "facing": "z+",
+        "tone": "fabricSage"
+      },
+      {
+        "id": "b2-wardrobe",
+        "roomId": "bed2",
+        "kind": "wardrobe",
+        "x": 5,
+        "z": -3.88,
+        "w": 1.4,
+        "d": 0.6,
+        "facing": "z+"
+      },
+      {
+        "id": "b2-rug",
+        "roomId": "bed2",
+        "kind": "rug",
+        "x": 4.2,
+        "z": -1.4,
+        "w": 1.6,
+        "d": 1.2,
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "b2-plant",
+        "roomId": "bed2",
+        "kind": "plant",
+        "x": 5.6,
+        "z": -1.1,
+        "w": 0.4,
+        "d": 0.4
+      },
+      {
+        "id": "b1-bed",
+        "roomId": "bed1",
+        "kind": "bed",
+        "x": 3.6,
+        "z": 1.2,
+        "w": 1.8,
+        "d": 2.1,
+        "facing": "z+",
+        "tone": "fabricWarm"
+      },
+      {
+        "id": "b1-wardrobe",
+        "roomId": "bed1",
+        "kind": "wardrobe",
+        "x": 5,
+        "z": 3.88,
+        "w": 1.6,
+        "d": 0.6,
+        "facing": "z-"
+      },
+      {
+        "id": "b1-desk",
+        "roomId": "bed1",
+        "kind": "desk",
+        "x": 5.2,
+        "z": 0.3,
+        "w": 1.2,
+        "d": 0.6,
+        "facing": "x-"
+      },
+      {
+        "id": "b1-rug",
+        "roomId": "bed1",
+        "kind": "rug",
+        "x": 3.8,
+        "z": 3.2,
+        "w": 2,
+        "d": 1.4,
+        "tone": "fabricSage"
+      },
+      {
+        "id": "b1-lamp",
+        "roomId": "bed1",
+        "kind": "floorLamp",
+        "x": 5.7,
+        "z": 2.3,
+        "w": 0.35,
+        "d": 0.35
+      },
+      {
+        "id": "b1-frame",
+        "roomId": "bed1",
+        "kind": "frame",
+        "x": 5.9,
+        "z": 3,
+        "w": 0.08,
+        "d": 0.8,
+        "facing": "x-"
+      },
+      {
+        "id": "tr-tree1",
+        "roomId": "terrace",
+        "kind": "plant",
+        "x": -5.35,
+        "z": -5.5,
+        "w": 0.6,
+        "d": 0.6
+      },
+      {
+        "id": "tr-tree2",
+        "roomId": "terrace",
+        "kind": "plant",
+        "x": -1.65,
+        "z": -5.5,
+        "w": 0.6,
+        "d": 0.6
+      },
+      {
+        "id": "tr-plant",
+        "roomId": "terrace",
+        "kind": "plant",
+        "x": -1.6,
+        "z": -4.65,
+        "w": 0.5,
+        "d": 0.5
+      }
+    ]
+  }
+]

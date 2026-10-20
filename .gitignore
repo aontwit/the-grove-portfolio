@@ -1,0 +1,17 @@
+node_modules
+.next
+out
+build
+.env*
+!.env.example
+next-env.d.ts
+*.tsbuildinfo
+test-results
+playwright-report
+.DS_Store
+.impeccable/config.local.json
+
+# scratch + impeccable tool output
+.tmp-*/
+.impeccable/*
+!.impeccable/design.json
