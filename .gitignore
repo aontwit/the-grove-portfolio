@@ -15,3 +15,4 @@ playwright-report
 .tmp-*/
 .impeccable/*
 !.impeccable/design.json
+.vercel
