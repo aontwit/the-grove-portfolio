@@ -37,3 +37,18 @@
 | มือถือ (`_512` ทั้งหมด + `sky_256.hdr`) | ≈ 1.2 MB |
 
 ฉากหมู่บ้านไม่โหลดพื้นไม้และผ้า · diorama ไม่โหลดผ้า · ผ้าโหลดเฉพาะโหมดเดินดู
+
+## Mood studio (หน้าแรก) — สร้างด้วย Figma AI (2026-10-21)
+
+เจ้าของงานอนุมัติให้ใช้เครดิต Figma AI สร้างภาพผิววัสดุของ mood studio · โมเดล `gpt-image-2.5-sunburst`
+ผ่าน Figma MCP `generate_image` (ไฟล์ Figma ของทีมเจ้าของงาน) · 13 ภาพ แปลงเป็น WebP 1k / 512 / ชิป 128 ด้วย sharp
+
+| ไฟล์ | ภาพ |
+|---|---|
+| `studio_white-oak_*` `studio_honey-oak_*` `studio_walnut_*` `studio_smoked-oak_*` | พื้นไม้ 4 แบบ |
+| `studio_travertine_*` `studio_terrazzo_*` `studio_concrete-polished_*` | หิน 3 แบบ |
+| `studio_limewash_*` | ผนังปูนลายมือ (คูณสีของสีทาแต่ละสี) |
+| `studio_boucle_*` `studio_linen_*` `studio_velvet_*` `studio_knit_*` | ผ้า 4 แบบ (คูณสีตาม swatch) |
+| `../backdrop/dusk-bokeh*.webp` | ฉากหลังเมืองยามพลบเบลอ |
+
+normal map ของผิวเหล่านี้ยืมจากชุด Poly Haven ด้านบน (ไม้พื้น ปูน ผิวฉาบ)

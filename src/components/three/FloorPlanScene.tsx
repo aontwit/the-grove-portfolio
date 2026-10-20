@@ -45,6 +45,7 @@ import {
 } from "./house/build";
 import { PartsMeshes, useParts } from "./house/Parts";
 import {
+  Backdrop,
   MoodPins,
   MoodStudioProvider,
   Picker,
@@ -413,6 +414,38 @@ function RoomFloor({
   );
 }
 
+/* ฐานห้องชุด (stage "flat") — หินมืดด้าน + เส้นเรืองแสงดินเผาบางๆ รอบขอบบน (bloom จับ) */
+const PLINTH_MAT = new MeshStandardMaterial({ color: M3D.plinth, roughness: 0.62, metalness: 0 });
+const EDGE_MAT = new MeshStandardMaterial({
+  color: M3D.plinthEdge,
+  emissive: M3D.plinthEdge,
+  emissiveIntensity: 2.2,
+  roughness: 0.4,
+  metalness: 0,
+});
+function PlinthEdge({ x0, z0, x1, z1 }: { x0: number; z0: number; x1: number; z1: number }) {
+  const t = 0.018;
+  const y = -0.012;
+  const w = x1 - x0;
+  const d = z1 - z0;
+  return (
+    <group raycast={() => null}>
+      <mesh position={[(x0 + x1) / 2, y, z0]} material={EDGE_MAT}>
+        <boxGeometry args={[w, t, t]} />
+      </mesh>
+      <mesh position={[(x0 + x1) / 2, y, z1]} material={EDGE_MAT}>
+        <boxGeometry args={[w, t, t]} />
+      </mesh>
+      <mesh position={[x0, y, (z0 + z1) / 2]} material={EDGE_MAT}>
+        <boxGeometry args={[t, t, d]} />
+      </mesh>
+      <mesh position={[x1, y, (z0 + z1) / 2]} material={EDGE_MAT}>
+        <boxGeometry args={[t, t, d]} />
+      </mesh>
+    </group>
+  );
+}
+
 export function FloorPlanScene({
   house,
   floor = 1,
@@ -423,7 +456,9 @@ export function FloorPlanScene({
   studio,
 }: {
   /** mood studio ของหน้าแบบบ้าน (โหมด Isometric): วัสดุเปลี่ยนได้ ไฟในบ้านตามเวลา หมุดวัสดุ และจุดรับวัสดุที่ลากมาวาง */
-  studio?: { pickRef: RefObject<PickFn | null>; lampsMax: number } | undefined;
+  /** stage "flat" = ห้องชุดบนฐานมืด (หน้าแรก): ไม่มีแปลง สวน โรงจอด — ตัดเฉพาะตัวบ้าน + ฉากหลังเมืองยามพลบ */
+  studio?:
+    { pickRef: RefObject<PickFn | null>; lampsMax: number; stage?: "flat" | undefined } | undefined;
   house: HouseType;
   /** false = ฉากโชว์ (หน้าแรก): ไม่รับคลิก/hover ห้อง ไม่ไฮไลต์ห้องที่เลือกค้างจากหน้าอื่น
       หน้าแบบบ้าน (PlanViewer) และโหมดเดินดูยังเลือกห้องได้ตามเดิม */
@@ -447,6 +482,9 @@ export function FloorPlanScene({
   const kit = useOutdoorKit(low);
   const inner = useIndoorKit(low);
   const smats = useStudioMaterials(inner);
+  const flat = studio?.stage === "flat";
+  /* ฐานของห้องชุด: แผ่นหินมืดแทนแผ่นไม้ของ diorama */
+  const flatKit = useMemo(() => ({ ...kit, board: PLINTH_MAT }), [kit]);
   const setTarget = useMood((s) => s.setTarget);
 
   /* diorama แสดงทีละชั้น
@@ -532,8 +570,8 @@ export function FloorPlanScene({
 
   /* ที่ตั้งบนแปลง (ชั้นล่างเท่านั้น): สนาม ฐานบ้าน ชาน ราว ทางเดิน โรงจอดรถ พุ่มไม้ — คำนวณจากห้องชุดเดียวกัน */
   const site = useMemo(
-    () => (floor === 1 ? houseSiting(house, plot ?? typicalPlot(house)) : null),
-    [floor, house, plot],
+    () => (floor === 1 && !flat ? houseSiting(house, plot ?? typicalPlot(house)) : null),
+    [floor, house, plot, flat],
   );
   /* หลังข้างเคียงของบ้านแฝด: บ้าน + สวนสะท้อนรอบเส้นผนังร่วม ปิดหลังคา (geometry ชุดเดียวกัน ไม่ใช่ชุดแยก) */
   const twinParts = useParts(() => {
@@ -699,7 +737,10 @@ export function FloorPlanScene({
 
       {/* แปลงทั้งแปลงบนฐานไม้หนา: สนาม ฐานบ้าน ชาน ทางเดินหิน พุ่มไม้ ต้นไม้ค้ำ */}
       <group>
-        <PartsMeshes parts={ground} kit={kit} />
+        <PartsMeshes parts={ground} kit={flat ? flatKit : kit} />
+        {flat && (
+          <PlinthEdge x0={all.x0 - 0.45} z0={all.z0 - 0.45} x1={all.x1 + 0.45} z1={all.z1 + 0.45} />
+        )}
         <Vegetation trees={plants.trees} shrubs={plants.shrubs} kit={kit} />
         {site?.carport && (
           <Cutaway
@@ -827,9 +868,12 @@ export function FloorPlanScene({
       kit={kit}
       rooms={rooms}
       lampsMax={studio.lampsMax}
+      furniture={furniture}
+      low={low}
     >
       {scene}
       <Picker pickRef={studio.pickRef} />
+      {flat && <Backdrop low={low} />}
       <MoodPins spots={spots} />
     </MoodStudioProvider>
   ) : (

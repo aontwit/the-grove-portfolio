@@ -102,6 +102,9 @@ export const furnitureKindSchema = z.enum([
   "floorLamp",
   "frame",
   "tree",
+  "bookshelf",
+  "coffeeTable",
+  "armchair",
 ]);
 
 /* เฟอร์นิเจอร์หนึ่งชิ้น — x,z คือจุดกึ่งกลาง, w,d คือขนาดกล่องตามแกนโลก (เมตร)

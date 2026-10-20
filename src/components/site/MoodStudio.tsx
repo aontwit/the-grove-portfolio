@@ -1,6 +1,15 @@
 "use client";
 
-import { useEffect, useId, useMemo, useState, type DragEvent, type RefObject } from "react";
+import {
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+  type DragEvent,
+  type ReactNode,
+  type RefObject,
+} from "react";
 import {
   ChevronDown,
   ChevronUp,
@@ -47,6 +56,20 @@ const TIME_FILTER = {
   evening: "sepia(0.55) saturate(1.4) brightness(0.9) hue-rotate(-14deg)",
   night: "brightness(0.42) saturate(0.7) hue-rotate(180deg)",
 } as const;
+
+/** ชิปวัสดุ = ภาพผิวชุดเดียวกับในฉาก (ย่อ 128px) คูณสีของ swatch — ภาพยังไม่มาก็เห็นสีเฉลี่ยก่อน */
+export const chipStyle = (id: SwatchId): React.CSSProperties => {
+  const sw = SWATCHES[id];
+  return {
+    backgroundColor: sw.tint === "#FFFFFF" ? sw.chip : sw.tint,
+    backgroundImage: `url(/textures/studio_${sw.tex}_chip.webp)`,
+    backgroundSize: "cover",
+    backgroundBlendMode: sw.tint === "#FFFFFF" ? "normal" : "multiply",
+  };
+};
+
+/** ภาพห้องเดียวกันที่แต่ละช่วงเวลา (public/studio/<เวลา>.webp — scripts/studio-shots.mjs) */
+export type StudioThumbs = Partial<Record<(typeof TIMES)[number], string>>;
 
 const fmt = (h: number) =>
   `${String(Math.floor(h)).padStart(2, "0")}:${String(Math.round((h % 1) * 60)).padStart(2, "0")}`;
@@ -198,7 +221,7 @@ function Board({ compact = false }: { compact?: boolean }) {
                 <span
                   aria-hidden
                   className="rounded-control border-chalk/15 aspect-square w-full border"
-                  style={{ background: SWATCHES[id].chip }}
+                  style={chipStyle(id)}
                 />
                 <span className="text-13 text-ash leading-tight">{s.surfaces[surface]}</span>
                 {!compact && <span className="text-13 leading-tight">{s.swatches[id]}</span>}
@@ -211,7 +234,15 @@ function Board({ compact = false }: { compact?: boolean }) {
   );
 }
 
-function Daylight({ thumb, compact = false }: { thumb?: string | undefined; compact?: boolean }) {
+function Daylight({
+  thumb,
+  thumbs,
+  compact = false,
+}: {
+  thumb?: string | undefined;
+  thumbs?: StudioThumbs | undefined;
+  compact?: boolean;
+}) {
   const s = useStudio();
   const hour = useMood((st) => st.hour);
   const setHour = useMood((st) => st.setHour);
@@ -254,7 +285,11 @@ function Daylight({ thumb, compact = false }: { thumb?: string | undefined; comp
                   aria-hidden
                   className="rounded-control bg-slate relative h-10 w-16 shrink-0 overflow-hidden bg-cover bg-center"
                   style={
-                    thumb ? { backgroundImage: `url(${thumb})`, filter: TIME_FILTER[t] } : undefined
+                    thumbs?.[t]
+                      ? { backgroundImage: `url(${thumbs[t]})` }
+                      : thumb
+                        ? { backgroundImage: `url(${thumb})`, filter: TIME_FILTER[t] }
+                        : undefined
                   }
                 >
                   {compact && <Icon className="text-chalk absolute right-1 bottom-1 size-3.5" />}
@@ -358,7 +393,7 @@ function Tray({ compact = false }: { compact?: boolean }) {
                   "rounded-control block size-14 border transition-transform duration-150 group-hover:-translate-y-0.5",
                   finish[target] === id ? "border-citron border-2" : "border-chalk/15",
                 )}
-                style={{ background: SWATCHES[id].chip }}
+                style={chipStyle(id)}
               />
               <span className="text-13 leading-tight">
                 {used.has(id) && (
@@ -380,10 +415,11 @@ function Tray({ compact = false }: { compact?: boolean }) {
 }
 
 /** ปุ่มลัดของ studio — ไม่ทำงานตอนพิมพ์ในช่องกรอก หรือกดคู่กับปุ่ม modifier */
-function useShortcuts() {
+function useShortcuts(active: boolean) {
   const applyMood = useMood((s) => s.applyMood);
   const toggleUi = useMood((s) => s.toggleUi);
   useEffect(() => {
+    if (!active) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.ctrlKey || e.metaKey || e.altKey) return;
       const el = e.target as HTMLElement | null;
@@ -399,10 +435,31 @@ function useShortcuts() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [applyMood, toggleUi]);
+  }, [active, applyMood, toggleUi]);
 }
 
-export function MoodStudio({ thumb }: { thumb?: string | undefined }) {
+export function MoodStudio({
+  thumb,
+  thumbs,
+  head,
+}: {
+  thumb?: string | undefined;
+  thumbs?: StudioThumbs | undefined;
+  /** การ์ดแรกของคอลัมน์ซ้าย (หน้าแรก: ชื่อแบรนด์ h1 + ตัวเลข) — เห็นทุกขนาดจอ แผงอื่นของคอลัมน์ซ้ายเห็นเฉพาะ md ขึ้นไป */
+  head?: ReactNode;
+}) {
+  /* ปุ่มลัดทำงานเฉพาะตอน studio อยู่บนจอ — หน้าแรกเลื่อนลงไปอ่านส่วนอื่นแล้วกด 1 ไม่ควรเปลี่ยนห้อง */
+  const root = useRef<HTMLDivElement>(null);
+  const [onScreen, setOnScreen] = useState(false);
+  useEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setOnScreen(!!e?.isIntersecting), {
+      threshold: 0.35,
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
   const s = useStudio();
   const hidden = useMood((st) => st.uiHidden);
   const toggleUi = useMood((st) => st.toggleUi);
@@ -410,14 +467,14 @@ export function MoodStudio({ thumb }: { thumb?: string | undefined }) {
   const toggleCinematic = useMood((st) => st.toggleCinematic);
   const [sheet, setSheet] = useState<"mood" | "light" | "materials">("mood");
   const [open, setOpen] = useState(true);
-  useShortcuts();
+  useShortcuts(onScreen);
   const fade = cx(
     "transition-opacity duration-250 motion-reduce:transition-none",
     hidden && "pointer-events-none opacity-0",
   );
 
   return (
-    <div data-studio className="pointer-events-none absolute inset-0 z-10">
+    <div ref={root} data-studio className="pointer-events-none absolute inset-0 z-10">
       {/* แถบเครื่องมือขวาบน — ปุ่มซ่อนแผงอยู่นอกส่วนที่ซ่อน กดเรียกกลับได้เสมอ */}
       <div className="pointer-events-auto absolute top-3 right-3 flex gap-1.5">
         <button
@@ -452,30 +509,34 @@ export function MoodStudio({ thumb }: { thumb?: string | undefined }) {
         </button>
       </div>
 
-      {/* ── จอ md ขึ้นไป: แผงลอยรอบโมเดล ─────────────────────────────── */}
-      <div className={cx("hidden md:block", fade)}>
-        <section
-          aria-labelledby="studio-title"
-          className="pointer-events-auto absolute top-3 left-3 flex max-h-[calc(100%-1.5rem)] w-[17rem] flex-col gap-3 overflow-y-auto"
-        >
-          <div className={cx(PANEL, "p-3")}>
-            <p className="text-13 tracking-caps text-ash font-medium">{s.caps}</p>
-            <h2 id="studio-title" className="font-display text-26 text-chalk mt-1 leading-none">
-              {s.title}
-            </h2>
-            <p className="text-13 text-ash mt-2 mb-3">{s.lead}</p>
+      {/* ── คอลัมน์ซ้าย: หัวแบรนด์ (ทุกจอ) + ชุดบรรยากาศ + วัสดุในห้อง (md ขึ้นไป) ───────── */}
+      <section
+        aria-labelledby="studio-title"
+        className="pointer-events-auto absolute top-3 left-3 flex max-h-[calc(100%-1.5rem)] w-[min(17rem,calc(100%-7.5rem))] flex-col gap-3 overflow-y-auto md:w-[17rem]"
+      >
+        {head && <div className={cx(PANEL, "p-3", fade)}>{head}</div>}
+        <div className={cx(PANEL, "hidden p-3 md:block", fade)}>
+          <p className="text-13 tracking-caps text-ash font-medium">{s.caps}</p>
+          <h2 id="studio-title" className="font-display text-26 text-chalk mt-1 leading-none">
+            {s.title}
+          </h2>
+          {!head && <p className="text-13 text-ash mt-2">{s.lead}</p>}
+          <div className="mt-3">
             <MoodCards />
           </div>
-          <div className={cx(PANEL, "p-3")}>
-            <Board />
-          </div>
-        </section>
+        </div>
+        <div className={cx(PANEL, "hidden p-3 md:block", fade)}>
+          <Board />
+        </div>
+      </section>
 
+      {/* ── จอ md ขึ้นไป: แสงของวัน (ขวา) + ถาดวัสดุ (ล่าง) ───────────────────── */}
+      <div className={cx("hidden md:block", fade)}>
         <section
           aria-label={s.daylight}
           className={cx(PANEL, "pointer-events-auto absolute top-16 right-3 w-[14rem] p-3")}
         >
-          <Daylight thumb={thumb} />
+          <Daylight thumb={thumb} thumbs={thumbs} />
         </section>
 
         <section
@@ -494,7 +555,7 @@ export function MoodStudio({ thumb }: { thumb?: string | undefined }) {
       <div
         className={cx(
           PANEL,
-          "pointer-events-auto absolute inset-x-2 bottom-2 flex max-h-[62%] flex-col md:hidden",
+          "pointer-events-auto absolute inset-x-2 bottom-2 flex max-h-[46%] flex-col md:hidden",
           fade,
         )}
       >
@@ -535,7 +596,7 @@ export function MoodStudio({ thumb }: { thumb?: string | undefined }) {
         {open && (
           <div className="overflow-y-auto px-3 pb-3">
             {sheet === "mood" && <MoodCards />}
-            {sheet === "light" && <Daylight thumb={thumb} compact />}
+            {sheet === "light" && <Daylight thumb={thumb} thumbs={thumbs} compact />}
             {sheet === "materials" && (
               <div className="flex flex-col gap-3">
                 <Board compact />

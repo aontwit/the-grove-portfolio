@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState, type ComponentProps, type RefObject } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { Environment, Lightformer } from "@react-three/drei";
-import { EffectComposer, N8AO, SMAA, ToneMapping } from "@react-three/postprocessing";
+import { Bloom, EffectComposer, N8AO, SMAA, ToneMapping } from "@react-three/postprocessing";
 import { SMAAPreset, ToneMappingMode } from "postprocessing";
 import {
   BackSide,
@@ -299,7 +299,10 @@ export function PostFX({
   aoRadius,
   aoIntensity = 2.4,
   composerRef,
+  studio = false,
 }: {
+  /** mood studio: bloom บางๆ ให้โป๊ะโคม จอคอม และเส้นขอบฐานเรือง + ACES (ภาพออกฟิล์มกว่า Neutral) */
+  studio?: boolean;
   low: boolean;
   /** รัศมี AO เป็นเมตร — ราว 1/30 ของด้านยาวฉาก */
   aoRadius: number;
@@ -322,7 +325,12 @@ export function PostFX({
         halfRes={low}
         quality={low ? "performance" : "high"}
       />
-      <ToneMapping mode={ToneMappingMode.NEUTRAL} />
+      {studio ? (
+        <Bloom mipmapBlur luminanceThreshold={0.85} luminanceSmoothing={0.2} intensity={0.55} />
+      ) : (
+        <></>
+      )}
+      <ToneMapping mode={studio ? ToneMappingMode.ACES_FILMIC : ToneMappingMode.NEUTRAL} />
       <SMAA preset={low ? SMAAPreset.MEDIUM : SMAAPreset.HIGH} />
     </EffectComposer>
   );

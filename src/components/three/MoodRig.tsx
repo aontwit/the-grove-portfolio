@@ -7,10 +7,13 @@ import {
   Color,
   MeshStandardMaterial,
   Raycaster,
+  RepeatWrapping,
+  SRGBColorSpace,
+  Texture,
+  TextureLoader,
   Vector2,
   type Object3D,
   type PointLight,
-  type Texture,
 } from "three";
 import { WALL_H, roomArea, type WallSegment } from "@/geometry";
 import type { Furniture, HouseType } from "@/lib/schemas";
@@ -20,11 +23,12 @@ import { getStudioDictionary } from "@/i18n/studio";
 import { cx } from "@/lib/utils";
 import {
   DAYLIGHT_KEYS,
-  DETAIL_GAIN,
   LAMP,
   ROUGH,
   SWATCHES,
+  TEX_TILE,
   type MoodSurface,
+  type StudioTex,
   type SwatchId,
 } from "./materials";
 import type { IndoorKit, OutdoorKit } from "./surfaces";
@@ -56,8 +60,9 @@ export function useStudioPaint(
 
 /** โซฟา เตียง พรม: ผ้าผืนหลักของชิ้นนั้น (ผ้ารองอื่นๆ ยังเป็นสีชุดเดิม) */
 export type ClothMats = Partial<Record<"sofa" | "bed" | "rug", MeshStandardMaterial>>;
+/** เก้าอี้เดี่ยวหุ้มผ้าชุดเดียวกับโซฟา */
 export const clothSurface = (kind: Furniture["kind"]): "sofa" | "bed" | "rug" | null =>
-  kind === "sofa" || kind === "bed" || kind === "rug" ? kind : null;
+  kind === "armchair" ? "sofa" : kind === "sofa" || kind === "bed" || kind === "rug" ? kind : null;
 
 export type PickFn = (clientX: number, clientY: number) => MoodSurface | null;
 
@@ -102,25 +107,51 @@ export function daylightAt(hour: number) {
   };
 }
 
-/** ผิว + texture ของแต่ละชนิด — ไม้พื้นใช้ภาพไม้พื้น · หินใช้ภาพปูน · ผนังเด่นแบบไม้ใช้ไม้โอ๊ก */
-function mapsFor(
-  surface: MoodSurface,
-  swatch: SwatchId,
-  inner: IndoorKit,
-  kit: OutdoorKit,
-): { map: Texture | null; normal: Texture | null } {
-  const fam = SWATCHES[swatch].family;
-  if (surface === "floor")
-    return fam === "stone"
-      ? { map: kit.concrete.map, normal: kit.concrete.normalMap }
-      : { map: inner.floor.map, normal: inner.floor.normalMap };
-  if (surface === "feature" && fam === "wood")
-    return { map: inner.oak.map, normal: inner.oak.normalMap };
-  return { map: null, normal: inner.plaster.normalMap };
+/* ── ภาพผิวของ studio ─────────────────────────────────────────────
+   โหลดเมื่อผิวไหนถูกเลือกใช้ครั้งแรกเท่านั้น (ไม่ใช่ทั้งแคตตาล็อก) — เดสก์ท็อป 1k · มือถือ 512
+   ยังโหลดไม่เสร็จ = ผิวคงภาพเดิมไว้ก่อน (ไม่ขึ้นดำ) แล้วสลับเมื่อพร้อม */
+const texCache = new Map<string, { tex: Texture; ready: boolean }>();
+let onTexReady: (() => void) | null = null;
+function studioTex(name: StudioTex, low: boolean): Texture | null {
+  const url = `/textures/studio_${name}_${low ? "512" : "1k"}.webp`;
+  let e = texCache.get(url);
+  if (!e) {
+    const entry = { tex: new Texture(), ready: false };
+    entry.tex = new TextureLoader().load(url, () => {
+      entry.ready = true;
+      onTexReady?.();
+    });
+    entry.tex.wrapS = RepeatWrapping;
+    entry.tex.wrapT = RepeatWrapping;
+    entry.tex.colorSpace = SRGBColorSpace;
+    entry.tex.anisotropy = 8;
+    entry.tex.repeat.set(1 / TEX_TILE[name], 1 / TEX_TILE[name]);
+    texCache.set(url, entry);
+    e = entry;
+  }
+  return e.ready ? e.tex : null;
 }
 
-function setMaps(mat: MeshStandardMaterial, m: { map: Texture | null; normal: Texture | null }) {
-  if (mat.map === m.map && mat.normalMap === m.normal) return;
+type Maps = { map: Texture | null; normal: Texture | null };
+
+/** ภาพผิว + normal ของผิวหนึ่ง — normal ยืมจากชุด Poly Haven ที่มีอยู่ (ไม้พื้น ปูน ผิวฉาบ) · ผ้าไม่มี normal */
+function mapsFor(swatch: SwatchId, inner: IndoorKit, kit: OutdoorKit, low: boolean): Maps | null {
+  const sw = SWATCHES[swatch];
+  const map = studioTex(sw.tex, low);
+  if (!map) return null;
+  const normal =
+    sw.family === "wood"
+      ? inner.floor.normalMap
+      : sw.family === "stone"
+        ? kit.concrete.normalMap
+        : sw.family === "paint"
+          ? inner.plaster.normalMap
+          : null;
+  return { map, normal };
+}
+
+function setMaps(mat: MeshStandardMaterial, m: Maps | null) {
+  if (!m || (mat.map === m.map && mat.normalMap === m.normal)) return;
   /* มี/ไม่มี map เปลี่ยน = shader คนละรุ่น ต้องคอมไพล์ใหม่ (ครั้งแรกที่สลับเท่านั้น) */
   const recompile = !!mat.map !== !!m.map || !!mat.normalMap !== !!m.normal;
   mat.map = m.map;
@@ -137,6 +168,8 @@ export function useStudioMaterials(inner: IndoorKit) {
   }, [inner]);
 }
 
+type Lamp = { id: string; at: readonly [number, number, number]; reach: number };
+
 export function MoodStudioProvider({
   children,
   floor,
@@ -144,7 +177,9 @@ export function MoodStudioProvider({
   inner,
   kit,
   rooms,
+  furniture,
   lampsMax,
+  low,
 }: {
   children: React.ReactNode;
   floor: MeshStandardMaterial;
@@ -152,8 +187,10 @@ export function MoodStudioProvider({
   inner: IndoorKit;
   kit: OutdoorKit;
   rooms: HouseType["rooms"];
+  furniture: readonly Furniture[];
   /** จำนวนไฟในบ้านสูงสุด — เครื่องแรงต่ำได้น้อยกว่า */
   lampsMax: number;
+  low: boolean;
 }) {
   const entries = useRef(new Set<PaintEntry>());
   const reg = useMemo<Registry>(
@@ -166,27 +203,48 @@ export function MoodStudioProvider({
     [],
   );
   const invalidate = useThree((s) => s.invalidate);
+  const scene = useThree((s) => s.scene);
   /* frameloop demand: เลือกวัสดุ/เวลาจากแผง DOM = ขอเฟรม แล้ว useFrame ด้านล่างไล่ค่าต่อเอง */
   useEffect(() => useMood.subscribe(() => invalidate()), [invalidate]);
+  useEffect(() => {
+    onTexReady = () => invalidate();
+    return () => {
+      onTexReady = null;
+    };
+  }, [invalidate]);
 
-  /* ไฟในบ้าน: ห้องในร่มใหญ่สุด N ห้อง เพดานกลางห้อง ไม่ทอดเงา (เงาจุดแพงเกินบนมือถือ)
+  /* ไฟในบ้าน: ทุกโคมตั้งพื้น (ระดับโป๊ะ) แล้วเติมกลางห้องใหญ่ที่ยังไม่มีโคมจนครบ N ดวง · ไม่ทอดเงา (เงาจุดแพงเกินบนมือถือ)
      mount ไว้ตลอดที่ intensity 0 ตอนกลางวัน — จำนวนไฟเปลี่ยน = three คอมไพล์ shader ทุกตัวใหม่ */
-  const lamps = useMemo(
-    () =>
-      rooms
-        .filter((r) => !r.outdoor)
-        .sort((a, b) => roomArea(b) - roomArea(a))
-        .slice(0, lampsMax)
-        .map((r) => ({
-          id: r.id,
-          at: [(r.x0 + r.x1) / 2, 2.1, (r.z0 + r.z1) / 2] as const,
-          reach: Math.hypot(r.x1 - r.x0, r.z1 - r.z0) * 0.95 + 1,
-        })),
-    [rooms, lampsMax],
-  );
+  const lamps = useMemo(() => {
+    const standing = furniture.filter((f) => f.kind === "floorLamp");
+    const out: Lamp[] = standing.map((f) => ({ id: f.id, at: [f.x, 1.5, f.z], reach: 4.2 }));
+    const lit = new Set(standing.map((f) => f.roomId));
+    const big = rooms
+      .filter((r) => !r.outdoor && !lit.has(r.id) && roomArea(r) >= 8)
+      .sort((a, b) => roomArea(b) - roomArea(a));
+    for (const r of big)
+      out.push({
+        id: r.id,
+        at: [(r.x0 + r.x1) / 2, 2.2, (r.z0 + r.z1) / 2],
+        reach: Math.hypot(r.x1 - r.x0, r.z1 - r.z0) * 0.9 + 1,
+      });
+    return out.slice(0, lampsMax);
+  }, [rooms, furniture, lampsMax]);
   const lampRefs = useRef<(PointLight | null)[]>([]);
   const lampColor = useMemo(() => new Color(LAMP.color), []);
   const shown = useRef<number | null>(null);
+
+  /* วัสดุที่เรืองแสงได้ (โป๊ะโคม จอคอม — furniture ติด userData.glow) สว่างขึ้นตอนค่ำ ให้ bloom จับ */
+  const glows = useRef<MeshStandardMaterial[]>([]);
+  useEffect(() => {
+    const found = new Set<MeshStandardMaterial>();
+    scene.traverse((o) => {
+      const m = (o as { material?: MeshStandardMaterial }).material;
+      if (m?.userData?.glow) found.add(m);
+    });
+    glows.current = [...found];
+    invalidate();
+  }, [scene, furniture, invalidate]);
 
   useFrame(({ invalidate }) => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -194,24 +252,21 @@ export function MoodStudioProvider({
     let moving = false;
 
     const s = effective("floor");
-    setMaps(floor, mapsFor("floor", s, inner, kit));
-    moving =
-      ease(floor, linear(SWATCHES[s].tint, SWATCHES[s].gain), SWATCHES[s].rough, k) || moving;
+    setMaps(floor, mapsFor(s, inner, kit, low));
+    moving = ease(floor, linear(SWATCHES[s].tint, 1), SWATCHES[s].rough, k) || moving;
 
     for (const e of entries.current) {
       const id = effective(e.surface);
       const sw = SWATCHES[id];
-      const maps = mapsFor(e.surface, id, inner, kit);
-      /* ผนังนอกมีภาพลายปูนของตัวเอง (ค่าเฉลี่ย 0.75) — ทาสีทับต้องคูณกลับให้สีตรงชิป */
-      const keepDetail = e.detail && sw.family === "paint";
-      if (!keepDetail) setMaps(e.mat, maps);
-      const gain = keepDetail ? DETAIL_GAIN : sw.gain;
-      moving = ease(e.mat, linear(sw.tint, gain), sw.rough, k) || moving;
+      setMaps(e.mat, mapsFor(id, inner, kit, low));
+      moving = ease(e.mat, linear(sw.tint, 1), sw.rough, k) || moving;
     }
 
     for (const key of ["sofa", "bed", "rug"] as const) {
-      const sw = SWATCHES[effective(key)];
-      moving = ease(cloth[key], linear(sw.tint, sw.gain), sw.rough, k) || moving;
+      const id = effective(key);
+      const sw = SWATCHES[id];
+      setMaps(cloth[key], mapsFor(id, inner, kit, low));
+      moving = ease(cloth[key], linear(sw.tint, 1), sw.rough, k) || moving;
     }
 
     /* ไฟในบ้านตามเวลา — ไล่ชั่วโมงที่แสดงตามชั่วโมงที่เลือกแบบเดียวกับแดด (IsoCanvas) */
@@ -225,6 +280,10 @@ export function MoodStudioProvider({
       if (!l) continue;
       l.intensity = LAMP.intensity * night;
       l.visible = night > 0.01;
+    }
+    for (const m of glows.current) {
+      const base = (m.userData.glowBase as number | undefined) ?? 0.3;
+      m.emissiveIntensity = base + night * ((m.userData.glowNight as number | undefined) ?? 2.4);
     }
 
     if (moving) invalidate();
@@ -248,6 +307,44 @@ export function MoodStudioProvider({
       {children}
     </StudioCtx.Provider>
   );
+}
+
+/** พื้นหลังของเวที: ภาพเมืองยามพลบเบลอ (public/backdrop) ตัดแบบ cover ตามสัดส่วน canvas
+    ความสว่างตามเวลา — กลางวันสว่างกว่า กลางคืนเหลือแสงไฟเมือง */
+const BACKDROP_ASPECT = 1.5;
+export function Backdrop({ low }: { low: boolean }) {
+  const scene = useThree((s) => s.scene);
+  const size = useThree((s) => s.size);
+  const invalidate = useThree((s) => s.invalidate);
+  const tex = useMemo(() => {
+    const t = new TextureLoader().load(
+      low ? "/backdrop/dusk-bokeh_768.webp" : "/backdrop/dusk-bokeh.webp",
+      () => invalidate(),
+    );
+    t.colorSpace = SRGBColorSpace;
+    return t;
+  }, [low, invalidate]);
+  useEffect(() => {
+    const a = size.width / Math.max(1, size.height);
+    if (a > BACKDROP_ASPECT) {
+      tex.repeat.set(1, BACKDROP_ASPECT / a);
+      tex.offset.set(0, (1 - BACKDROP_ASPECT / a) / 2);
+    } else {
+      tex.repeat.set(a / BACKDROP_ASPECT, 1);
+      tex.offset.set((1 - a / BACKDROP_ASPECT) / 2, 0);
+    }
+    const prev = scene.background;
+    scene.background = tex;
+    invalidate();
+    return () => {
+      scene.background = prev;
+    };
+  }, [scene, tex, size, invalidate]);
+  useEffect(() => () => tex.dispose(), [tex]);
+  useFrame(() => {
+    scene.backgroundIntensity = 0.85 - daylightAt(useMood.getState().hour).night * 0.45;
+  });
+  return null;
 }
 
 /** จับผิวใต้นิ้ว/เมาส์จากพิกัดหน้าจอ (ลากวัสดุจากแผง DOM มาวาง) — เดินขึ้นหา userData.surface */

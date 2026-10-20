@@ -23,7 +23,8 @@ import type { IsoCanvas as IsoCanvasType } from "@/components/three/IsoCanvas";
 import type { WalkthroughScene as WalkthroughSceneType } from "@/components/three/WalkthroughScene";
 import type { PickFn } from "@/components/three/MoodRig";
 import { MoodStudio, useStudioDrop } from "@/components/site/MoodStudio";
-import { useDict } from "@/i18n/client";
+import { Link, useDict, useLocale } from "@/i18n/client";
+import { getStudioDictionary } from "@/i18n/studio";
 import { cx } from "@/lib/utils";
 
 /* สลับ 2D ↔ 3D — ทั้งสองมุมมองอ่านห้องที่เลือกจาก store เดียวกัน
@@ -126,6 +127,7 @@ export function PlanViewer({
   const [failed, setFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
   const t = useDict();
+  const studioDict = getStudioDictionary(useLocale());
 
   const floors = [...new Set(house.rooms.map((r) => r.floor ?? 1))].sort((a, b) => a - b);
 
@@ -218,6 +220,14 @@ export function PlanViewer({
       )}
 
       {house.samplePlan && <SampleNote kind="plan" detail className="mb-3" />}
+      {mode === "3d" && (
+        <Link
+          href="/#studio"
+          className="text-pine text-15 mb-3 inline-flex min-h-11 items-center font-medium underline underline-offset-4"
+        >
+          {studioDict.openStudio}
+        </Link>
+      )}
 
       <div
         ref={boxRef}

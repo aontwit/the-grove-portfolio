@@ -60,6 +60,11 @@ export const M3D = {
   sheer: "#FBF8F2",
   sheerGlow: "#FFF4E2",
   pane: "#DDE6E4",
+  /** ฐานห้องชุดของ mood studio (stage flat) และเส้นเรืองแสงรอบขอบ */
+  plinth: "#1C1714",
+  plinthEdge: "#E2774A",
+  /** จอคอมเรืองแสง */
+  screen: "#BFD3F2",
 } as const;
 
 /** ไฟล์ *_color ของผิวที่ไม่มีสีในตัว (สนาม หลังคา ปูน ถนน) เก็บเป็นความสว่างเชิงเส้นเฉลี่ย 0.75
@@ -181,48 +186,91 @@ export function isoFitZoom(
    chip = สีที่ตาเห็นบนจอ (ใช้วาดชิปในแผง) · tint = สีคูณบน texture (ไม้/หิน) หรือสีจริง (สี/ผ้า) · gain = ตัวคูณความสว่างของ tint */
 
 export type SwatchFamily = "wood" | "stone" | "paint" | "fabric";
+/** ภาพผิววัสดุของ studio (public/textures/studio_<tex>_{1k,512,chip}.webp — สร้างด้วย Figma AI ดู CREDITS.md) */
+export type StudioTex =
+  | "white-oak"
+  | "honey-oak"
+  | "walnut"
+  | "smoked-oak"
+  | "travertine"
+  | "terrazzo"
+  | "concrete-polished"
+  | "limewash"
+  | "boucle"
+  | "linen"
+  | "velvet"
+  | "knit";
 export type Swatch = {
   family: SwatchFamily;
-  chip: string;
+  /** ภาพผิว — ชิปในถาดใช้ภาพเดียวกันย่อขนาด */
+  tex: StudioTex;
+  /** สีคูณบนภาพ (#FFFFFF = สีของภาพเอง) — ชิปในถาดคูณสีเดียวกันด้วย CSS */
   tint: string;
-  gain: number;
+  /** สีเฉลี่ยที่ตาเห็น — ใช้กับหมุด แถบสีของชุดบรรยากาศ และตอนภาพยังโหลดไม่เสร็จ */
+  chip: string;
   rough: number;
 };
 
+/** ขนาดลายหนึ่งรอบเป็นเมตร (UV ของ geometry ทุกชิ้นเป็นเมตร) */
+export const TEX_TILE: Record<StudioTex, number> = {
+  "white-oak": 1.7,
+  "honey-oak": 1.7,
+  walnut: 1.7,
+  "smoked-oak": 1.7,
+  travertine: 1.8,
+  terrazzo: 1.2,
+  "concrete-polished": 2.4,
+  limewash: 2.2,
+  boucle: 0.35,
+  linen: 0.5,
+  velvet: 0.6,
+  knit: 0.7,
+};
+
+const W = "#FFFFFF";
 export const SWATCHES = {
-  /* ไม้ — คูณบนภาพไม้พื้น (floor) / ไม้โอ๊ก (ผนังเด่น) */
-  "white-oak": { family: "wood", chip: "#D9C3A0", tint: "#FFFFFF", gain: 1.22, rough: 0.6 },
-  "honey-oak": { family: "wood", chip: "#C4935C", tint: "#FFE7C6", gain: 1, rough: 0.58 },
-  walnut: { family: "wood", chip: "#7A5236", tint: "#A7744E", gain: 1, rough: 0.55 },
-  "smoked-oak": { family: "wood", chip: "#5B4737", tint: "#7E6553", gain: 1, rough: 0.6 },
-  "black-ash": { family: "wood", chip: "#3A332D", tint: "#4E4640", gain: 1, rough: 0.62 },
-  /* หิน — คูณบนภาพปูน (concrete) ที่ค่าเฉลี่ย 0.75 จึงคูณ DETAIL_GAIN กลับ */
-  travertine: { family: "stone", chip: "#D8C9AE", tint: "#E9DBC1", gain: 1.333, rough: 0.5 },
-  terrazzo: { family: "stone", chip: "#E3DFD6", tint: "#EFEBE3", gain: 1.333, rough: 0.42 },
+  "white-oak": { family: "wood", tex: "white-oak", tint: W, chip: "#DCD3C6", rough: 0.6 },
+  "honey-oak": { family: "wood", tex: "honey-oak", tint: W, chip: "#C4935C", rough: 0.55 },
+  walnut: { family: "wood", tex: "walnut", tint: W, chip: "#5E3F2C", rough: 0.5 },
+  "smoked-oak": { family: "wood", tex: "smoked-oak", tint: W, chip: "#4B4038", rough: 0.6 },
+  "black-ash": { family: "wood", tex: "smoked-oak", tint: "#6A625C", chip: "#2E2925", rough: 0.6 },
+  travertine: { family: "stone", tex: "travertine", tint: W, chip: "#D8C9AE", rough: 0.45 },
+  terrazzo: { family: "stone", tex: "terrazzo", tint: W, chip: "#DCD2C8", rough: 0.32 },
   "polished-concrete": {
     family: "stone",
-    chip: "#A9A59D",
-    tint: "#B4B0A8",
-    gain: 1.333,
-    rough: 0.38,
+    tex: "concrete-polished",
+    tint: W,
+    chip: "#8E8984",
+    rough: 0.35,
   },
-  slate: { family: "stone", chip: "#5F6364", tint: "#6A6E70", gain: 1.333, rough: 0.55 },
-  /* สีทาผนัง — สีเรียบ */
-  "warm-white": { family: "paint", chip: "#F3EDE2", tint: "#F3EDE2", gain: 1, rough: 0.92 },
-  "sand-limewash": { family: "paint", chip: "#E2CFAF", tint: "#E2CFAF", gain: 1, rough: 0.94 },
-  sage: { family: "paint", chip: "#8FA88E", tint: "#8FA88E", gain: 1, rough: 0.92 },
-  clay: { family: "paint", chip: "#BF8463", tint: "#BF8463", gain: 1, rough: 0.94 },
-  mist: { family: "paint", chip: "#B5C4CB", tint: "#B5C4CB", gain: 1, rough: 0.92 },
-  charcoal: { family: "paint", chip: "#45494A", tint: "#45494A", gain: 1, rough: 0.9 },
-  "ink-blue": { family: "paint", chip: "#2F3B52", tint: "#2F3B52", gain: 1, rough: 0.9 },
-  /* ผ้า */
-  boucle: { family: "fabric", chip: "#DDD3C1", tint: "#DDD3C1", gain: 1, rough: 0.98 },
-  linen: { family: "fabric", chip: "#EEE9DF", tint: "#EEE9DF", gain: 1, rough: 0.96 },
-  moss: { family: "fabric", chip: "#7D9D77", tint: "#7D9D77", gain: 1, rough: 0.96 },
-  ochre: { family: "fabric", chip: "#D9A45B", tint: "#D9A45B", gain: 1, rough: 0.96 },
-  rust: { family: "fabric", chip: "#B5583A", tint: "#B5583A", gain: 1, rough: 0.96 },
-  "navy-velvet": { family: "fabric", chip: "#2F3F5C", tint: "#2F3F5C", gain: 1, rough: 0.82 },
-  graphite: { family: "fabric", chip: "#3E4143", tint: "#3E4143", gain: 1, rough: 0.94 },
+  slate: {
+    family: "stone",
+    tex: "concrete-polished",
+    tint: "#77808A",
+    chip: "#585D63",
+    rough: 0.5,
+  },
+  "warm-white": { family: "paint", tex: "limewash", tint: "#FFFDF8", chip: "#EAE4DA", rough: 0.92 },
+  "sand-limewash": {
+    family: "paint",
+    tex: "limewash",
+    tint: "#EBD6B4",
+    chip: "#D9C6A7",
+    rough: 0.94,
+  },
+  sage: { family: "paint", tex: "limewash", tint: "#9DB59A", chip: "#8FA88E", rough: 0.92 },
+  clay: { family: "paint", tex: "limewash", tint: "#CD8E6A", chip: "#B97F60", rough: 0.94 },
+  mist: { family: "paint", tex: "limewash", tint: "#BCCCD4", chip: "#AEBDC4", rough: 0.92 },
+  charcoal: { family: "paint", tex: "limewash", tint: "#4B4F51", chip: "#45494A", rough: 0.9 },
+  "ink-blue": { family: "paint", tex: "limewash", tint: "#334058", chip: "#2F3B52", rough: 0.9 },
+  boucle: { family: "fabric", tex: "boucle", tint: W, chip: "#E2DCD2", rough: 0.98 },
+  linen: { family: "fabric", tex: "linen", tint: W, chip: "#D9D3C8", rough: 0.96 },
+  "oat-knit": { family: "fabric", tex: "knit", tint: W, chip: "#C9BBA3", rough: 0.98 },
+  moss: { family: "fabric", tex: "linen", tint: "#8DB086", chip: "#7D9D77", rough: 0.96 },
+  ochre: { family: "fabric", tex: "linen", tint: "#F2B866", chip: "#D9A45B", rough: 0.96 },
+  rust: { family: "fabric", tex: "boucle", tint: "#C8603F", chip: "#B5583A", rough: 0.97 },
+  "navy-velvet": { family: "fabric", tex: "velvet", tint: "#4A6290", chip: "#2F3F5C", rough: 0.78 },
+  graphite: { family: "fabric", tex: "velvet", tint: "#6E7376", chip: "#3E4143", rough: 0.85 },
 } as const satisfies Record<string, Swatch>;
 
 export type SwatchId = keyof typeof SWATCHES;
@@ -262,7 +310,7 @@ export const MOODS = {
       feature: "sage",
       sofa: "linen",
       bed: "linen",
-      rug: "boucle",
+      rug: "oat-knit",
     },
   },
   moody: {

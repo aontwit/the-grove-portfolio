@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { languageAlternates, siteFacts } from "@/app/_meta/site";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import Image from "next/image";
-import { ButtonLink, buttonClass } from "@/components/site/ButtonLink";
-import { HeroDiorama } from "@/components/site/HeroDiorama";
-import { INTRO_SCRIPT } from "@/components/site/intro";
-import { IntroLoader } from "@/components/site/IntroLoader";
-import { heroStage } from "@/components/site/heroStage";
+import { ButtonLink } from "@/components/site/ButtonLink";
 import { CHOOSER_ID, ProjectChooser } from "@/components/site/ProjectChooser";
 import { RoomAccordion, type RoomImage } from "@/components/site/RoomAccordion";
-import { KeepNames, Phrases } from "@/components/site/Phrases";
-import { SampleNote } from "@/components/site/SampleNote";
+import { StudioHero } from "@/components/site/StudioHero";
+import type { StudioThumbs } from "@/components/site/MoodStudio";
+import { getStudioDictionary } from "@/i18n/studio";
+import { Phrases } from "@/components/site/Phrases";
 import { Band, Section, Shell } from "@/components/site/Shell";
 import { getDictionary } from "@/i18n";
 import { getGalleryDictionary } from "@/i18n/gallery";
@@ -46,19 +46,19 @@ export default async function HomePage({ params }: { params: LangParams }) {
   const showcase = open.find((x) => x.plan && repo.listHouseTypes(lang, x.id).length > 0);
   const houses = showcase ? repo.listHouseTypes(lang, showcase.id) : [];
   const hero = houses[0];
-  /* ภาพนิ่งที่ hero แสดงก่อน canvas พร้อม — ต้องเป็นมุมเดียวกับฉากเปิด: iso ชั้นล่าง พื้นหมึก
-     เลือกชั่วโมงที่ใกล้แดดตั้งต้นของฉาก (15:00) ที่สุด ภาพจะได้เปลี่ยนเป็นโมเดลจริงโดยแทบไม่สะดุด */
-  const heroShots = hero
-    ? repo
-        .listRenders(lang)
-        .filter(
-          (r) => r.slug === hero.slug && r.view === "iso" && r.floor === 1 && r.dark && !r.closed,
-        )
-        .sort((a, b) => Math.abs(a.hour - 15) - Math.abs(b.hour - 15))
-    : [];
-  /* ห้องครบ (จอ compact / reduced motion / 3D ล้ม) · แปลงเปล่า (เฟรมแรกของจอกว้างที่มีทางวิ่ง) */
-  const heroStill = heroShots.find((r) => !r.empty);
-  const heroFirst = heroShots.find((r) => r.empty);
+  /* ภาพนิ่งของ studio (scripts/studio-shots.mjs) — ภาพแรกก่อนโมเดลพร้อม และภาพห้องสี่ช่วงเวลาในแผงแสง
+     ไฟล์ไหนยังไม่มีก็ข้าม (หน้าไม่พัง) */
+  const studioFile = (name: string) =>
+    existsSync(join(process.cwd(), "public", "studio", `${name}.webp`))
+      ? `/studio/${name}.webp`
+      : undefined;
+  const thumbs: StudioThumbs = Object.fromEntries(
+    (["morning", "midday", "evening", "night"] as const).flatMap((k) => {
+      const f = studioFile(k);
+      return f ? [[k, f]] : [];
+    }),
+  );
+  const sd = getStudioDictionary(lang);
 
   /* ภาพจากผู้พัฒนา (gallery.json) — ภาพบรรยากาศของแบรนด์ ใช้ได้แค่หน้าแรกกับแกลเลอรี ติดป้ายทุกภาพ
      ตำแหน่งบนหน้ามาจาก feature ใน data ไม่ได้เลือกด้วย id ในโค้ด */
@@ -83,61 +83,37 @@ export default async function HomePage({ params }: { params: LangParams }) {
 
   return (
     <div>
-      {/* intro loader ครั้งแรกของ session: element ซ่อนไว้ใน HTML · สคริปต์ inline ถัดไปเปิดก่อนวาดเฟรมแรก (intro.ts)
-          React ไม่รันสคริปต์นี้ตอนเปลี่ยนหน้าฝั่ง client — เข้าหน้าแรกจากหน้าอื่นในเว็บจึงไม่มี loader */}
-      <IntroLoader />
-      <script dangerouslySetInnerHTML={{ __html: INTRO_SCRIPT }} />
-      {showcase?.plan && hero && (
-        <HeroDiorama
+      {/* หน้าแรก = mood studio เต็มจอ: ห้องชุดของแบบแรกผ่าครึ่งบนฐานมืด เปลี่ยนวัสดุ บรรยากาศ และเวลาได้
+          หัวแบรนด์ (h1 ประโยคเดียว ตัวเลขจริง ปุ่มไปที่โครงการ) อยู่มุมซ้ายบนของเวที — server วาดมาใน HTML แรก */}
+      {hero && showcase && (
+        <StudioHero
           house={hero}
-          stage={heroStage(hero)}
-          still={
-            heroStill && {
-              full: `/renders/${heroStill.id}.png`,
-              first: heroFirst && `/renders/${heroFirst.id}.png`,
-            }
+          poster={studioFile("poster")}
+          thumbs={thumbs}
+          label={sd.stageLabel(hero.name, projectLabel(showcase, lang))}
+          head={
+            <>
+              <h1 id="home-title" className="font-display text-21 md:text-26 leading-tight">
+                {site.brandName}
+              </h1>
+              {/* มือถือเหลือชื่อกับทางไปต่อ — ที่บนจอเป็นของห้อง */}
+              <p className="text-13 text-ash mt-1.5 hidden md:block">
+                <Phrases parts={t.home.promise} joiner={joiner} />
+              </p>
+              <p className="text-13 text-ash mt-1 hidden md:block">
+                <Phrases
+                  parts={t.home.brandFacts({ ...facts, types: facts.houseTypes })}
+                  joiner={joiner}
+                />
+              </p>
+              <a
+                href={`#${CHOOSER_ID}`}
+                className="text-citron text-13 mt-2 inline-flex min-h-11 items-center font-medium underline underline-offset-4"
+              >
+                {t.home.seeProjects}
+              </a>
+            </>
           }
-          labelledBy="home-title"
-          intro={
-            /* เฟรมแรก (แบบ Seijaku): ชื่อ ประโยคเดียว ตัวเลขจริง และทางไปต่อ — ไม่มีป้ายเหนือหัวข้อ ไม่มีแถบตัวเลขโต
-               server วาดเสร็จมาใน HTML แรก ไม่มีสถานะเริ่มต้นที่ซ่อนไว้ */
-            <Shell className="pt-6 lg:pt-16">
-              {/* .hero-text: บนจอกว้างกว้างไม่เกินคอลัมน์ที่จองไว้ (globals.css) — บ้านไม่มีวันทับข้อความ */}
-              <div className="hero-text">
-                <h1 id="home-title" className="text-34 lg:text-60">
-                  {site.brandName}
-                </h1>
-                <p className="text-17 lg:text-21 mt-3 lg:mt-5">
-                  <Phrases parts={t.home.promise} joiner={joiner} />
-                </p>
-                {/* ตัวเลขนับจาก repo (siteFacts) — ชุดเดียวกับ title/description/OG ของเว็บ */}
-                <p className="text-15 lg:text-17 text-ash mt-3">
-                  <Phrases
-                    parts={t.home.brandFacts({ ...facts, types: facts.houseTypes })}
-                    joiner={joiner}
-                  />
-                </p>
-                <a href={`#${CHOOSER_ID}`} className={buttonClass("onInk", "mt-6 lg:mt-8")}>
-                  {t.home.seeProjects}
-                </a>
-                {/* บอกว่าเลื่อนแล้วจะเห็นอะไร — มีเฉพาะจอกว้างที่มีทางวิ่ง (จอ compact ใช้ปุ่มจังหวะใต้โมเดลแทน) */}
-                <p className="text-13 text-ash compact:hidden mt-4 max-w-[52ch]">
-                  <KeepNames
-                    text={t.home.heroCue(
-                      hero.rooms.filter((r) => !r.outdoor).length,
-                      hero.name,
-                      projectLabel(showcase, lang),
-                    )}
-                    names={[hero.name, projectLabel(showcase, lang)]}
-                  />
-                </p>
-              </div>
-            </Shell>
-          }
-          /* ป้ายตัวอย่างของฉาก: ฉากมีบ้านหลังเดียว ไม่มีผังแปลง — บอกเฉพาะแปลนตัวอย่าง */
-          note={hero.samplePlan && <SampleNote kind="plan" detail tone="ink" />}
-          skip={{ href: `#${CHOOSER_ID}`, label: t.home.skipToProjects }}
-          caption={t.home.heroModel(hero.name, projectLabel(showcase, lang))}
         />
       )}
 

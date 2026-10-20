@@ -35,7 +35,7 @@ type V3 = [number, number, number];
 /* วัสดุใช้ร่วมกันทั้งฉาก — สีกับความหยาบเดียวกันคือ material ตัวเดียว
    ห้ามแก้ค่าใน material ที่ได้จากที่นี่ (ฉากอื่นใช้ตัวเดียวกันอยู่) */
 const cache = new Map<string, MeshStandardMaterial>();
-function mat(color: string, roughness: number, extra?: "facet" | "glow" | "both-sides") {
+function mat(color: string, roughness: number, extra?: "facet" | "glow" | "both-sides" | "screen") {
   const key = `${color}|${roughness}|${extra ?? ""}`;
   let m = cache.get(key);
   if (!m) {
@@ -45,6 +45,13 @@ function mat(color: string, roughness: number, extra?: "facet" | "glow" | "both-
       m.side = DoubleSide;
       m.emissive.set(color);
       m.emissiveIntensity = 0.3;
+      /* mood studio ไล่ความสว่างตามความมืดของเวลา (MoodRig) — ฉากอื่นคงค่านี้ */
+      m.userData = { glow: true, glowBase: 0.3, glowNight: 2.6 };
+    }
+    if (extra === "screen") {
+      m.emissive.set(color);
+      m.emissiveIntensity = 0.7;
+      m.userData = { glow: true, glowBase: 0.7, glowNight: 1.6 };
     }
     if (extra === "both-sides") m.side = DoubleSide;
     cache.set(key, m);
@@ -458,19 +465,69 @@ function Desk({ w, d, facing }: PieceProps) {
         at={[0, top - 0.1, -D / 2 + 0.06]}
         m={timber(M3D.woodDark)}
       />
-      {/* แล็ปท็อปเปิดฝา · แก้วกาแฟ · หนังสือสองเล่ม */}
+      {/* จอคอมบนขาตั้ง (จอเรืองแสง — ค่ำแล้วเห็นเป็นจุดแสงเย็นกลางห้อง) · คีย์บอร์ด · โคมโต๊ะ */}
       <Box
-        size={[0.33, 0.012, 0.23]}
-        at={[-W * 0.08, top + 0.006, 0.02]}
-        m={timber(M3D.woodDark)}
-        r={0.004}
+        size={[0.2, 0.012, 0.14]}
+        at={[-W * 0.08, top + 0.006, -D / 2 + 0.16]}
+        m={timber(M3D.frameDark)}
       />
       <Box
-        size={[0.33, 0.22, 0.01]}
-        at={[-W * 0.08, top + 0.11, 0.02 - 0.115 - 0.03]}
-        rot={[-0.28, 0, 0]}
-        m={timber(M3D.woodDark)}
-        r={0.004}
+        size={[0.03, 0.2, 0.03]}
+        at={[-W * 0.08, top + 0.1, -D / 2 + 0.14]}
+        m={timber(M3D.frameDark)}
+      />
+      <Box
+        size={[0.56, 0.34, 0.025]}
+        at={[-W * 0.08, top + 0.33, -D / 2 + 0.16]}
+        m={timber(M3D.frameDark)}
+        r={0.006}
+      />
+      <Box
+        size={[0.52, 0.3, 0.004]}
+        at={[-W * 0.08, top + 0.33, -D / 2 + 0.175]}
+        m={mat(M3D.screen, 0.2, "screen")}
+      />
+      <Box size={[0.42, 0.015, 0.13]} at={[-W * 0.08, top + 0.008, 0.08]} m={glazed()} r={0.004} />
+      <Cyl
+        r0={0.06}
+        h={0.015}
+        at={[W * 0.34, top + 0.008, -D / 2 + 0.14]}
+        m={timber(M3D.frameDark)}
+      />
+      <Cyl
+        r0={0.008}
+        h={0.36}
+        at={[W * 0.34, top + 0.19, -D / 2 + 0.14]}
+        m={timber(M3D.frameDark)}
+      />
+      <Cyl
+        r0={0.05}
+        r1={0.09}
+        h={0.1}
+        at={[W * 0.34, top + 0.4, -D / 2 + 0.14]}
+        m={mat(M3D.fabricWarm, ROUGH.fabric, "glow")}
+        open
+      />
+      {/* เก้าอี้ทำงานหน้าโต๊ะ */}
+      <Box
+        size={[0.46, 0.06, 0.44]}
+        at={[-W * 0.08, 0.46, D / 2 + 0.22]}
+        m={fabric(M3D.frameDark)}
+        r={0.02}
+      />
+      <Box
+        size={[0.44, 0.42, 0.05]}
+        at={[-W * 0.08, 0.72, D / 2 + 0.44]}
+        m={fabric(M3D.frameDark)}
+        r={0.02}
+      />
+      <Cyl r0={0.025} h={0.42} at={[-W * 0.08, 0.22, D / 2 + 0.22]} m={timber(M3D.frameDark)} />
+      <Cyl
+        r0={0.22}
+        h={0.03}
+        at={[-W * 0.08, 0.03, D / 2 + 0.22]}
+        m={timber(M3D.frameDark)}
+        seg={5}
       />
       <Cyl r0={0.04} h={0.09} at={[W * 0.22, top + 0.045, 0.06]} m={glazed()} seg={16} />
       <Box
@@ -721,6 +778,151 @@ function Tree({ w, d }: PieceProps) {
   );
 }
 
+/* ── ชั้นหนังสือ โต๊ะกลาง เก้าอี้เดี่ยว (เพิ่ม 2026-10-21 · mood studio) ─────────── */
+
+/** สีปกหนังสือ — จากสีวัสดุที่มีในชุดอยู่แล้ว */
+const BOOKS = [
+  M3D.fabricWarm,
+  M3D.wallAccent,
+  M3D.ceramic,
+  M3D.frameDark,
+  M3D.fabricSage,
+  M3D.woodDark,
+];
+
+function Bookshelf({ w, d, h = 1.9, facing }: PieceProps) {
+  const { W, D, rotY } = oriented(w, d, facing);
+  const levels = 5;
+  const gap = (h - 0.06) / levels;
+  const wood = timber(M3D.woodDark);
+  return (
+    <Turn rotY={rotY}>
+      {[-1, 1].map((sx) => (
+        <Box key={sx} size={[0.03, h, D]} at={[sx * (W / 2 - 0.015), h / 2, 0]} m={wood} />
+      ))}
+      <Box size={[W, h, 0.015]} at={[0, h / 2, -D / 2 + 0.0075]} m={wood} />
+      {Array.from({ length: levels + 1 }, (_, i) => (
+        <Box key={i} size={[W - 0.06, 0.025, D - 0.02]} at={[0, 0.03 + i * gap, 0.01]} m={wood} />
+      ))}
+      {/* หนังสือ: สูง/หนาเปลี่ยนตามลำดับ (ไม่สุ่ม — ภาพนิ่งทุกครั้งเหมือนกัน) ชั้นเว้นชั้นเหลือที่วางกระถาง */}
+      {Array.from({ length: levels }, (_, lv) => {
+        const books: ReactNode[] = [];
+        let x = -W / 2 + 0.06;
+        const end = lv % 2 ? W / 2 - 0.3 : W / 2 - 0.06;
+        for (let i = 0; x < end; i++) {
+          const t = 0.03 + ((i * 7 + lv * 3) % 5) * 0.008;
+          const bh = gap * (0.62 + ((i * 5 + lv) % 4) * 0.07);
+          books.push(
+            <Box
+              key={i}
+              size={[t, bh, D * 0.72]}
+              at={[x + t / 2, 0.045 + lv * gap + bh / 2, 0.02]}
+              m={fabric(BOOKS[(i + lv * 2) % BOOKS.length] ?? M3D.woodDark)}
+            />,
+          );
+          x += t + 0.004;
+        }
+        if (lv % 2)
+          books.push(
+            <Cyl
+              key="pot"
+              r0={0.07}
+              r1={0.055}
+              h={0.13}
+              at={[W / 2 - 0.16, 0.11 + lv * gap, 0.02]}
+              m={glazed()}
+            />,
+          );
+        return <group key={lv}>{books}</group>;
+      })}
+      <Leaves r={0.13} at={[W / 2 - 0.16, 0.26 + gap, 0.02]} detail={0} />
+    </Turn>
+  );
+}
+
+function CoffeeTable({ w, d }: PieceProps) {
+  const r = Math.min(w, d) / 2;
+  return (
+    <group>
+      <Cyl r0={r} h={0.035} at={[0, 0.4, 0]} m={timber(M3D.woodDark)} seg={36} />
+      <Cyl r0={r * 0.18} r1={r * 0.3} h={0.38} at={[0, 0.19, 0]} m={timber(M3D.woodDark)} />
+      <Box
+        size={[0.24, 0.035, 0.18]}
+        at={[-r * 0.3, 0.435, 0]}
+        rot={[0, 0.3, 0]}
+        m={fabric(M3D.ceramic)}
+        r={0.004}
+      />
+      <Box
+        size={[0.22, 0.03, 0.16]}
+        at={[-r * 0.3, 0.468, 0]}
+        rot={[0, 0.15, 0]}
+        m={fabric(M3D.frameDark)}
+        r={0.004}
+      />
+      <Cyl
+        r0={0.035}
+        h={0.08}
+        at={[r * 0.35, 0.458, r * 0.2]}
+        m={mat(M3D.sheerGlow, 0.6, "glow")}
+        seg={14}
+      />
+      <Cyl r0={0.06} r1={0.05} h={0.1} at={[r * 0.2, 0.468, -r * 0.4]} m={glazed()} seg={16} />
+      <Leaves r={0.09} at={[r * 0.2, 0.58, -r * 0.4]} detail={0} />
+    </group>
+  );
+}
+
+function Armchair({ w, d, facing, cloth }: PieceProps) {
+  const { W, D, rotY } = oriented(w, d, facing);
+  const seat = cloth ?? fabric(M3D.fabricWarm);
+  const wood = timber(M3D.woodDark);
+  return (
+    <Turn rotY={rotY}>
+      {(
+        [
+          [-1, -1],
+          [1, -1],
+          [-1, 1],
+          [1, 1],
+        ] as const
+      ).map(([sx, sz]) => (
+        <Box
+          key={`${sx}${sz}`}
+          size={[0.04, 0.2, 0.04]}
+          at={[sx * (W / 2 - 0.06), 0.1, sz * (D / 2 - 0.06)]}
+          m={wood}
+        />
+      ))}
+      <Box size={[W, 0.06, D]} at={[0, 0.22, 0]} m={wood} r={0.01} />
+      <Box size={[W - 0.12, 0.14, D - 0.16]} at={[0, 0.32, 0.04]} m={seat} r={0.05} />
+      <Box
+        size={[W - 0.12, 0.42, 0.14]}
+        at={[0, 0.56, -D / 2 + 0.09]}
+        rot={[-0.12, 0, 0]}
+        m={seat}
+        r={0.05}
+      />
+      {[-1, 1].map((sx) => (
+        <Box
+          key={sx}
+          size={[0.07, 0.26, D - 0.08]}
+          at={[sx * (W / 2 - 0.035), 0.38, 0]}
+          m={wood}
+          r={0.015}
+        />
+      ))}
+      <Box
+        size={[0.32, 0.26, 0.1]}
+        at={[0.05, 0.5, -D / 2 + 0.2]}
+        rot={[-0.2, 0.15, 0]}
+        m={fabric(M3D.wallAccent)}
+        r={0.04}
+      />
+    </Turn>
+  );
+}
+
 export const PIECES: Record<FurnitureKind, ComponentType<PieceProps>> = {
   sofa: Sofa,
   bed: Bed,
@@ -736,6 +938,9 @@ export const PIECES: Record<FurnitureKind, ComponentType<PieceProps>> = {
   floorLamp: FloorLamp,
   frame: Frame,
   tree: Tree,
+  bookshelf: Bookshelf,
+  coffeeTable: CoffeeTable,
+  armchair: Armchair,
 };
 
 export const PIECE_LABELS: Record<FurnitureKind, string> = {
@@ -753,4 +958,7 @@ export const PIECE_LABELS: Record<FurnitureKind, string> = {
   floorLamp: "โคมไฟตั้งพื้น",
   frame: "กรอบรูป",
   tree: "ต้นไม้",
+  bookshelf: "ชั้นหนังสือ",
+  coffeeTable: "โต๊ะกลาง",
+  armchair: "เก้าอี้เดี่ยว",
 };

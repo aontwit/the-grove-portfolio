@@ -506,7 +506,8 @@ export function IsoCanvas({
   /** false = สกรอลล์เมาส์ผ่าน canvas แล้วหน้าเว็บเลื่อนตามปกติ ไม่ถูกดูดไปซูมโมเดล */
   zoomable?: boolean;
   /** token พื้นหลังของฉาก — §5 กำหนดให้ตรงกับพื้นของหน้า ถ้า section เป็นแถบหมึกก็ส่ง --ink */
-  backgroundToken?: string;
+  /** null = ไม่มีสีพื้นหลัง (ฉากตั้งพื้นหลังเอง เช่น Backdrop ของ mood studio) */
+  backgroundToken?: string | null;
   /** ให้ scroll ของหน้าเป็นคนขับกล้อง — ref ความคืบหน้า 0-1 กับปลายทางของการกวาดและการถอย
       wideBox คือกล่องของฉากที่ใหญ่กว่า กล้องจะเดินทางจาก box ไป wideBox ภายใน range
       live = true ให้ canvas วาดต่อเนื่อง (frameloop always) เพื่อให้ไหลลื่นจริง */
@@ -614,7 +615,7 @@ export function IsoCanvas({
         gl={glProps}
       >
         <PmremWarm low={low} />
-        <Background token={backgroundToken} />
+        {backgroundToken !== null && <Background token={backgroundToken} />}
         <Rig box={box} wideBox={scroll?.wideBox} frame={frame} onFit={onFit} />
 
         {/* §5 — แสงอ้อมจาก HDRI ฟ้า (ไม่มีดวงอาทิตย์ในไฟล์ · โหลดใน Suspense เดียวกับฉาก ด้านล่าง)
@@ -645,7 +646,7 @@ export function IsoCanvas({
         </Suspense>
         <Kick on={compiled} />
 
-        <PostFX low={low} aoRadius={ao} composerRef={composer} />
+        <PostFX low={low} aoRadius={ao} composerRef={composer} studio={daylight} />
 
         <OrbitControls
           ref={controlsRef}

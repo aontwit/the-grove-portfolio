@@ -9,6 +9,9 @@ type Time = "morning" | "midday" | "evening" | "night";
 const th = {
   caps: "SET THE MOOD",
   title: "ตั้งบรรยากาศ",
+  stageLabel: (house: string, project: string) =>
+    `โมเดล 3D ห้องชุดผ่าครึ่ง แบบ${house} โครงการ ${project} เปลี่ยนวัสดุ บรรยากาศ และเวลาได้ ลากเพื่อหมุน`,
+  openStudio: "เปิด studio เต็มจอ",
   lead: "เลือกชุดบรรยากาศ ลากวัสดุไปวางบนพื้น ผนัง โซฟา หรือเตียง แล้วเลื่อนเวลาให้แดดเดิน",
   moodGroup: "ชุดบรรยากาศ",
   moods: {
@@ -57,6 +60,7 @@ const th = {
     charcoal: "เทาถ่าน",
     "ink-blue": "น้ำเงินหมึก",
     boucle: "บูเคล่",
+    "oat-knit": "ไหมพรมสีข้าวโอ๊ต",
     linen: "ลินิน",
     moss: "เขียวมอส",
     ochre: "เหลืองดินเผา",
@@ -94,6 +98,9 @@ export type StudioDictionary = typeof th;
 const en: StudioDictionary = {
   caps: "SET THE MOOD",
   title: "Set the mood",
+  stageLabel: (house, project) =>
+    `3D model of the ${house} house at ${project}, cut open. Change the materials, mood and time of day. Drag to turn it.`,
+  openStudio: "Open the full-screen studio",
   lead: "Pick a mood, drag a material onto the floor, walls, sofa or bed, and slide the time to move the sun.",
   moodGroup: "Moods",
   moods: {
@@ -137,6 +144,7 @@ const en: StudioDictionary = {
     charcoal: "Charcoal",
     "ink-blue": "Ink blue",
     boucle: "Bouclé",
+    "oat-knit": "Oat knit",
     linen: "Linen",
     moss: "Moss",
     ochre: "Ochre",
@@ -167,6 +175,9 @@ const en: StudioDictionary = {
 const zh: StudioDictionary = {
   caps: "SET THE MOOD",
   title: "营造氛围",
+  stageLabel: (house, project) =>
+    `${project} ${house} 户型的剖切 3D 模型，可更换材质、氛围和时间，拖动可旋转。`,
+  openStudio: "打开全屏工作室",
   lead: "选一种氛围，把材质拖到地板、墙面、沙发或床上，再拖动时间让阳光移动。",
   moodGroup: "氛围",
   moods: {
@@ -209,6 +220,7 @@ const zh: StudioDictionary = {
     charcoal: "炭灰",
     "ink-blue": "墨蓝",
     boucle: "圈圈绒",
+    "oat-knit": "燕麦色针织",
     linen: "亚麻",
     moss: "苔绿",
     ochre: "赭黄",

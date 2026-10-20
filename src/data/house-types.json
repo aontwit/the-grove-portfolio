@@ -393,6 +393,36 @@
         "facing": "x+"
       },
       {
+        "id": "lv-table",
+        "roomId": "living",
+        "kind": "coffeeTable",
+        "x": -4,
+        "z": -1.45,
+        "w": 0.8,
+        "d": 0.8
+      },
+      {
+        "id": "lv-armchair",
+        "roomId": "living",
+        "kind": "armchair",
+        "x": -2.3,
+        "z": -2.9,
+        "w": 0.78,
+        "d": 0.78,
+        "facing": "x-"
+      },
+      {
+        "id": "lv-shelf",
+        "roomId": "living",
+        "kind": "bookshelf",
+        "x": -5.76,
+        "z": -1.15,
+        "w": 0.32,
+        "d": 1.1,
+        "h": 1.9,
+        "facing": "x+"
+      },
+      {
         "id": "kt-counter",
         "roomId": "kitchen",
         "kind": "counter",
